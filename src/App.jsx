@@ -5,7 +5,7 @@ function App() {
 
   return (
     <div>
-      <MainLayout></MainLayout>;
+      <MainLayout></MainLayout>
     </div>
   )
 }

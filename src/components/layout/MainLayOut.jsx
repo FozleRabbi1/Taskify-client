@@ -12,10 +12,10 @@ const MainLayout = () => {
                 <SideBar></SideBar>
                 <Layout>
 
-                    <Content style={{ margin: "24px 16px 0" }}>
+                    <Content style={{ margin: "" }}>
                         <div
                             style={{
-                                padding: 24,
+                                padding: 20,
                                 minHeight: 360,
                             }}
                         >

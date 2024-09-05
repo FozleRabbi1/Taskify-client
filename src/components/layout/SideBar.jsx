@@ -1,4 +1,4 @@
-import { Layout, Menu } from "antd";
+import { Button, Layout, Menu } from "antd";
 import { sidebarItemGenerator } from "../../utils/sidebarItemGenerator";
 import { adminPaths } from "../../routes/admin.routes";
 
@@ -13,26 +13,26 @@ const SideBar = () => {
 
     return (
         <Sider
-            style={{ height: "100vh", position: "sticky", top: "0", left: "0" }}
+            style={{ height: "100vh", width: "300px", position: "sticky", top: "0", left: "0", backgroundColor: "white", padding: "5px" }}
             breakpoint="lg"
             collapsedWidth="0"
+            width={250}
         >
-            <div
-                style={{
-                    height: "60px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor: "gray",
-                }}
-            >
-                <h2 style={{ color: "white" }}>Taskify</h2>
-            </div>
+
+            <Button size="large" className="block w-full mt-5">
+                <span className="text" >T</span> askify
+            </Button>
+
+            <Button size="large" className="block w-full mt-5">
+                Main Workspace
+            </Button>
+
             <Menu
-                theme="dark"
+                theme=""
                 mode="inline"
                 defaultSelectedKeys={["4"]}
                 items={sideBarItems}
+            // inlineIndent={10}
             />
         </Sider>
     );
