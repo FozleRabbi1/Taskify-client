@@ -13,12 +13,12 @@ const SideBar = () => {
 
     return (
         <Sider
-            style={{ height: "100vh", width: "300px", position: "sticky", top: "0", left: "0", backgroundColor: "white", padding: "5px" }}
+            className="h-screen w-[300px] sticky top-0 left-0 bg-white p-1.5"
             breakpoint="lg"
             collapsedWidth="0"
             width={250}
+            theme="light"
         >
-
             <Button size="large" className="block w-full mt-5">
                 <span className="text" >T</span> askify
             </Button>
@@ -28,11 +28,11 @@ const SideBar = () => {
             </Button>
 
             <Menu
-                theme=""
+                theme="light"
                 mode="inline"
                 defaultSelectedKeys={["4"]}
                 items={sideBarItems}
-            // inlineIndent={10}
+                className="text-left font-bold "
             />
         </Sider>
     );
