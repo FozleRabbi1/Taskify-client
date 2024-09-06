@@ -1,6 +1,6 @@
-import Dashboard from "../pages/admin/Dashboard";
 import FavouriteProjects from "../pages/admin/Projects/FavouriteProjects";
 import ManageProjects from "../pages/admin/Projects/ManageProjects";
+import Dashboard from "../pages/admin/Dashboard"
 
 
 export const adminPaths = [

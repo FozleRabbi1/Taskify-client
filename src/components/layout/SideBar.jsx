@@ -1,6 +1,8 @@
 import { Button, Layout, Menu } from "antd";
 import { sidebarItemGenerator } from "../../utils/sidebarItemGenerator";
 import { adminPaths } from "../../routes/admin.routes";
+import { AiOutlineRight } from "react-icons/ai";
+import { NavLink } from "react-router-dom";
 
 const { Sider } = Layout;
 
@@ -19,12 +21,12 @@ const SideBar = () => {
             width={250}
             theme="light"
         >
-            <Button size="large" className="block w-full mt-5">
-                <span className="text" >T</span> askify
-            </Button>
+            <NavLink to="/dashboard" className="block w-full mt-5 text-2xl text-center uppercase font-bold ">
+                <span className="text text-[50px] font-extrabold -mr-2 " >T</span> askify
+            </NavLink>
 
-            <Button size="large" className="block w-full mt-5">
-                Main Workspace
+            <Button size="large" type="primary" className="w-full my-5 flex items-center justify-center">
+                Main Workspace  <AiOutlineRight className="" />
             </Button>
 
             <Menu
@@ -34,6 +36,7 @@ const SideBar = () => {
                 items={sideBarItems}
                 className="text-left font-bold "
             />
+
         </Sider>
     );
 };
