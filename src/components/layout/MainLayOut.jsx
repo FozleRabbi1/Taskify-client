@@ -8,22 +8,15 @@ const MainLayout = () => {
 
     return (
         <div>
-            <Layout style={{ height: "100%" }}>
-                <SideBar></SideBar>
-                <Layout>
-
-                    <Content style={{ margin: "" }}>
-                        <div
-                            style={{
-                                padding: 20,
-                                minHeight: 360,
-                            }}
-                        >
-                            <Outlet></Outlet>
-                        </div>
+            <Layout style={{ height: "100vh" }}> 
+                <SideBar /> 
+                <Layout style={{ overflow: "auto" }}>
+                    <Content className="mx-6 my-3 " style={{ margin: "", minHeight: 360 }}>
+                        <Outlet />
                     </Content>
                 </Layout>
             </Layout>
+
         </div>
     );
 };
