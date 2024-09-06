@@ -3,16 +3,12 @@
 import { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-const ApexChart = ({ setChartData, chartJsonData }) => {
+const ApexChart = ({  series, labels }) => {
   const [options, setOptions] = useState({
     chart: {
       type: 'donut',
     },
-    labels: [
-      "Started",
-      "Default",
-      "On Going",
-      "In Review"],
+    labels: labels,
     responsive: [
       {
         breakpoint: 480,
@@ -28,12 +24,8 @@ const ApexChart = ({ setChartData, chartJsonData }) => {
     ],
   });
 
-  const [series, setSeries] = useState([44, 55, 41, 17]);
-  useEffect(() => {
-    if (setChartData) {
-      setChartData(series);
-    }
-  }, [series, setChartData]);
+  // const [series, setSeries] = useState([44, 55, 41, 17]);
+
 
 
   return (
