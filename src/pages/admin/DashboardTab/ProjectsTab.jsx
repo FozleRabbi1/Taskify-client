@@ -13,7 +13,7 @@ const ProjectsTab = () => {
     const [open, setOpen] = useState(false);
 
     console.log(data?.data);
-    
+
 
     const handleStarClick = (key) => {
         setActiveStars((prevActiveStars) =>
@@ -170,7 +170,7 @@ const ProjectsTab = () => {
             render: (tags) => (
                 <div className="">
                     <span className="text-gray-500 opacity-90 text-[15px] font-semibold flex items-center">
-                    {tags.join(', ')}
+                        {tags.join(', ')}
                     </span>
                 </div>
             ),
@@ -204,7 +204,7 @@ const ProjectsTab = () => {
 
     return (
         <div>
-            <h2 className="text-2xl text-gray-500 font-bold mb-4">Admin's Projects</h2>
+            <h2 className="text-2xl text-gray-500 font-bold">Admin's Projects</h2>
 
             <div className="overflow-x-auto">
                 <Table

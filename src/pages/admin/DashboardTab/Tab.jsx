@@ -11,19 +11,19 @@ const Tab = () => {
 
     return (
         <Tabs
-        className='bg-white rounded-lg  p-2'
+            className='bg-white rounded-lg  p-2'
             onChange={onChange}
             type="card"
             items={tabLabel.map((item, i) => {
                 const id = String(i + 1);
-                
+
                 const content = item === "Projects" ? (
-                    <div className='h-[70vh] p-5 '>
-                        <ProjectsTab/>
+                    <div className=' p-5 '>
+                        <ProjectsTab />
                     </div>
                 ) : (
                     <div className='h-[70vh] p-5'>
-                       <TaskTab/>
+                        <TaskTab />
                     </div>
                 );
 

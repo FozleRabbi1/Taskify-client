@@ -55,15 +55,6 @@ const Dashboard = () => {
         { _id: 3, title: "Todos Overview" },
     ]
 
-    // 48bnzfIC3Idn70FR
-    // Taskify
-    // mongodb+srv://Taskify:48bnzfIC3Idn70FR@realestate.fobat.mongodb.net/?retryWrites=true&w=majority&appName=RealEstate
-
-
-
-
-
-
     return (
         <div>
             <SearchBar />
@@ -166,6 +157,8 @@ const Dashboard = () => {
 
             <div className="py-5" >
                 <Tab/>
+                <h2 className="mb-4 mt-6 text-[15px] text-gray-500 font-semibold">© 2024 , Made with ❤️ by <span className="text-blue-500 mr-4">Infinitie Technologies</span> v1.0.10</h2>
+
             </div>
 
 
