@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import { Button, Modal, Table } from "antd";
+import { Button, Modal, Select, Table } from "antd";
 import { ProjectsApi } from "../../../redux/fetures/prjects/ProjectsApi";
 import moment from "moment";
 import { useState } from "react";
@@ -11,10 +11,9 @@ import { AiOutlineMessage } from "react-icons/ai";
 const ProjectsTab = () => {
     const { data, isLoading } = ProjectsApi.useGetAllProjectsQuery({})
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-    // State to track active stars
+
     const [activeStars, setActiveStars] = useState([]);
 
-    // Handle star click
     const handleStarClick = (key) => {
         setActiveStars(prevActiveStars =>
             prevActiveStars.includes(key)
@@ -22,6 +21,13 @@ const ProjectsTab = () => {
                 : [...prevActiveStars, key]
         );
     };
+
+    const statusOptions = ["On Going", "Started", "Default"].map((item) => ({
+        value: item,
+        label: item,
+    }));
+
+
     const tableData = data?.data?.map(({ _id, id, title, users, clients, status, priority, budget, tags, createdAt, updatedAt }) => ({
         key: _id,
         id,
@@ -106,7 +112,7 @@ const ProjectsTab = () => {
                             </div>
                             :
                             <div className="flex items-center">
-                                <h2 className="bg-blue-600 text-white font-medium px-2 rounded-md uppercase opacity-80 flex items-center "> Not Assigned </h2>
+                                <h2 className="bg-blue-600 text-white font-medium px-2 rounded-md uppercase opacity-80 flex items-center  "> Not Assigned </h2>
                                 <Button onClick={() => setOpen(true)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
                                     <FaRegEdit className="text-xl text-blue-600" />
                                 </Button>
@@ -115,10 +121,34 @@ const ProjectsTab = () => {
                 </div>
             ),
         },
-        {
-            title: <span style={titleStyle}>Status</span>,
-            dataIndex: "status",
-        },
+        // {
+        //     title: <span style={titleStyle}>Status</span>,
+        //     dataIndex: "status",
+        //     render: (status) => (
+        //         <div>
+        //             <Select
+        //                 placeholder={status}
+        //                 style={{ width: '180px', textAlign : "center" }}
+        //                 options={statusOptions}
+        //                 className="text-red-500"
+        //             />
+        //         </div>
+        //     ),
+        // },
+        // {
+        //     title: <span style={titleStyle}>Status</span>,
+        //     dataIndex: "status",
+        //     render: (status) => (
+        //         <div>
+        //             <Select
+        //                 placeholder={status}
+        //                 style={{ width: '180px', textAlign: 'center' }}
+        //                 options={statusOptions}
+        //                 className="custom-select" // Add a custom class
+        //             />
+        //         </div>
+        //     ),
+        // },
         {
             title: <span style={titleStyle}>Priority</span>,
             dataIndex: "priority",
