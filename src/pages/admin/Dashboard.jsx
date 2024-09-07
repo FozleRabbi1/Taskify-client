@@ -6,6 +6,7 @@ import {  BsFileCheckFill } from "react-icons/bs";
 import { BiSolidUserDetail } from "react-icons/bi";
 import ApexChart from "./ApexChart/ApexChart";
 import { useState } from "react";
+import Tab from "./DashboardTab/Tab";
 
 
 
@@ -54,6 +55,10 @@ const Dashboard = () => {
         { _id: 3, title: "Todos Overview" },
     ]
 
+    // 48bnzfIC3Idn70FR
+    // Taskify
+    // mongodb+srv://Taskify:48bnzfIC3Idn70FR@realestate.fobat.mongodb.net/?retryWrites=true&w=majority&appName=RealEstate
+
 
 
 
@@ -77,7 +82,6 @@ const Dashboard = () => {
                     }
                 </div>
             </div>
-
 
             <div>
                 <div className="grid grid-cols-3 gap-10" >
@@ -157,6 +161,11 @@ const Dashboard = () => {
 
 
                 </div>
+            </div>
+
+
+            <div className="my-5" >
+                <Tab/>
             </div>
 
 

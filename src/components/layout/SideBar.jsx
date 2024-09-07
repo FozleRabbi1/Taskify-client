@@ -36,10 +36,6 @@ const SideBar = () => {
                 <span className="text text-[50px] font-extrabold -mr-2 ">T</span>askify
             </NavLink>
 
-            {/* <Button size="large" type="primary" className="w-full my-5 flex items-center justify-center">
-                Main Workspace <AiOutlineRight />
-            </Button> */}
-
             <Popover placement="rightTop" type="primary" className="w-full my-5 flex items-center justify-center bg-blue-400 font-bold text-white" title={text} >
                 <Button className="py-5">  Main Workspace <AiOutlineRight /> </Button>
             </Popover>

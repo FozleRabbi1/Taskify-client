@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import { routeGenerator } from "../utils/routeGenerator";
 import { adminPaths } from "./admin.routes";
 import App from "../App";
 import Dashboard from "../pages/admin/Dashboard";
-// import Dashboard from "../pages/admin/Dashboard"
+import Login from "../pages/Auth/Login";
+import { routeGenerator } from "../utils/routeGenerator";
 
 
 const routes = createBrowserRouter([
@@ -28,6 +28,10 @@ const routes = createBrowserRouter([
         ),
         children: routeGenerator(adminPaths),
     },
+    {
+        path : "/login",
+        element : <Login/>
+    }
 ])
 
 export default routes;
