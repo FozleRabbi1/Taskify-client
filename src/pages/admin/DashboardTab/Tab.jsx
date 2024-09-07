@@ -18,7 +18,7 @@ const Tab = () => {
                 const id = String(i + 1);
                 
                 const content = item === "Projects" ? (
-                    <div className='h-[70vh] p-5'>
+                    <div className='h-[70vh] p-5 '>
                         <ProjectsTab/>
                     </div>
                 ) : (

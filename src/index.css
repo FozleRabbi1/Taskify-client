@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom CSS for Ant Design Select component */
+.custom-select .ant-select-selector {
+    text-align: center;
+}
+
+.status-default .ant-select-selector {
+    color: #dc2626; /* Tailwind red-300 */
+}
+
+.status-ongoing .ant-select-selector {
+    color: #22c55e; /* Tailwind green-500 */
+}
+
+.status-in-review .ant-select-selector {
+    color: #facc15; /* Tailwind yellow-400 */
+}
