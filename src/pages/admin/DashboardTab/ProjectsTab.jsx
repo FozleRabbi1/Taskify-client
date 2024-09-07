@@ -54,13 +54,6 @@ const ProjectsTab = () => {
     };
     const titleStyle = { fontWeight: '600', color: '#6b7260', textTransform: 'uppercase' };
 
-    // const [currentPage, setCurrentPage] = useState(1);
-    // const [pageSize, setPageSize] = useState(10);
-
-    // const handlePageChange = (page, pageSize) => {
-    //     setCurrentPage(page);
-    //     setPageSize(pageSize);
-    // };
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
     const [availablePageSizes, setAvailablePageSizes] = useState([5, 10, 15, 20, 25, 30, 35]);
