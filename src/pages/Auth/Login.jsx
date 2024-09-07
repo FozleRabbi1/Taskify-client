@@ -36,7 +36,6 @@ const Login = () => {
             console.log(err);
             toast.error("Somthing went wrong", { id: tostId, duration: 3000 });
         }
-
     };
 
     return (

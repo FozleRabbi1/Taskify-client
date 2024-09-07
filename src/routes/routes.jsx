@@ -9,7 +9,7 @@ import { routeGenerator } from "../utils/routeGenerator";
 const routes = createBrowserRouter([
     {
         path: "/",
-        element: <App></App>,
+        element: <Login/>,
     },
     {
         path: "/dashboard",

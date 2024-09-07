@@ -164,7 +164,7 @@ const Dashboard = () => {
             </div>
 
 
-            <div className="my-5" >
+            <div className="py-5" >
                 <Tab/>
             </div>
 

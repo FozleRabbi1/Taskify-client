@@ -1,13 +1,13 @@
 import { baseApi } from "../../api/baseApi";
 
-export const ProductsApi = baseApi.injectEndpoints({
+export const ProjectsApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
 
-        getAllProducts: builder.query({
+        getAllProjects: builder.query({
             providesTags: ["Products"],
             query: (query) => {
                 return {
-                    url: "/products",
+                    url: "/projects",
                     method: "GET",
                     query,
                 };
