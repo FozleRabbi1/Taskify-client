@@ -12,9 +12,6 @@ const ProjectsTab = () => {
     const [activeStars, setActiveStars] = useState([]);
     const [open, setOpen] = useState(false);
 
-    console.log(data?.data);
-
-
     const handleStarClick = (key) => {
         setActiveStars((prevActiveStars) =>
             prevActiveStars.includes(key)
@@ -56,6 +53,31 @@ const ProjectsTab = () => {
         onChange: onSelectChange,
     };
     const titleStyle = { fontWeight: '600', color: '#6b7260', textTransform: 'uppercase' };
+
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const [pageSize, setPageSize] = useState(10);
+
+    // const handlePageChange = (page, pageSize) => {
+    //     setCurrentPage(page);
+    //     setPageSize(pageSize);
+    // };
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pageSize, setPageSize] = useState(10);
+    const [availablePageSizes, setAvailablePageSizes] = useState([5, 10, 15, 20, 25, 30, 35]);
+
+    const handlePageChange = (page, pageSize) => {
+        setCurrentPage(page);
+        setPageSize(pageSize);
+    };
+
+    const handleAddPageSize = () => {
+        const newPageSize = pageSize + 5;
+        setPageSize(newPageSize);
+        if (!availablePageSizes.includes(newPageSize)) {
+            setAvailablePageSizes([...availablePageSizes, newPageSize]);
+        }
+    };
+
 
 
     const columns = [
@@ -207,7 +229,7 @@ const ProjectsTab = () => {
             <h2 className="text-2xl text-gray-500 font-bold">Admin's Projects</h2>
 
             <div className="overflow-x-auto">
-                <Table
+                {/* <Table
                     bordered
                     loading={isLoading}
                     columns={columns}
@@ -215,7 +237,45 @@ const ProjectsTab = () => {
                     showSorterTooltip={{ target: "sorter-icon" }}
                     rowSelection={rowSelection}
                     scroll={{ x: 'max-content' }}
+                    
+                /> */}
+
+                <Table
+                    bordered
+                    loading={isLoading}
+                    columns={columns}
+                    dataSource={tableData}
+                    rowSelection={rowSelection}
+                    scroll={{ x: 'max-content' }}
+                    // pagination={{
+                    //     pageSize: pageSize,
+                    //     total: tableData?.length,
+                    //     showSizeChanger: true,
+                    // }}
+                    // pagination={{
+                    //     current: currentPage,
+                    //     pageSize: pageSize,
+                    //     total: tableData?.length,
+                    //     showSizeChanger: true,
+                    //     onChange: handlePageChange,
+                    //     onShowSizeChange: handlePageChange,
+                    // }}
+
+                    pagination={{
+                        current: currentPage,
+                        pageSize: pageSize,
+                        total: tableData?.length,
+                        showSizeChanger: true,
+                        pageSizeOptions: availablePageSizes.map(size => size.toString()),
+                        onChange: handlePageChange,
+                        onShowSizeChange: handlePageChange,
+                    }}
                 />
+                <div className="flex justify-end">
+                    <Button onClick={handleAddPageSize} type="primary" className="mt-4">
+                        Add Page Size
+                    </Button>
+                </div>
             </div>
 
             <Modal
