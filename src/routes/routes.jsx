@@ -4,6 +4,8 @@ import App from "../App";
 import Dashboard from "../pages/admin/Dashboard";
 import Login from "../pages/Auth/Login";
 import { routeGenerator } from "../utils/routeGenerator";
+import SockitIo from "../pages/sockitIo/SockitIo";
+// import SockitIo from "../pages/sockitIo/SockitIo";
 
 
 const routes = createBrowserRouter([
@@ -11,6 +13,7 @@ const routes = createBrowserRouter([
         path: "/",
         element: <Login/>,
     },
+   
     {
         path: "/dashboard",
         element: <App></App>,
@@ -31,7 +34,11 @@ const routes = createBrowserRouter([
     {
         path : "/login",
         element : <Login/>
-    }
+    },
+    {
+        path: "/sockit",
+        element: <SockitIo/>,
+    },
 ])
 
 export default routes;

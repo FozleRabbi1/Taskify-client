@@ -401,5 +401,809 @@
         ],
         "createdAt": "2024-09-08T01:00:00.000Z",
         "updatedAt": "2024-09-08T01:00:00.000Z"
+    },
+    {
+        "id": "21",
+        "title": "Website Redesign",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ41IpKr1jnu6Tv6RfKrfMTprCpYAVEWz2pQ&s"
+        ],
+        "status": "On Going",
+        "priority": "Default",
+        "budget": "$15,000",
+        "tags": [
+            "Web Development",
+            "UI/UX",
+            "Redesign"
+        ],
+        "createdAt": "2024-09-06T10:00:00.000Z",
+        "updatedAt": "2024-09-06T10:00:00.000Z"
+    },
+    {
+        "id": "22",
+        "title": "Mobile App Development",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "Started",
+        "priority": "Default",
+        "budget": "$20,000",
+        "tags": [
+            "App Development",
+            "iOS",
+            "Android"
+        ],
+        "createdAt": "2024-09-06T11:00:00.000Z",
+        "updatedAt": "2024-09-06T11:00:00.000Z"
+    },
+    {
+        "id": "23",
+        "title": "E-commerce Platform",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "In Review",
+        "priority": "Default",
+        "budget": "$50,000",
+        "tags": [
+            "E-commerce",
+            "Platform",
+            "Online Store"
+        ],
+        "createdAt": "2024-09-06T12:00:00.000Z",
+        "updatedAt": "2024-09-06T12:00:00.000Z"
+    },
+    {
+        "id": "24",
+        "title": "Marketing Campaign",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Default",
+        "priority": "Default",
+        "budget": "$10,000",
+        "tags": [
+            "Marketing",
+            "Campaign",
+            "SEO"
+        ],
+        "createdAt": "2024-09-06T13:00:00.000Z",
+        "updatedAt": "2024-09-06T13:00:00.000Z"
+    },
+    {
+        "id": "25",
+        "title": "Social Media Management",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Completed",
+        "priority": "High",
+        "budget": "$8,000",
+        "tags": [
+            "Social Media",
+            "Management",
+            "Campaign"
+        ],
+        "createdAt": "2024-09-07T10:00:00.000Z",
+        "updatedAt": "2024-09-07T10:00:00.000Z"
+    },
+    {
+        "id": "26",
+        "title": "Content Creation",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [],
+        "status": "On Going",
+        "priority": "Medium",
+        "budget": "$5,000",
+        "tags": [
+            "Content",
+            "Creation",
+            "Strategy"
+        ],
+        "createdAt": "2024-09-07T11:00:00.000Z",
+        "updatedAt": "2024-09-07T11:00:00.000Z"
+    },
+    {
+        "id": "27",
+        "title": "SEO Optimization",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "In Progress",
+        "priority": "High",
+        "budget": "$12,000",
+        "tags": [
+            "SEO",
+            "Optimization",
+            "Marketing"
+        ],
+        "createdAt": "2024-09-07T12:00:00.000Z",
+        "updatedAt": "2024-09-07T12:00:00.000Z"
+    },
+    {
+        "id": "28",
+        "title": "Graphic Design",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "Completed",
+        "priority": "Low",
+        "budget": "$6,000",
+        "tags": [
+            "Graphic Design",
+            "Visuals",
+            "Branding"
+        ],
+        "createdAt": "2024-09-07T13:00:00.000Z",
+        "updatedAt": "2024-09-07T13:00:00.000Z"
+    },
+    {
+        "id": "29",
+        "title": "Product Photography",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "On Hold",
+        "priority": "Medium",
+        "budget": "$7,500",
+        "tags": [
+            "Photography",
+            "Product",
+            "Visuals"
+        ],
+        "createdAt": "2024-09-07T14:00:00.000Z",
+        "updatedAt": "2024-09-07T14:00:00.000Z"
+    },
+    {
+        "id": "30",
+        "title": "Corporate Branding",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "In Progress",
+        "priority": "High",
+        "budget": "$25,000",
+        "tags": [
+            "Branding",
+            "Corporate",
+            "Identity"
+        ],
+        "createdAt": "2024-09-07T15:00:00.000Z",
+        "updatedAt": "2024-09-07T15:00:00.000Z"
+    },
+    {
+        "id": "31",
+        "title": "UI/UX Design",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Completed",
+        "priority": "Medium",
+        "budget": "$15,000",
+        "tags": [
+            "UI/UX",
+            "Design",
+            "User Experience"
+        ],
+        "createdAt": "2024-09-07T16:00:00.000Z",
+        "updatedAt": "2024-09-07T16:00:00.000Z"
+    },
+    {
+        "id": "32",
+        "title": "Web Application Development",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "On Going",
+        "priority": "High",
+        "budget": "$30,000",
+        "tags": [
+            "Web Development",
+            "Application",
+            "Software"
+        ],
+        "createdAt": "2024-09-07T17:00:00.000Z",
+        "updatedAt": "2024-09-07T17:00:00.000Z"
+    },
+    {
+        "id": "33",
+        "title": "Digital Marketing Strategy",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "In Review",
+        "priority": "High",
+        "budget": "$20,000",
+        "tags": [
+            "Marketing",
+            "Digital",
+            "Strategy"
+        ],
+        "createdAt": "2024-09-07T18:00:00.000Z",
+        "updatedAt": "2024-09-07T18:00:00.000Z"
+    },
+    {
+        "id": "34",
+        "title": "Mobile Game Development",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "Started",
+        "priority": "High",
+        "budget": "$40,000",
+        "tags": [
+            "Game Development",
+            "Mobile",
+            "Entertainment"
+        ],
+        "createdAt": "2024-09-07T19:00:00.000Z",
+        "updatedAt": "2024-09-07T19:00:00.000Z"
+    },
+    {
+        "id": "35",
+        "title": "Customer Relationship Management",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Completed",
+        "priority": "Low",
+        "budget": "$10,000",
+        "tags": [
+            "CRM",
+            "Customer Management",
+            "Business"
+        ],
+        "createdAt": "2024-09-07T20:00:00.000Z",
+        "updatedAt": "2024-09-07T20:00:00.000Z"
+    },
+    {
+        "id": "36",
+        "title": "Cloud Computing Solutions",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "On Going",
+        "priority": "High",
+        "budget": "$35,000",
+        "tags": [
+            "Cloud Computing",
+            "Solutions",
+            "IT"
+        ],
+        "createdAt": "2024-09-07T21:00:00.000Z",
+        "updatedAt": "2024-09-07T21:00:00.000Z"
+    },
+    {
+        "id": "37",
+        "title": "Data Analytics",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "In Progress",
+        "priority": "Medium",
+        "budget": "$22,000",
+        "tags": [
+            "Data Analytics",
+            "Business Intelligence",
+            "Reporting"
+        ],
+        "createdAt": "2024-09-07T22:00:00.000Z",
+        "updatedAt": "2024-09-07T22:00:00.000Z"
+    },
+    {
+        "id": "38",
+        "title": "Software Integration",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "Completed",
+        "priority": "Low",
+        "budget": "$18,000",
+        "tags": [
+            "Software Integration",
+            "Technology",
+            "Business"
+        ],
+        "createdAt": "2024-09-07T23:00:00.000Z",
+        "updatedAt": "2024-09-07T23:00:00.000Z"
+    },
+    {
+        "id": "39",
+        "title": "E-commerce Website Development",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Started",
+        "priority": "Medium",
+        "budget": "$25,000",
+        "tags": [
+            "E-commerce",
+            "Website Development",
+            "Online Store"
+        ],
+        "createdAt": "2024-09-08T00:00:00.000Z",
+        "updatedAt": "2024-09-08T00:00:00.000Z"
+    },
+    {
+        "id": "40",
+        "title": "Mobile App UI/UX Design",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "In Progress",
+        "priority": "High",
+        "budget": "$28,000",
+        "tags": [
+            "UI/UX",
+            "Mobile App",
+            "Design"
+        ],
+        "createdAt": "2024-09-08T01:00:00.000Z",
+        "updatedAt": "2024-09-08T01:00:00.000Z"
+    },
+    {
+        "id": "41",
+        "title": "Website Redesign",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ41IpKr1jnu6Tv6RfKrfMTprCpYAVEWz2pQ&s"
+        ],
+        "status": "On Going",
+        "priority": "Default",
+        "budget": "$15,000",
+        "tags": [
+            "Web Development",
+            "UI/UX",
+            "Redesign"
+        ],
+        "createdAt": "2024-09-06T10:00:00.000Z",
+        "updatedAt": "2024-09-06T10:00:00.000Z"
+    },
+    {
+        "id": "42",
+        "title": "Mobile App Development",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "Started",
+        "priority": "Default",
+        "budget": "$20,000",
+        "tags": [
+            "App Development",
+            "iOS",
+            "Android"
+        ],
+        "createdAt": "2024-09-06T11:00:00.000Z",
+        "updatedAt": "2024-09-06T11:00:00.000Z"
+    },
+    {
+        "id": "43",
+        "title": "E-commerce Platform",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "In Review",
+        "priority": "Default",
+        "budget": "$50,000",
+        "tags": [
+            "E-commerce",
+            "Platform",
+            "Online Store"
+        ],
+        "createdAt": "2024-09-06T12:00:00.000Z",
+        "updatedAt": "2024-09-06T12:00:00.000Z"
+    },
+    {
+        "id": "44",
+        "title": "Marketing Campaign",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Default",
+        "priority": "Default",
+        "budget": "$10,000",
+        "tags": [
+            "Marketing",
+            "Campaign",
+            "SEO"
+        ],
+        "createdAt": "2024-09-06T13:00:00.000Z",
+        "updatedAt": "2024-09-06T13:00:00.000Z"
+    },
+    {
+        "id": "45",
+        "title": "Social Media Management",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Completed",
+        "priority": "High",
+        "budget": "$8,000",
+        "tags": [
+            "Social Media",
+            "Management",
+            "Campaign"
+        ],
+        "createdAt": "2024-09-07T10:00:00.000Z",
+        "updatedAt": "2024-09-07T10:00:00.000Z"
+    },
+    {
+        "id": "46",
+        "title": "Content Creation",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [],
+        "status": "On Going",
+        "priority": "Medium",
+        "budget": "$5,000",
+        "tags": [
+            "Content",
+            "Creation",
+            "Strategy"
+        ],
+        "createdAt": "2024-09-07T11:00:00.000Z",
+        "updatedAt": "2024-09-07T11:00:00.000Z"
+    },
+    {
+        "id": "47",
+        "title": "SEO Optimization",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "In Progress",
+        "priority": "High",
+        "budget": "$12,000",
+        "tags": [
+            "SEO",
+            "Optimization",
+            "Marketing"
+        ],
+        "createdAt": "2024-09-07T12:00:00.000Z",
+        "updatedAt": "2024-09-07T12:00:00.000Z"
+    },
+    {
+        "id": "48",
+        "title": "Graphic Design",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "Completed",
+        "priority": "Low",
+        "budget": "$6,000",
+        "tags": [
+            "Graphic Design",
+            "Visuals",
+            "Branding"
+        ],
+        "createdAt": "2024-09-07T13:00:00.000Z",
+        "updatedAt": "2024-09-07T13:00:00.000Z"
+    },
+    {
+        "id": "49",
+        "title": "Product Photography",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "On Hold",
+        "priority": "Medium",
+        "budget": "$7,500",
+        "tags": [
+            "Photography",
+            "Product",
+            "Visuals"
+        ],
+        "createdAt": "2024-09-07T14:00:00.000Z",
+        "updatedAt": "2024-09-07T14:00:00.000Z"
+    },
+    {
+        "id": "50",
+        "title": "Corporate Branding",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "In Progress",
+        "priority": "High",
+        "budget": "$25,000",
+        "tags": [
+            "Branding",
+            "Corporate",
+            "Identity"
+        ],
+        "createdAt": "2024-09-07T15:00:00.000Z",
+        "updatedAt": "2024-09-07T15:00:00.000Z"
+    },
+    {
+        "id": "51",
+        "title": "UI/UX Design",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Completed",
+        "priority": "Medium",
+        "budget": "$15,000",
+        "tags": [
+            "UI/UX",
+            "Design",
+            "User Experience"
+        ],
+        "createdAt": "2024-09-07T16:00:00.000Z",
+        "updatedAt": "2024-09-07T16:00:00.000Z"
+    },
+    {
+        "id": "52",
+        "title": "Web Application Development",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "On Going",
+        "priority": "High",
+        "budget": "$30,000",
+        "tags": [
+            "Web Development",
+            "Application",
+            "Software"
+        ],
+        "createdAt": "2024-09-07T17:00:00.000Z",
+        "updatedAt": "2024-09-07T17:00:00.000Z"
+    },
+    {
+        "id": "53",
+        "title": "Digital Marketing Strategy",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "In Review",
+        "priority": "High",
+        "budget": "$20,000",
+        "tags": [
+            "Marketing",
+            "Digital",
+            "Strategy"
+        ],
+        "createdAt": "2024-09-07T18:00:00.000Z",
+        "updatedAt": "2024-09-07T18:00:00.000Z"
+    },
+    {
+        "id": "54",
+        "title": "Mobile Game Development",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "Started",
+        "priority": "High",
+        "budget": "$40,000",
+        "tags": [
+            "Game Development",
+            "Mobile",
+            "Entertainment"
+        ],
+        "createdAt": "2024-09-07T19:00:00.000Z",
+        "updatedAt": "2024-09-07T19:00:00.000Z"
+    },
+    {
+        "id": "55",
+        "title": "Customer Relationship Management",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Completed",
+        "priority": "Low",
+        "budget": "$10,000",
+        "tags": [
+            "CRM",
+            "Customer Management",
+            "Business"
+        ],
+        "createdAt": "2024-09-07T20:00:00.000Z",
+        "updatedAt": "2024-09-07T20:00:00.000Z"
+    },
+    {
+        "id": "56",
+        "title": "Cloud Computing Solutions",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "On Going",
+        "priority": "High",
+        "budget": "$35,000",
+        "tags": [
+            "Cloud Computing",
+            "Solutions",
+            "IT"
+        ],
+        "createdAt": "2024-09-07T21:00:00.000Z",
+        "updatedAt": "2024-09-07T21:00:00.000Z"
+    },
+    {
+        "id": "57",
+        "title": "Data Analytics",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "In Progress",
+        "priority": "Medium",
+        "budget": "$22,000",
+        "tags": [
+            "Data Analytics",
+            "Business Intelligence",
+            "Reporting"
+        ],
+        "createdAt": "2024-09-07T22:00:00.000Z",
+        "updatedAt": "2024-09-07T22:00:00.000Z"
+    },
+    {
+        "id": "58",
+        "title": "Software Integration",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "Completed",
+        "priority": "Low",
+        "budget": "$18,000",
+        "tags": [
+            "Software Integration",
+            "Technology",
+            "Business"
+        ],
+        "createdAt": "2024-09-07T23:00:00.000Z",
+        "updatedAt": "2024-09-07T23:00:00.000Z"
+    },
+    {
+        "id": "59",
+        "title": "E-commerce Website Development",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Started",
+        "priority": "Medium",
+        "budget": "$25,000",
+        "tags": [
+            "E-commerce",
+            "Website Development",
+            "Online Store"
+        ],
+        "createdAt": "2024-09-08T00:00:00.000Z",
+        "updatedAt": "2024-09-08T00:00:00.000Z"
+    },
+    {
+        "id": "60",
+        "title": "Website Redesign",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ41IpKr1jnu6Tv6RfKrfMTprCpYAVEWz2pQ&s"
+        ],
+        "status": "On Going",
+        "priority": "Default",
+        "budget": "$15,000",
+        "tags": [
+            "Web Development",
+            "UI/UX",
+            "Redesign"
+        ],
+        "createdAt": "2024-09-06T10:00:00.000Z",
+        "updatedAt": "2024-09-06T10:00:00.000Z"
     }
 ]
