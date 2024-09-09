@@ -816,6 +816,7 @@ import moment from "moment";
 import { useState } from "react";
 import { FaRegEdit, FaRegStar, FaStar } from "react-icons/fa";
 import { AiOutlineMessage } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const ProjectsTab = () => {
 
@@ -827,7 +828,7 @@ const ProjectsTab = () => {
     const [pageSize, setPageSize] = useState(10);
     const [availablePageSizes, setAvailablePageSizes] = useState([5, 10, 15, 20, 25, 30, 35]);
     const [ids, setides] = useState([])
-    const [deleteProject] = ProjectsApi.useDeleteProjectMutation()
+    const [deleteProject, ] = ProjectsApi.useDeleteProjectMutation()
     
 
     const handleStarClick = (key) => {
@@ -893,6 +894,7 @@ const ProjectsTab = () => {
         selectedRowKeys,
         onChange: onSelectChange,
     };
+
 
     const columns = [
 
@@ -1039,10 +1041,23 @@ const ProjectsTab = () => {
         },
     ];
 
-    const handleDelete = () =>{
-        deleteProject({idArray : ids});        
-    }
 
+    const handleDelete = () =>{
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `You won't remove This User`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteProject({idArray : ids}); 
+            }
+        });
+               
+    }
 
 
     return (
@@ -1056,16 +1071,13 @@ const ProjectsTab = () => {
             </div>
 
             <div className="overflow-x-auto">
-
                 <Table
                     bordered
-
                     loading={isLoading}
                     columns={columns}
                     dataSource={tableData}
                     rowSelection={rowSelection}
                     scroll={{ x: 'max-content' }}
-
                     pagination={{
                         current: currentPage,
                         pageSize: pageSize,
@@ -1075,13 +1087,14 @@ const ProjectsTab = () => {
                         onChange: handlePageChange,
                         onShowSizeChange: handlePageChange,
                     }}
-                />
+                />                
                 <div className="flex justify-end">
                     <Button onClick={handleAddPageSize} type="primary" className="mt-4">
                         Add Page Size
                     </Button>
                 </div>
             </div>
+
 
             <Modal
                 title="Up Coming"

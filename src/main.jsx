@@ -9,7 +9,7 @@ import { store } from './redux/store'
 createRoot(document.getElementById('root')).render(
   <>
    <Provider store={store}>
-      <RouterProvider router={routes}></RouterProvider>
+      <RouterProvider router={routes}></RouterProvider>     
     </Provider>
   </>,
 )

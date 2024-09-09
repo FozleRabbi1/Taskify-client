@@ -26,6 +26,18 @@ export const ProjectsApi = baseApi.injectEndpoints({
             invalidatesTags: ["Projects"],
         }),
 
+        isFavouriteProject: builder.mutation({
+            query: (isFavourite) => {
+                return {
+                    url: `/projects`,
+                    method: "PATCH",
+                    body : isFavourite
+                }
+            },
+            invalidatesTags: ["Projects"],
+        }),
+
+
         // getAllProjects: builder.query({
         //     providesTags: ["Projects"],
         //     query: (params) => {

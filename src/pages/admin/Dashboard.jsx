@@ -7,6 +7,7 @@ import { BiSolidUserDetail } from "react-icons/bi";
 import ApexChart from "./ApexChart/ApexChart";
 import { useState } from "react";
 import Tab from "./DashboardTab/Tab";
+import { ToastContainer } from "react-toastify";
 
 
 
@@ -153,17 +154,12 @@ const Dashboard = () => {
 
                 </div>
             </div>
-
-
             <div className="py-5" >
                 <Tab/>
                 <h2 className="mb-4 mt-6 text-[15px] text-gray-500 font-semibold">© 2024 , Made with ❤️ by <span className="text-blue-500 mr-4">Infinitie Technologies</span> v1.0.10</h2>
 
             </div>
-
-
-
-
+            <ToastContainer />
 
         </div>
     );
