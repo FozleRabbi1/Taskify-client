@@ -4,8 +4,8 @@ export const ProjectsApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
 
         getAllProjects: builder.query({
-            providesTags: ["Products"],
-            query: (query) => {
+            providesTags: ["Projects"],
+            query: (query) => {                
                 return {
                     url: "/projects",
                     method: "GET",
@@ -14,6 +14,32 @@ export const ProjectsApi = baseApi.injectEndpoints({
             },
             pollingInterval: 10000
         }),
+
+        deleteProject: builder.mutation({
+            query: (arrayOfIds) => {
+                return {
+                    url: `/projects`,
+                    method: "DELETE",
+                    body : arrayOfIds
+                }
+            },
+            invalidatesTags: ["Projects"],
+        }),
+
+        // getAllProjects: builder.query({
+        //     providesTags: ["Projects"],
+        //     query: (params) => {
+        //         // Convert params to a query string
+        //         console.log(params);
+        //         const queryString = params ? `dates=${encodeURIComponent(params.dates)}` : '';
+                
+        //         return {
+        //             url: `/projects?${queryString}`,
+        //             method: "GET",
+        //         };
+        //     },
+        //     pollingInterval: 10000
+        // }),
 
 
 

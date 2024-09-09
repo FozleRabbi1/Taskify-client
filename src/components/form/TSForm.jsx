@@ -12,7 +12,6 @@ const TSForm = ({ onSubmit, children, defaultValues, resolver }) => {
   }
 
   const methods = useForm(formConfig);
-
   const submit = (data) => {
     onSubmit(data);
     methods.reset();

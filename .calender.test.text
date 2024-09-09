@@ -1,0 +1,193 @@
+// ================================================================
+    // const [dates, setDates] = useState(null);
+    // const handleDateChange = (dates) => {
+    //     setDates(dates);
+    // };
+    // const handleSubmit = () => {
+    //     if (dates) {
+    //         console.log('Selected Dates:', dates);
+    //         // Your custom submit logic with the selected dates
+    //     }
+    // };
+
+    // const [dates, setDates] = useState(null);
+    // const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
+    // const handleDateChange = (dates) => {
+    //     setDates(dates);
+    // };
+    // const handleSubmit = () => {
+    //     if (dates) {
+    //         console.log('Selected Dates:', dates);
+    //         // Perform your custom submit logic here
+    //         // Hide the calendar
+    //         setIsDatePickerVisible(false);
+    //     }
+    // };
+
+    // ==========================================================================================
+    // const [dates, setDates] = useState(null);
+    // const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
+
+    // const handleDateChange = (dates) => {
+    //     setDates(dates);
+    // };
+    // const handleSubmit = () => {
+    //     if (dates) {
+    //         console.log('Selected Dates:', dates);
+    //         setIsDatePickerVisible(false);
+    //     }
+    // };
+    // const handleOpenChange = (open) => {
+    //     if (open) {
+    //         setIsDatePickerVisible(true);
+    //     }
+    // };
+
+
+
+    // ===============================================================================================
+    // const [dates, setDates] = useState(null);
+    // const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
+    // const rangePickerRef = useRef(null);
+    // const handleDateChange = (dates) => {
+    //     setDates(dates);
+    // };
+    // const handleSubmit = () => {
+    //     if (dates) {
+    //         console.log('Selected Dates:', dates);
+    //         setIsDatePickerVisible(false);
+    //     }
+    // };
+    // const handleOpenChange = (open) => {
+    //     if (open) {
+    //         setIsDatePickerVisible(true);
+    //     }
+    // };
+    // const handleClickOutside = (event) => {
+    //     if (rangePickerRef.current && !rangePickerRef.current.contains(event.target)) {
+    //         setIsDatePickerVisible(false);
+    //     }
+    // };
+    // useEffect(() => {
+    //     document.addEventListener('mousedown', handleClickOutside);
+    //     return () => {
+    //         document.removeEventListener('mousedown', handleClickOutside);
+    //     };
+    // }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          {/* <div className="my-5">
+                <Row>
+                    <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
+                        <div ref={rangePickerRef}>
+                            <RangePicker
+                                status="gray-7"
+                                style={{ width: '100%' }}
+                                onChange={handleDateChange}
+                                open={isDatePickerVisible}
+                                onOpenChange={handleOpenChange}
+                                renderExtraFooter={() => (
+                                    <div style={{ textAlign: 'right' }}>
+                                        <Button type="primary" onClick={handleSubmit}>
+                                            Custom Submit
+                                        </Button>
+                                    </div>
+                                )}
+                            />
+                        </div>
+                    </Col>
+                </Row>
+            </div> */}
+
+            {/* <div className="my-5">
+                <Row>
+                    <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
+                        <RangePicker
+                            status="gray-7"
+                            style={{ width: '100%' }}
+                            onChange={handleDateChange}
+                            open={isDatePickerVisible}
+                            onOpenChange={handleOpenChange}
+                            renderExtraFooter={() => (
+                                <div style={{ textAlign: 'right' }}>
+                                    <Button type="primary" onClick={handleSubmit}>
+                                        Custom Submit
+                                    </Button>
+                                </div>
+                            )}
+                        />
+                    </Col>
+                </Row>
+            </div> */}
+
+            {/* <div className="my-5">
+                <Row>
+                    <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
+                        <RangePicker
+                            status="gray-7"
+                            style={{ width: '100%' }}
+                            onChange={handleDateChange}
+                            open={isDatePickerVisible}
+                            onOpenChange={(status) => setIsDatePickerVisible(status)}
+                            renderExtraFooter={() => (
+                                <div style={{ textAlign: 'right' }}>
+                                    <Button type="primary" onClick={handleSubmit}>
+                                        Custom Submit
+                                    </Button>
+                                </div>
+                            )}
+                        />
+                    </Col>
+                </Row>
+            </div> */}
+
+            {/* <div className="my-5">
+                <Row>
+                    <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
+                        <RangePicker
+                            status="gray-7"
+                            style={{ width: '100%' }}
+                            onChange={handleDateChange}
+                            renderExtraFooter={() => (
+                                <div style={{ textAlign: 'right' }}>
+                                    <Button type="primary" onClick={handleSubmit}>
+                                        Custom Submit
+                                    </Button>
+                                </div>
+                            )}
+                        />
+                    </Col>
+                </Row>
+            </div> */}
+
+
+            {/* <div className="my-5">
+                <Row>
+                    <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
+                        <RangePicker
+                            status="gray-7"
+                            style={{ width: '100%' }}
+                            renderExtraFooter={() => (
+                                <div style={{ textAlign: 'right' }}>
+                                    <Button type="primary" onClick={handleSubmit}>
+                                        Custom Submit
+                                    </Button>
+                                </div>
+                            )}
+                        />
+                    </Col>
+                </Row>
+            </div> */}

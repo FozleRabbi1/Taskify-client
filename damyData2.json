@@ -1,0 +1,948 @@
+[
+
+    {
+        "id": "1",
+        "title": "Website Redesign",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ41IpKr1jnu6Tv6RfKrfMTprCpYAVEWz2pQ&s"
+        ],
+        "status": "On Going",
+        "priority": "Default",
+        "budget": "$15,000",
+        "tags": [
+            "Web Development",
+            "UI/UX",
+            "Redesign"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "November 06, 2024"
+    },
+    {
+        "id": "2",
+        "title": "Mobile App Development",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "Started",
+        "priority": "Default",
+        "budget": "$20,000",
+        "tags": [
+            "App Development",
+            "iOS",
+            "Android"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "December 06, 2024"
+    },
+    {
+        "id": "3",
+        "title": "E-commerce Platform",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "In Review",
+        "priority": "Default",
+        "budget": "$50,000",
+        "tags": [
+            "E-commerce",
+            "Platform",
+            "Online Store"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "January 06, 2025"
+    },
+    {
+        "id": "4",
+        "title": "Marketing Campaign",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Default",
+        "priority": "Default",
+        "budget": "$10,000",
+        "tags": [
+            "Marketing",
+            "Campaign",
+            "SEO"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "October 06, 2024"
+    },
+    {
+        "id": "5",
+        "title": "Social Media Management",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Completed",
+        "priority": "High",
+        "budget": "$8,000",
+        "tags": [
+            "Social Media",
+            "Management",
+            "Campaign"
+        ],
+        "startsAt": "September 07, 2024",
+        "endsAt": "October 07, 2024"
+    },
+    {
+        "id": "6",
+        "title": "Content Creation",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [],
+        "status": "On Going",
+        "priority": "Medium",
+        "budget": "$5,000",
+        "tags": [
+            "Content",
+            "Creation",
+            "Copywriting"
+        ],
+        "startsAt": "September 07, 2024",
+        "endsAt": "November 07, 2024"
+    },
+    {
+        "id": "7",
+        "title": "Website Redesign",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ41IpKr1jnu6Tv6RfKrfMTprCpYAVEWz2pQ&s"
+        ],
+        "status": "On Going",
+        "priority": "Default",
+        "budget": "$15,000",
+        "tags": [
+            "Web Development",
+            "UI/UX",
+            "Redesign"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "November 06, 2024"
+    },
+    {
+        "id": "7",
+        "title": "Mobile App Development",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "Started",
+        "priority": "Default",
+        "budget": "$20,000",
+        "tags": [
+            "App Development",
+            "iOS",
+            "Android"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "December 06, 2024"
+    },
+    {
+        "id": "8",
+        "title": "E-commerce Platform",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "In Review",
+        "priority": "Default",
+        "budget": "$50,000",
+        "tags": [
+            "E-commerce",
+            "Platform",
+            "Online Store"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "January 06, 2025"
+    },
+    {
+        "id": "9",
+        "title": "Marketing Campaign",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Default",
+        "priority": "Default",
+        "budget": "$10,000",
+        "tags": [
+            "Marketing",
+            "Campaign",
+            "SEO"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "October 06, 2024"
+    },
+    {
+        "id": "10",
+        "title": "Social Media Management",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Completed",
+        "priority": "High",
+        "budget": "$8,000",
+        "tags": [
+            "Social Media",
+            "Management",
+            "Campaign"
+        ],
+        "startsAt": "September 07, 2024",
+        "endsAt": "October 07, 2024"
+    },
+    {
+        "id": "11",
+        "title": "Content Creation",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [],
+        "status": "On Going",
+        "priority": "Medium",
+        "budget": "$5,000",
+        "tags": [
+            "Content",
+            "Creation",
+            "Copywriting"
+        ],
+        "startsAt": "September 07, 2024",
+        "endsAt": "November 07, 2024"
+    },
+    {
+        "id": "12",
+        "title": "Website Redesign",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ41IpKr1jnu6Tv6RfKrfMTprCpYAVEWz2pQ&s"
+        ],
+        "status": "On Going",
+        "priority": "Default",
+        "budget": "$15,000",
+        "tags": [
+            "Web Development",
+            "UI/UX",
+            "Redesign"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "November 06, 2024"
+    },
+    {
+        "id": "12",
+        "title": "Mobile App Development",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "Started",
+        "priority": "Default",
+        "budget": "$20,000",
+        "tags": [
+            "App Development",
+            "iOS",
+            "Android"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "December 06, 2024"
+    },
+    {
+        "id": "13",
+        "title": "E-commerce Platform",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "In Review",
+        "priority": "Default",
+        "budget": "$50,000",
+        "tags": [
+            "E-commerce",
+            "Platform",
+            "Online Store"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "January 06, 2025"
+    },
+    {
+        "id": "14",
+        "title": "Marketing Campaign",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Default",
+        "priority": "Default",
+        "budget": "$10,000",
+        "tags": [
+            "Marketing",
+            "Campaign",
+            "SEO"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "October 06, 2024"
+    },
+    {
+        "id": "15",
+        "title": "Social Media Management",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Completed",
+        "priority": "High",
+        "budget": "$8,000",
+        "tags": [
+            "Social Media",
+            "Management",
+            "Campaign"
+        ],
+        "startsAt": "September 07, 2024",
+        "endsAt": "October 07, 2024"
+    },
+    {
+        "id": "16",
+        "title": "Content Creation",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [],
+        "status": "On Going",
+        "priority": "Medium",
+        "budget": "$5,000",
+        "tags": [
+            "Content",
+            "Creation",
+            "Copywriting"
+        ],
+        "startsAt": "September 07, 2024",
+        "endsAt": "November 07, 2024"
+    },
+    {
+        "id": "17",
+        "title": "Website Redesign",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ41IpKr1jnu6Tv6RfKrfMTprCpYAVEWz2pQ&s"
+        ],
+        "status": "On Going",
+        "priority": "Default",
+        "budget": "$15,000",
+        "tags": [
+            "Web Development",
+            "UI/UX",
+            "Redesign"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "November 06, 2024"
+    },
+    {
+        "id": "8",
+        "title": "Mobile App Development",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "Started",
+        "priority": "Default",
+        "budget": "$20,000",
+        "tags": [
+            "App Development",
+            "iOS",
+            "Android"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "December 06, 2024"
+    },
+    {
+        "id": "19",
+        "title": "E-commerce Platform",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "In Review",
+        "priority": "Default",
+        "budget": "$50,000",
+        "tags": [
+            "E-commerce",
+            "Platform",
+            "Online Store"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "January 06, 2025"
+    },
+    {
+        "id": "20",
+        "title": "Marketing Campaign",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Default",
+        "priority": "Default",
+        "budget": "$10,000",
+        "tags": [
+            "Marketing",
+            "Campaign",
+            "SEO"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "October 06, 2024"
+    },
+    {
+        "id": "21",
+        "title": "Social Media Management",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Completed",
+        "priority": "High",
+        "budget": "$8,000",
+        "tags": [
+            "Social Media",
+            "Management",
+            "Campaign"
+        ],
+        "startsAt": "September 07, 2024",
+        "endsAt": "October 07, 2024"
+    },
+    {
+        "id": "22",
+        "title": "Content Creation",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [],
+        "status": "On Going",
+        "priority": "Medium",
+        "budget": "$5,000",
+        "tags": [
+            "Content",
+            "Creation",
+            "Copywriting"
+        ],
+        "startsAt": "September 07, 2024",
+        "endsAt": "November 07, 2024"
+    },
+    {
+        "id": "23",
+        "title": "Website Redesign",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ41IpKr1jnu6Tv6RfKrfMTprCpYAVEWz2pQ&s"
+        ],
+        "status": "On Going",
+        "priority": "Default",
+        "budget": "$15,000",
+        "tags": [
+            "Web Development",
+            "UI/UX",
+            "Redesign"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "November 06, 2024"
+    },
+    {
+        "id": "24",
+        "title": "Mobile App Development",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "Started",
+        "priority": "Default",
+        "budget": "$20,000",
+        "tags": [
+            "App Development",
+            "iOS",
+            "Android"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "December 06, 2024"
+    },
+    {
+        "id": "25",
+        "title": "E-commerce Platform",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "In Review",
+        "priority": "Default",
+        "budget": "$50,000",
+        "tags": [
+            "E-commerce",
+            "Platform",
+            "Online Store"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "January 06, 2025"
+    },
+    {
+        "id": "26",
+        "title": "Marketing Campaign",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Default",
+        "priority": "Default",
+        "budget": "$10,000",
+        "tags": [
+            "Marketing",
+            "Campaign",
+            "SEO"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "October 06, 2024"
+    },
+    {
+        "id": "27",
+        "title": "Social Media Management",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Completed",
+        "priority": "High",
+        "budget": "$8,000",
+        "tags": [
+            "Social Media",
+            "Management",
+            "Campaign"
+        ],
+        "startsAt": "September 07, 2024",
+        "endsAt": "October 07, 2024"
+    },
+    {
+        "id": "28",
+        "title": "Content Creation",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [],
+        "status": "On Going",
+        "priority": "Medium",
+        "budget": "$5,000",
+        "tags": [
+            "Content",
+            "Creation",
+            "Copywriting"
+        ],
+        "startsAt": "September 07, 2024",
+        "endsAt": "November 07, 2024"
+    },
+    {
+        "id": "29",
+        "title": "Website Redesign",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ41IpKr1jnu6Tv6RfKrfMTprCpYAVEWz2pQ&s"
+        ],
+        "status": "On Going",
+        "priority": "Default",
+        "budget": "$15,000",
+        "tags": [
+            "Web Development",
+            "UI/UX",
+            "Redesign"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "November 06, 2024"
+    },
+    {
+        "id": "30",
+        "title": "Mobile App Development",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "Started",
+        "priority": "Default",
+        "budget": "$20,000",
+        "tags": [
+            "App Development",
+            "iOS",
+            "Android"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "December 06, 2024"
+    },
+    {
+        "id": "31",
+        "title": "E-commerce Platform",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "In Review",
+        "priority": "Default",
+        "budget": "$50,000",
+        "tags": [
+            "E-commerce",
+            "Platform",
+            "Online Store"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "January 06, 2025"
+    },
+    {
+        "id": "32",
+        "title": "Marketing Campaign",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Default",
+        "priority": "Default",
+        "budget": "$10,000",
+        "tags": [
+            "Marketing",
+            "Campaign",
+            "SEO"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "October 06, 2024"
+    },
+    {
+        "id": "33",
+        "title": "Social Media Management",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Completed",
+        "priority": "High",
+        "budget": "$8,000",
+        "tags": [
+            "Social Media",
+            "Management",
+            "Campaign"
+        ],
+        "startsAt": "September 07, 2024",
+        "endsAt": "October 07, 2024"
+    },
+    {
+        "id": "34",
+        "title": "Social Media Management",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Completed",
+        "priority": "High",
+        "budget": "$8,000",
+        "tags": [
+            "Social Media",
+            "Management",
+            "Campaign"
+        ],
+        "startsAt": "September 07, 2024",
+        "endsAt": "October 07, 2024"
+    },
+    {
+        "id": "35",
+        "title": "Social Media Management",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Completed",
+        "priority": "High",
+        "budget": "$8,000",
+        "tags": [
+            "Social Media",
+            "Management",
+            "Campaign"
+        ],
+        "startsAt": "September 07, 2024",
+        "endsAt": "October 07, 2024"
+    },
+    {
+        "id": "36",
+        "title": "Website Redesign",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ41IpKr1jnu6Tv6RfKrfMTprCpYAVEWz2pQ&s"
+        ],
+        "status": "On Going",
+        "priority": "Default",
+        "budget": "$15,000",
+        "tags": [
+            "Web Development",
+            "UI/UX",
+            "Redesign"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "November 06, 2024"
+    },
+    {
+        "id": "37",
+        "title": "Mobile App Development",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "Started",
+        "priority": "Default",
+        "budget": "$20,000",
+        "tags": [
+            "App Development",
+            "iOS",
+            "Android"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "December 06, 2024"
+    },
+    {
+        "id": "38",
+        "title": "E-commerce Platform",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "In Review",
+        "priority": "Default",
+        "budget": "$50,000",
+        "tags": [
+            "E-commerce",
+            "Platform",
+            "Online Store"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "January 06, 2025"
+    },
+    {
+        "id": "39",
+        "title": "Marketing Campaign",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Default",
+        "priority": "Default",
+        "budget": "$10,000",
+        "tags": [
+            "Marketing",
+            "Campaign",
+            "SEO"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "October 06, 2024"
+    },
+    {
+        "id": "40",
+        "title": "Social Media Management",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Completed",
+        "priority": "High",
+        "budget": "$8,000",
+        "tags": [
+            "Social Media",
+            "Management",
+            "Campaign"
+        ],
+        "startsAt": "September 07, 2024",
+        "endsAt": "October 07, 2024"
+    },
+    {
+        "id": "41",
+        "title": "Content Creation",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg"
+        ],
+        "clients": [],
+        "status": "On Going",
+        "priority": "Medium",
+        "budget": "$5,000",
+        "tags": [
+            "Content",
+            "Creation",
+            "Copywriting"
+        ],
+        "startsAt": "September 07, 2024",
+        "endsAt": "November 07, 2024"
+    },
+    {
+        "id": "42",
+        "title": "Website Redesign",
+        "users": [
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ41IpKr1jnu6Tv6RfKrfMTprCpYAVEWz2pQ&s"
+        ],
+        "status": "On Going",
+        "priority": "Default",
+        "budget": "$15,000",
+        "tags": [
+            "Web Development",
+            "UI/UX",
+            "Redesign"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "November 06, 2024"
+    },
+    {
+        "id": "43",
+        "title": "Mobile App Development",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "Started",
+        "priority": "Default",
+        "budget": "$20,000",
+        "tags": [
+            "App Development",
+            "iOS",
+            "Android"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "December 06, 2024"
+    },
+    {
+        "id": "44",
+        "title": "E-commerce Platform",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [],
+        "status": "In Review",
+        "priority": "Default",
+        "budget": "$50,000",
+        "tags": [
+            "E-commerce",
+            "Platform",
+            "Online Store"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "January 06, 2025"
+    },
+    {
+        "id": "45",
+        "title": "Marketing Campaign",
+        "users": [
+            "https://bizimages.withfloats.com/actual/64e38a7bbd7e06000130503c.jpg",
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWQTnePNQOhGoSq8Sv0hdxWo0QOU_Ys-6djgmxz3f7vYE_QqTANwmbRCU7TADxAQ6-dedxQ07miTw15vMFfBqOPxrZTid5BtVW8d55uP4Rl_z4jpHGUD8VjktnfAo5RMdLQ0ai7wJwOI/s570/Shazim+uddin+pp+image+with+stroke.jpg"
+        ],
+        "clients": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yXZi9RW8dGZrz8fl638uiVw6QFvX7ehNzQ&s"
+        ],
+        "status": "Default",
+        "priority": "Default",
+        "budget": "$10,000",
+        "tags": [
+            "Marketing",
+            "Campaign",
+            "SEO"
+        ],
+        "startsAt": "September 06, 2024",
+        "endsAt": "October 06, 2024"
+    }
+
+
+]
