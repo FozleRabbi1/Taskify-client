@@ -9,7 +9,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
                 return {
                     url: "/projects",
                     method: "GET",
-                    query,
+                    params : query,
                 };
             },
             pollingInterval: 10000

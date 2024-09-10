@@ -810,22 +810,26 @@
 
 
 /* eslint-disable react/no-unescaped-entities */
-import { Button, Modal, Select, Table } from "antd";
+import { Button, Col, Modal, Row, Select, Space, Table } from "antd";
 import { ProjectsApi } from "../../../redux/fetures/prjects/ProjectsApi";
 import { useState } from "react";
-import { FaEdit, FaRegEdit, FaRegStar, FaStar } from "react-icons/fa";
+import { FaEdit, FaFile, FaRegEdit, FaRegStar, FaStar } from "react-icons/fa";
 import { AiOutlineMessage } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { FaUserLarge } from "react-icons/fa6";
 import { toast } from "react-toastify";
-import { RiDeleteBin5Line, RiFoldersLine } from "react-icons/ri";
+import { RiDeleteBin5Line, RiDeleteBin6Line, RiFoldersLine } from "react-icons/ri";
 import { CiCircleInfo } from "react-icons/ci";
+import TSForm from "../../../components/form/TSForm";
+import TSInput from "../../../components/form/TSInput";
+import TSSelect from "../../../components/form/TSSelect";
 
 const ProjectsTab = () => {
 
     const [isFavouriteProject] = ProjectsApi.useIsFavouriteProjectMutation()
     const [updateStatusInProjects] = ProjectsApi.useUpdateStatusInProjectsMutation()
-    const { data, isLoading } = ProjectsApi.useGetAllProjectsQuery({});
+    const [params, setParams] = useState(undefined);    
+    const { data, isLoading } = ProjectsApi.useGetAllProjectsQuery(params);
     const [open, setOpen] = useState(false);
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -833,6 +837,7 @@ const ProjectsTab = () => {
     const [availablePageSizes, setAvailablePageSizes] = useState([5, 10, 15, 20, 25, 30, 35]);
     const [ids, setides] = useState([])
     const [deleteProject,] = ProjectsApi.useDeleteProjectMutation()
+    const [modalData, setModalData] = useState({})
 
 
     const handleStarClick = async (key, i) => {
@@ -848,10 +853,17 @@ const ProjectsTab = () => {
         }
     };
 
-    const statusOptions = ["On Going", "Started", "Default", "In Review"].map((item) => ({
+    const statusOptions = ["On Going", "Started", "Default", "In Review", "Completed"].map((item) => ({
         value: item,
         label: item,
     }));
+
+    // const modalSelectOptions = data?.data?.map((item) => ({
+    //     value: item.image,
+    //     label: item.title,
+    // }));
+
+
 
     const statusOptions2 = ["Default"].map((item) => ({
         value: item,
@@ -875,12 +887,10 @@ const ProjectsTab = () => {
     })) || [];
     const titleStyle = { fontWeight: '600', color: '#6b7260', textTransform: 'uppercase' };
 
-
     const handlePageChange = (page, pageSize) => {
         setCurrentPage(page);
         setPageSize(pageSize);
     };
-
 
     const handleAddPageSize = () => {
         const newPageSize = pageSize + 5;
@@ -898,12 +908,11 @@ const ProjectsTab = () => {
         }).filter(_id => _id !== null);
         setides(selectedIds);
     };
+
     const rowSelection = {
         selectedRowKeys,
         onChange: onSelectChange,
     };
-
-
 
     const statusHandler = async (selectedStatus, id) => {
         const status = {
@@ -918,15 +927,45 @@ const ProjectsTab = () => {
         }
     };
 
+    const handleModal = (record) => {
+        setOpen(true)
+        setModalData(record)
 
-    // const statusHandler = (selectedStatus, id) => {
-    //     console.log("Selected status:", selectedStatus, id);
-    // };
+        const {
+            budget,
+            clients,
+            createdAt,
+            id,
+            isFavourite,
+            key,
+            priority,
+            status,
+            tags,
+            title,
+            updatedAt,
+            users,
+            _id
+        } = record
 
+        console.log(budget,
+            clients,
+            createdAt,
+            id,
+            isFavourite,
+            key,
+            priority,
+            status,
+            tags,
+            title,
+            updatedAt,
+            users,
+            _id);
+
+
+    }
 
 
     const columns = [
-
         { title: <span style={titleStyle}>Id</span>, dataIndex: "id", width: 100 },
         {
             title: <span style={titleStyle}>Title</span>,
@@ -952,18 +991,18 @@ const ProjectsTab = () => {
         {
             title: <span style={titleStyle}>Users</span>,
             dataIndex: "users",
-            render: (users) => (
+            render: (users, record) => (
                 <div style={{ display: 'flex', gap: '8px' }} className="flex items-center">
                     {
                         users.length === 0 ? <FaUserLarge className="size-[30px] rounded-full text-gray-300" /> :
                             <>
                                 {
                                     users.map((url, index) => (
-                                        <img key={index} src={url} alt={`User ${index + 1}`} style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
+                                        <img className={`border-2 border-gray-300 ${index >= 1 ? "-ml-5" : ""} hover:z-10 hover:-mt-2 hover:shadow-md duration-300 cursor-pointer`} key={index} src={url} alt={`User ${index + 1}`} style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                                     ))
                                 } </>
                     }
-                    <Button onClick={() => setOpen(true)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
+                    <Button onClick={() => handleModal(record)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
                         <FaRegEdit className="text-xl text-blue-600" />
                     </Button>
                 </div>
@@ -978,7 +1017,7 @@ const ProjectsTab = () => {
                     {clients?.length !== 0 ? (
                         <div className="flex items-center">
                             {clients.map((url, index) => (
-                                <img key={index} src={url} alt={`Client ${index + 1}`} style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
+                                <img className={`border-2 border-gray-300 ${index >= 1 ? "-ml-5" : ""} hover:z-10 hover:-mt-2 hover:shadow-md duration-300 cursor-pointer`} key={index} src={url} alt={`User ${index + 1}`} style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                             ))}
                             <Button onClick={() => setOpen(true)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
                                 <FaRegEdit className="text-xl text-blue-600" />
@@ -1011,7 +1050,6 @@ const ProjectsTab = () => {
             ),
             // width: 200,
         },
-
         {
             title: <span style={titleStyle}>Priority</span>,
             dataIndex: "priority",
@@ -1025,7 +1063,6 @@ const ProjectsTab = () => {
                 </div>
             ),
         },
-
         {
             title: <span style={titleStyle}>Budget</span>,
             dataIndex: "budget",
@@ -1092,7 +1129,6 @@ const ProjectsTab = () => {
         },
     ];
 
-
     const handleDelete = () => {
         Swal.fire({
             title: 'Are you sure?',
@@ -1110,14 +1146,54 @@ const ProjectsTab = () => {
 
     }
 
+    const onSubmit = async (data) => {
+        console.log(data);
+
+    };
+
+    const options = [];
+    for (let i = 10; i < 36; i++) {
+        options.push({
+            label: i.toString(36) + i,
+            value: i.toString(36) + i,
+        });
+    }
+    const handleChange = (value) => {
+        console.log(`selected ${value}`);
+    };
+
+
+    const filterByStatus = (v) => {
+        const status = {
+            status: v
+        }        
+        setParams(status)
+    }
+
 
     return (
         <div>
+
             <h2 className="text-2xl text-gray-500 font-bold">Admin's Projects</h2>
 
-            <div>
-                <button onClick={() => handleDelete()} className="my-5">
-                    delete
+            <div className="mt-4">
+                <Select
+                    // placeholder={status}
+                    style={{ width: '33%' }}
+                    options={statusOptions}
+                    onChange={(value) => filterByStatus(value)}
+                />
+            </div>
+
+
+
+            <div className="flex gap-2">
+                <button onClick={() => handleDelete()} className="my-5 border border-red-600 text-red-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-red-600 duration-300 ">
+                    <RiDeleteBin6Line className="mr-1" /> Delete Selected
+                </button>
+
+                <button onClick={() => handleDelete()} className="my-5 border border-blue-600 text-blue-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-blue-600 duration-300 ">
+                    <FaFile className="mr-1" /> Save Coloumn Visibility
                 </button>
             </div>
 
@@ -1148,23 +1224,97 @@ const ProjectsTab = () => {
 
 
             <Modal
-                title="Up Coming"
+                title="Update Projecsts"
                 centered
                 open={open}
                 onOk={() => setOpen(false)}
                 onCancel={() => setOpen(false)}
                 width={1000}
             >
-                <p>some contents...</p>
-                <p>some contents...</p>
-                <p>some contents...</p>
-                <p>some contents...</p>
-                <p>some contents...</p>
-                <p>some contents...</p>
-                <p>some contents...</p>
-                <p>some contents...</p>
-                <p>some contents...</p>
-                <p>some contents...</p>
+
+                <div>
+
+                    {/* // const {
+                //         budget,
+                //         clients,
+                //         createdAt,
+                //         id,
+                //         isFavourite,
+                //         key,
+                //         priority,
+                //         status,
+                //         tags,
+                //         title,
+                //         updatedAt,
+                //         users,
+                //         _id
+                //     } = modalData */}
+
+                    <div>
+
+                        <Row align="middle">
+                            <Col span={24}>
+                                <TSForm onSubmit={onSubmit} className="w-full">
+
+                                    <Row gutter={[16, 16]} className="w-full flex">
+                                        <Col span={24} md={{ span: 12 }} lg={{ span: 12 }}>
+                                            <TSInput type="text" name="title" label="Title" placeholder={modalData.title}></TSInput>
+                                        </Col>
+
+                                        <Col span={24} md={{ span: 12 }} lg={{ span: 12 }}>
+                                            <TSSelect
+                                                name="status"
+                                                label="Status"
+                                                options={statusOptions}
+                                                placeholder={modalData.status}
+                                            >
+                                            </TSSelect>
+                                        </Col>
+
+                                        <Col span={24} md={{ span: 12 }} lg={{ span: 12 }}>
+                                            <TSInput type="text" name="budget" label="budget" placeholder="Please Inter Budget"></TSInput>
+                                        </Col>
+
+                                        <Col span={24} md={{ span: 12 }} lg={{ span: 12 }}>
+                                            <label className="text-[14px] uppercase"> Select Users </label>
+                                            <Space
+                                                style={{
+                                                    width: '100%',
+                                                    marginTop: "3px",
+                                                    padding: "4px"
+                                                }}
+                                                direction="vertical"
+                                            >
+                                                <Select
+                                                    size="large"
+                                                    mode="multiple"
+                                                    allowClear
+                                                    style={{
+                                                        width: '100%',
+                                                    }}
+                                                    placeholder="Please select"
+                                                    defaultValue={['a10', 'c12']}
+                                                    onChange={handleChange}
+                                                    options={options}
+                                                />
+
+                                            </Space>
+                                        </Col>
+
+                                    </Row>
+
+                                    <Button htmlType="submit">Update</Button>
+
+                                </TSForm>
+                            </Col>
+
+                        </Row>
+                    </div>
+
+
+
+                </div>
+
             </Modal>
 
 
