@@ -817,26 +817,40 @@ import { useState } from "react";
 import { FaRegEdit, FaRegStar, FaStar } from "react-icons/fa";
 import { AiOutlineMessage } from "react-icons/ai";
 import Swal from "sweetalert2";
+import { FaUserLarge } from "react-icons/fa6";
+import { toast } from "react-toastify";
 
 const ProjectsTab = () => {
 
+    const [isFavouriteProject] = ProjectsApi.useIsFavouriteProjectMutation()
     const { data, isLoading } = ProjectsApi.useGetAllProjectsQuery({});
-    const [activeStars, setActiveStars] = useState([]);
     const [open, setOpen] = useState(false);
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
     const [availablePageSizes, setAvailablePageSizes] = useState([5, 10, 15, 20, 25, 30, 35]);
     const [ids, setides] = useState([])
-    const [deleteProject, ] = ProjectsApi.useDeleteProjectMutation()
+    const [deleteProject,] = ProjectsApi.useDeleteProjectMutation()
     
 
-    const handleStarClick = (key) => {
-        setActiveStars((prevActiveStars) =>
-            prevActiveStars.includes(key)
-                ? prevActiveStars.filter((starKey) => starKey !== key)
-                : [...prevActiveStars, key]
-        );
+    const handleStarClick = async (key, i) => {
+        const isFavourite = {
+            id : key,
+            data : {
+                isFavourite : i
+            }
+        }
+        const res = await isFavouriteProject(isFavourite)
+        if(res?.data?.success){
+            toast.success(res?.data?.message)
+        }
+        
+
+        // setActiveStars((prevActiveStars) =>
+        //     prevActiveStars.includes(key)
+        //         ? prevActiveStars.filter((starKey) => starKey !== key)
+        //         : [...prevActiveStars, key]
+        // );
     };
 
     const statusOptions = ["On Going", "Started", "Default", "In Rewiew"].map((item) => ({
@@ -849,7 +863,7 @@ const ProjectsTab = () => {
         label: item,
     }));
 
-    const tableData = data?.data?.map(({ _id, id, title, users, clients, status, priority, budget, tags, createdAt, updatedAt }) => ({
+    const tableData = data?.data?.map(({ _id, id, title, users, clients, status, priority, budget, tags, createdAt, updatedAt, isFavourite }) => ({
         key: _id,
         _id,
         id,
@@ -862,6 +876,7 @@ const ProjectsTab = () => {
         tags,
         createdAt,
         updatedAt,
+        isFavourite
     })) || [];
     const titleStyle = { fontWeight: '600', color: '#6b7260', textTransform: 'uppercase' };
 
@@ -886,7 +901,7 @@ const ProjectsTab = () => {
             const selectedRow = tableData.find(row => row.key === key);
             return selectedRow ? selectedRow._id : null;
         }).filter(_id => _id !== null);
-        setides(selectedIds);        
+        setides(selectedIds);
     };
 
 
@@ -899,37 +914,41 @@ const ProjectsTab = () => {
     const columns = [
 
         { title: <span style={titleStyle}>Id</span>, dataIndex: "id", width: 100 },
-
         {
             title: <span style={titleStyle}>Title</span>,
             dataIndex: "title",
             render: (title, record) => (
                 <span className="text-blue-600 opacity-90 text-[16px] font-semibold flex items-center">
                     {title}
-                    {activeStars.includes(record.key) ? (
+                    {record.isFavourite ? (
                         <FaStar
-                            onClick={() => handleStarClick(record.key)}
-                            className="text-yellow-500 mx-2 cursor-pointer"
+                            onClick={() => handleStarClick(record.key, "favourite")}
+                            className="text-red-500 mx-2 cursor-pointer"
                         />
                     ) : (
                         <FaRegStar
-                            onClick={() => handleStarClick(record.key)}
+                            onClick={() => handleStarClick(record.key, "notFavourite")}
                             className="text-yellow-500 mx-2 cursor-pointer"
                         />
                     )}
                     <AiOutlineMessage className="text-red-500" />
                 </span>
             ),
-            // width: 200,
         },
         {
             title: <span style={titleStyle}>Users</span>,
             dataIndex: "users",
             render: (users) => (
                 <div style={{ display: 'flex', gap: '8px' }} className="flex items-center">
-                    {users.map((url, index) => (
-                        <img key={index} src={url} alt={`User ${index + 1}`} style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
-                    ))}
+                    {
+                        users.length === 0 ? <FaUserLarge className="size-[30px] rounded-full text-gray-300" /> :
+                            <>
+                                {
+                                    users.map((url, index) => (
+                                        <img key={index} src={url} alt={`User ${index + 1}`} style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
+                                    ))
+                                } </>
+                    }
                     <Button onClick={() => setOpen(true)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
                         <FaRegEdit className="text-xl text-blue-600" />
                     </Button>
@@ -1042,7 +1061,7 @@ const ProjectsTab = () => {
     ];
 
 
-    const handleDelete = () =>{
+    const handleDelete = () => {
         Swal.fire({
             title: 'Are you sure?',
             text: `You won't remove This User`,
@@ -1053,10 +1072,10 @@ const ProjectsTab = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                deleteProject({idArray : ids}); 
+                deleteProject({ idArray: ids });
             }
         });
-               
+
     }
 
 
@@ -1065,7 +1084,7 @@ const ProjectsTab = () => {
             <h2 className="text-2xl text-gray-500 font-bold">Admin's Projects</h2>
 
             <div>
-                <button onClick={()=> handleDelete()} className="my-5">
+                <button onClick={() => handleDelete()} className="my-5">
                     delete
                 </button>
             </div>
@@ -1087,7 +1106,7 @@ const ProjectsTab = () => {
                         onChange: handlePageChange,
                         onShowSizeChange: handlePageChange,
                     }}
-                />                
+                />
                 <div className="flex justify-end">
                     <Button onClick={handleAddPageSize} type="primary" className="mt-4">
                         Add Page Size
@@ -1115,6 +1134,8 @@ const ProjectsTab = () => {
                 <p>some contents...</p>
                 <p>some contents...</p>
             </Modal>
+
+           
         </div>
     );
 };
