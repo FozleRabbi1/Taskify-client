@@ -18,6 +18,7 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWithRefreshToken = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
+  
   if (result?.error?.status === 403) {
     toast.error(`${result?.error?.data.message}`);
   }

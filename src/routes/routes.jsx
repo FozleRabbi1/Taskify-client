@@ -5,6 +5,7 @@ import Dashboard from "../pages/admin/Dashboard";
 import Login from "../pages/Auth/Login";
 import { routeGenerator } from "../utils/routeGenerator";
 import SockitIo from "../pages/sockitIo/SockitIo";
+import Register from "../pages/Auth/Registration";
 // import SockitIo from "../pages/sockitIo/SockitIo";
 
 
@@ -34,6 +35,10 @@ const routes = createBrowserRouter([
     {
         path : "/login",
         element : <Login/>
+    },
+    {
+        path : "/register",
+        element : <Register/>
     },
     {
         path: "/sockit",
