@@ -812,17 +812,19 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Button, Modal, Select, Table } from "antd";
 import { ProjectsApi } from "../../../redux/fetures/prjects/ProjectsApi";
-import moment from "moment";
 import { useState } from "react";
-import { FaRegEdit, FaRegStar, FaStar } from "react-icons/fa";
+import { FaEdit, FaRegEdit, FaRegStar, FaStar } from "react-icons/fa";
 import { AiOutlineMessage } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { FaUserLarge } from "react-icons/fa6";
 import { toast } from "react-toastify";
+import { RiDeleteBin5Line, RiFoldersLine } from "react-icons/ri";
+import { CiCircleInfo } from "react-icons/ci";
 
 const ProjectsTab = () => {
 
     const [isFavouriteProject] = ProjectsApi.useIsFavouriteProjectMutation()
+    const [updateStatusInProjects] = ProjectsApi.useUpdateStatusInProjectsMutation()
     const { data, isLoading } = ProjectsApi.useGetAllProjectsQuery({});
     const [open, setOpen] = useState(false);
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
@@ -831,29 +833,22 @@ const ProjectsTab = () => {
     const [availablePageSizes, setAvailablePageSizes] = useState([5, 10, 15, 20, 25, 30, 35]);
     const [ids, setides] = useState([])
     const [deleteProject,] = ProjectsApi.useDeleteProjectMutation()
-    
+
 
     const handleStarClick = async (key, i) => {
         const isFavourite = {
-            id : key,
-            data : {
-                isFavourite : i
+            id: key,
+            data: {
+                isFavourite: i
             }
         }
         const res = await isFavouriteProject(isFavourite)
-        if(res?.data?.success){
+        if (res?.data?.success) {
             toast.success(res?.data?.message)
         }
-        
-
-        // setActiveStars((prevActiveStars) =>
-        //     prevActiveStars.includes(key)
-        //         ? prevActiveStars.filter((starKey) => starKey !== key)
-        //         : [...prevActiveStars, key]
-        // );
     };
 
-    const statusOptions = ["On Going", "Started", "Default", "In Rewiew"].map((item) => ({
+    const statusOptions = ["On Going", "Started", "Default", "In Review"].map((item) => ({
         value: item,
         label: item,
     }));
@@ -903,12 +898,31 @@ const ProjectsTab = () => {
         }).filter(_id => _id !== null);
         setides(selectedIds);
     };
-
-
     const rowSelection = {
         selectedRowKeys,
         onChange: onSelectChange,
     };
+
+
+
+    const statusHandler = async (selectedStatus, id) => {
+        const status = {
+            id,
+            data: {
+                selectedStatus
+            }
+        }
+        const res = await updateStatusInProjects(status)
+        if (res?.data?.success) {
+            toast.success(res?.data?.message)
+        }
+    };
+
+
+    // const statusHandler = (selectedStatus, id) => {
+    //     console.log("Selected status:", selectedStatus, id);
+    // };
+
 
 
     const columns = [
@@ -923,7 +937,7 @@ const ProjectsTab = () => {
                     {record.isFavourite ? (
                         <FaStar
                             onClick={() => handleStarClick(record.key, "favourite")}
-                            className="text-red-500 mx-2 cursor-pointer"
+                            className="text-yellow-500 mx-2 cursor-pointer"
                         />
                     ) : (
                         <FaRegStar
@@ -985,17 +999,19 @@ const ProjectsTab = () => {
         {
             title: <span style={titleStyle}>Status</span>,
             dataIndex: "status",
-            render: (status) => (
+            render: (status, record) => (
                 <div className="">
                     <Select
                         placeholder={status}
                         style={{ width: '180px', textAlign: 'center' }}
                         options={statusOptions}
+                        onChange={(value) => statusHandler(value, record.key)}
                     />
                 </div>
             ),
             // width: 200,
         },
+
         {
             title: <span style={titleStyle}>Priority</span>,
             dataIndex: "priority",
@@ -1009,6 +1025,7 @@ const ProjectsTab = () => {
                 </div>
             ),
         },
+
         {
             title: <span style={titleStyle}>Budget</span>,
             dataIndex: "budget",
@@ -1041,7 +1058,8 @@ const ProjectsTab = () => {
             render: (date) => (
                 <div className="">
                     <span className="text-gray-500 opacity-90 text-[15px] font-semibold flex items-center">
-                        {moment(date).format('MMMM DD, YYYY')}
+                        {/* {moment(date).format('MMMM DD, YYYY')} */}
+                        {date}
                     </span>
                 </div>
             ),
@@ -1053,8 +1071,22 @@ const ProjectsTab = () => {
             render: (date) => (
                 <div className="">
                     <span className="text-gray-500 opacity-90 text-[15px] font-semibold flex items-center">
-                        {moment(date).format('MMMM DD, YYYY')}
+                        {/* {moment(date).format('MMMM DD, YYYY')} */}
+                        {date}
                     </span>
+                </div>
+            ),
+        },
+        {
+            title: <span style={titleStyle}> Action </span>,
+            dataIndex: "action",
+            render: () => (
+                <div className="">
+                    <button title="Update"><FaEdit className="text-xl mr-6 text-blue-500 " /></button>
+                    <button title="Delete"><RiDeleteBin5Line className="text-xl mr-6 text-red-500 " /></button>
+                    <button title="Duplicate"><RiFoldersLine className="text-xl mr-6 text-yellow-500 " /></button>
+                    <button title="Quick View"><CiCircleInfo className="text-xl text-blue-600 " /></button>
+
                 </div>
             ),
         },
@@ -1135,7 +1167,7 @@ const ProjectsTab = () => {
                 <p>some contents...</p>
             </Modal>
 
-           
+
         </div>
     );
 };

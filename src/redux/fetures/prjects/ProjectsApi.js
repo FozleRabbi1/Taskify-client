@@ -37,6 +37,17 @@ export const ProjectsApi = baseApi.injectEndpoints({
             invalidatesTags: ["Projects"],
         }),
 
+        updateStatusInProjects : builder.mutation({
+            query: (args) => {
+                return {
+                    url: `/projects/${args?.id}`,
+                    method: "PUT",
+                    body : args.data
+                }
+            },
+            invalidatesTags: ["Projects"],
+        }),
+
 
         // getAllProjects: builder.query({
         //     providesTags: ["Projects"],
