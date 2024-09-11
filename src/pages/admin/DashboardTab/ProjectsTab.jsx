@@ -13,11 +13,13 @@ import TSForm from "../../../components/form/TSForm";
 import TSInput from "../../../components/form/TSInput";
 import TSSelect from "../../../components/form/TSSelect";
 import { tagsArray, tagStyles } from "../../../constant/constant";
+import moment from "moment";
 
 const ProjectsTab = () => {
 
     const [isFavouriteProject] = ProjectsApi.useIsFavouriteProjectMutation()
     const [updateProjectsInFo] = ProjectsApi.useUpdateProjectsInFoMutation()
+    const [duplicateProjects] = ProjectsApi.useDuplicateProjectsMutation()
     const [params, setParams] = useState(undefined);
     const { data, isLoading } = ProjectsApi.useGetAllProjectsQuery(params);
     const [open, setOpen] = useState(false);
@@ -59,9 +61,9 @@ const ProjectsTab = () => {
         value: item,
         label: item,
     }));
+   
 
-
-    const tableData = data?.data?.map(({ _id, id, title, users, clients, status, priority, budget, tags, createdAt, updatedAt, isFavourite }) => ({
+    const tableData = data?.data?.map(({ _id, id, title, users, clients, status, priority, budget, tags, endsAt, startsAt, isFavourite }) => ({
         key: _id,
         _id,
         id,
@@ -72,8 +74,8 @@ const ProjectsTab = () => {
         priority,
         budget,
         tags,
-        createdAt,
-        updatedAt,
+        startsAt,
+        endsAt ,
         isFavourite
     })) || [];
     const titleStyle = { fontWeight: '600', color: '#6b7260', textTransform: 'uppercase' };
@@ -119,20 +121,6 @@ const ProjectsTab = () => {
         }
     };
 
-    // const PropertyHandler = async (selectedProperty, id) => {
-    //     const property = {
-    //         id,
-    //         data: {
-    //             selectedProperty
-    //         }
-    //     }
-    //     console.log(property);
-
-    //     // const res = await updateStatusInProjects(status)
-    //     // if (res?.data?.success) {
-    //     //     toast.success(res?.data?.message)
-    //     // }
-    // };
 
     const handleModal = (record) => {
         setOpen(true)
@@ -186,6 +174,15 @@ const ProjectsTab = () => {
             }
         });
     }
+
+    const duplicateDataHandlear = (id) =>{
+        const duplicateInfo = {
+            id, 
+            title : "new heading"
+        }
+        duplicateProjects(duplicateInfo)
+    }
+
 
     const columns = [
         { title: <span style={titleStyle}>Id</span>, dataIndex: "id", width: 100 },
@@ -319,11 +316,11 @@ const ProjectsTab = () => {
         },
         {
             title: <span style={titleStyle}>Starts At</span>,
-            dataIndex: "createdAt",
+            dataIndex: "startsAt",
             render: (date) => (
                 <div className="">
                     <span className="text-gray-500 opacity-90 text-[15px] font-semibold flex items-center">
-                        {date}
+                    {moment(date).format('MMMM DD, YYYY')}
                     </span>
                 </div>
             ),
@@ -331,12 +328,12 @@ const ProjectsTab = () => {
         },
         {
             title: <span style={titleStyle}>Ends At</span>,
-            dataIndex: "updatedAt",
+            dataIndex: "endsAt",
             render: (date) => (
                 <div className="">
                     <span className="text-gray-500 opacity-90 text-[15px] font-semibold flex items-center">
-                        {/* {moment(date).format('MMMM DD, YYYY')} */}
-                        {date}
+                        {moment(date).format('MMMM DD, YYYY')}
+                        {/* {date} */}
                     </span>
                 </div>
             ),
@@ -346,12 +343,19 @@ const ProjectsTab = () => {
             dataIndex: "action",
             render: (text, record) => (
                 <div className="">
-                    <button title="Update"><FaEdit className="text-xl mr-6 text-blue-500" /></button>
+
+                    <button title="Update" onClick={() => setOpen(true)} className="text-xl mr-6 text-blue-500">
+                        <FaEdit className="text-xl text-blue-500" />
+                    </button>
+
                     <button onClick={() => singleDataDelete(record.key)} title="Delete">
                         <RiDeleteBin5Line className="text-xl mr-6 text-red-500" />
                     </button>
-                    <button title="Duplicate"><RiFoldersLine className="text-xl mr-6 text-yellow-500" /></button>
+
+                    <button onClick={()=>duplicateDataHandlear(record?.key)} title="Duplicate"><RiFoldersLine className="text-xl mr-6 text-yellow-500" /></button>
+
                     <button title="Quick View"><CiCircleInfo className="text-xl text-blue-600" /></button>
+
                 </div>
             ),
         }
@@ -405,18 +409,6 @@ const ProjectsTab = () => {
         setParams(searchField);
     }
 
-    // const [dateRange, setDateRange] = useState([null, null]);
-    // console.log(dateRange);
-
-
-
-    // const handleDateChange = (dates, dateStrings) => {
-    //     const searchField = {
-    //         ["date"]: dateStrings
-    //     }
-    //     setParams(searchField);
-    // };
-
     const handleDateChange = (dates, dateStrings, additionalParam) => {
         const searchField = {
             ["date"]: dateStrings,
@@ -459,18 +451,6 @@ const ProjectsTab = () => {
                     />
                 </div>
 
-                {/* <div className="mt-4">
-                    <DatePicker.RangePicker
-                        status="error"
-                        style={{
-                            width: '100%',
-                            border : "1px solid gray",
-                            color : "gray"
-                        }}
-                        onChange={handleDateChange} 
-                    />
-                </div> */}
-
                 <div className="mt-4">
                     <DatePicker.RangePicker
                         status="error"
@@ -480,7 +460,7 @@ const ProjectsTab = () => {
                             color: "gray"
                         }}
                         placeholder="Start Date Between"
-                        onChange={(dates, dateStrings) => handleDateChange(dates, dateStrings, "createdAt")}
+                        onChange={(dates, dateStrings) => handleDateChange(dates, dateStrings, "startsAt")}
                     />
                 </div>
 
@@ -493,7 +473,7 @@ const ProjectsTab = () => {
                             color: "gray"
                         }}
                         placeholder="End Date Between"
-                        onChange={(dates, dateStrings) => handleDateChange(dates, dateStrings, "updatedAt")}
+                        onChange={(dates, dateStrings) => handleDateChange(dates, dateStrings, "endsAt")}
                     />
                 </div>
 
@@ -559,6 +539,7 @@ const ProjectsTab = () => {
 
                 <div>
                     <div>
+                        <h2 className="text-center font-semibold text-4xl mb-2 text-green-500">Update Comming Soon</h2>
                         <Row align="middle">
                             <Col span={24}>
                                 <TSForm onSubmit={onSubmit} className="w-full">
