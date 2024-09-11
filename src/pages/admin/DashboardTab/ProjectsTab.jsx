@@ -408,14 +408,21 @@ const ProjectsTab = () => {
     // const [dateRange, setDateRange] = useState([null, null]);
     // console.log(dateRange);
 
-    
 
-    const handleDateChange = (dates, dateStrings) => {
+
+    // const handleDateChange = (dates, dateStrings) => {
+    //     const searchField = {
+    //         ["date"]: dateStrings
+    //     }
+    //     setParams(searchField);
+    // };
+
+    const handleDateChange = (dates, dateStrings, additionalParam) => {
         const searchField = {
-            ["date"]: dateStrings
-        }
+            ["date"]: dateStrings,
+            ["fieldName"]: additionalParam
+        };
         setParams(searchField);
-
     };
 
 
@@ -452,13 +459,41 @@ const ProjectsTab = () => {
                     />
                 </div>
 
+                {/* <div className="mt-4">
+                    <DatePicker.RangePicker
+                        status="error"
+                        style={{
+                            width: '100%',
+                            border : "1px solid gray",
+                            color : "gray"
+                        }}
+                        onChange={handleDateChange} 
+                    />
+                </div> */}
+
                 <div className="mt-4">
                     <DatePicker.RangePicker
                         status="error"
                         style={{
                             width: '100%',
+                            border: "1px solid gray",
+                            color: "gray"
                         }}
-                        onChange={handleDateChange} // Attach the change handler
+                        placeholder="Start Date Between"
+                        onChange={(dates, dateStrings) => handleDateChange(dates, dateStrings, "createdAt")}
+                    />
+                </div>
+
+                <div className="mt-4">
+                    <DatePicker.RangePicker
+                        status="error"
+                        style={{
+                            width: '100%',
+                            border: "1px solid gray",
+                            color: "gray"
+                        }}
+                        placeholder="End Date Between"
+                        onChange={(dates, dateStrings) => handleDateChange(dates, dateStrings, "updatedAt")}
                     />
                 </div>
 
