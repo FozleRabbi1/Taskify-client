@@ -14,6 +14,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
             },
             pollingInterval: 10000
         }),
+        
         getAllFavouriteProjects: builder.query({
             query: (query) => {                
                 return {
@@ -44,7 +45,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
             },
             invalidatesTags: ["Projects"],
         }),
-        updateStatusInProjects : builder.mutation({
+        updateProjectsInFo : builder.mutation({
             query: (args) => {
                 return {
                     url: `/projects/${args?.id}`,

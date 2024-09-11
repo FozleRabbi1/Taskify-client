@@ -19,7 +19,7 @@ const SideBar = () => {
             <span  > <input type="checkbox" /> Item 2</span>
             <span  > <input type="checkbox" /> Item 3</span>
         </div>
-    ) ;
+    );
 
 
 
@@ -33,7 +33,7 @@ const SideBar = () => {
             theme="light"
         >
             <NavLink to="/dashboard" className="block w-full mt-5 text-2xl text-center uppercase font-bold ">
-                <span className="text text-[50px] font-extrabold -mr-2 ">T</span>askify
+                <img  src="https://taskify.taskhub.company/storage/logos/zEy4tSCAFSMczWbOoxBZ3B43Nc9eeqMlNBXDrOzn.png" alt="" />
             </NavLink>
 
             <Popover placement="rightTop" type="primary" className="w-full my-5 flex items-center justify-center bg-blue-400 font-bold text-white" title={text} >

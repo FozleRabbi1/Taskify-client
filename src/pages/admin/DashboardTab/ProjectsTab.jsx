@@ -16,7 +16,7 @@ import TSSelect from "../../../components/form/TSSelect";
 const ProjectsTab = () => {
 
     const [isFavouriteProject] = ProjectsApi.useIsFavouriteProjectMutation()
-    const [updateStatusInProjects] = ProjectsApi.useUpdateStatusInProjectsMutation()
+    const [updateProjectsInFo] = ProjectsApi.useUpdateProjectsInFoMutation()
     const [params, setParams] = useState(undefined);
     const { data, isLoading } = ProjectsApi.useGetAllProjectsQuery(params);
     const [open, setOpen] = useState(false);
@@ -100,14 +100,14 @@ const ProjectsTab = () => {
     };
 
     const projectsInfoHandler = async (keyName, selectedStatus, id) => {
-        const status = {
+        const updatedData = {
             id,
             data: {
                 keyName,
                 selectedStatus
             }
         }
-        const res = await updateStatusInProjects(status)
+        const res = await updateProjectsInFo(updatedData)
         if (res?.data?.success) {
             toast.success(res?.data?.message)
         }
@@ -361,11 +361,19 @@ const ProjectsTab = () => {
     const handleChange = (value) => {
         console.log(`selected ${value}`);
     };
-    const filterByStatus = (v) => {
+
+    const filterByStatus = (fieldName, v) => {
         const status = {
-            status: v
+            [fieldName]: v
         }
         setParams(status)
+    }
+
+    const searchHandlear = (v) => { 
+        const searchField = {
+            ["searchTerm"] : v
+        }        
+        setParams(searchField);        
     }
 
 
@@ -374,25 +382,52 @@ const ProjectsTab = () => {
 
             <h2 className="text-2xl text-gray-500 font-bold">Admin's Projects</h2>
 
-            <div className="mt-4">
-                <Select
-                    placeholder="Select Status"
-                    style={{ width: '33%' }}
-                    options={statusOptions}
-                    onChange={(value) => filterByStatus(value)}
-                />
+            <div className="grid grid-cols-2 gap-10">
+                <div className="mt-4">
+                    <Select
+                        placeholder="Select Status"
+                        style={{ width: '100%' }}
+                        options={statusOptions}
+                        onChange={(value) => filterByStatus("status", value)}
+                    />
+                </div>
+
+                <div className="mt-4">
+                    <Select
+                        placeholder="Select Property"
+                        style={{ width: '100%' }}
+                        options={propertyOptions}
+                        onChange={(value) => filterByStatus("priority", value)}
+                    />
+                </div>
+
+
+
             </div>
 
 
 
-            <div className="flex gap-2">
-                <button onClick={() => handleDelete()} className="my-5 border border-red-600 text-red-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-red-600 duration-300 ">
-                    <RiDeleteBin6Line className="mr-1" /> Delete Selected
-                </button>
+            <div className="flex justify-between">
+                <div className="flex gap-2">
+                    <button onClick={() => handleDelete()} className="my-5 border border-red-600 text-red-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-red-600 duration-300 ">
+                        <RiDeleteBin6Line className="mr-1" /> Delete Selected
+                    </button>
 
-                <button onClick={() => handleDelete()} className="my-5 border border-blue-600 text-blue-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-blue-600 duration-300 ">
-                    <FaFile className="mr-1" /> Save Coloumn Visibility
-                </button>
+                    <button onClick={() => handleDelete()} className="my-5 border border-blue-600 text-blue-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-blue-600 duration-300 ">
+                        <FaFile className="mr-1" /> Save Coloumn Visibility
+                    </button>
+                </div>
+
+                <div className="mt-4">
+                    <input
+                        type="search"
+                        className="my-5 border  flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80  "
+                        placeholder="Search"
+                        autoComplete="off"
+                        onChange={(e)=> searchHandlear(e.target.value)}
+                    />
+                </div>
+
             </div>
 
             <div className="overflow-x-auto">
