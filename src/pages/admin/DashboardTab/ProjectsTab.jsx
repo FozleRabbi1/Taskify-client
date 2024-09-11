@@ -17,7 +17,7 @@ const ProjectsTab = () => {
 
     const [isFavouriteProject] = ProjectsApi.useIsFavouriteProjectMutation()
     const [updateStatusInProjects] = ProjectsApi.useUpdateStatusInProjectsMutation()
-    const [params, setParams] = useState(undefined);    
+    const [params, setParams] = useState(undefined);
     const { data, isLoading } = ProjectsApi.useGetAllProjectsQuery(params);
     const [open, setOpen] = useState(false);
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
@@ -48,10 +48,12 @@ const ProjectsTab = () => {
     }));
 
 
-    const statusOptions2 = ["Default"].map((item) => ({
+    const propertyOptions = ["Default", "High", "Medium", "Low"].map((item) => ({
         value: item,
         label: item,
     }));
+
+
 
     const tableData = data?.data?.map(({ _id, id, title, users, clients, status, priority, budget, tags, createdAt, updatedAt, isFavourite }) => ({
         key: _id,
@@ -97,10 +99,11 @@ const ProjectsTab = () => {
         onChange: onSelectChange,
     };
 
-    const statusHandler = async (selectedStatus, id) => {
+    const projectsInfoHandler = async (keyName, selectedStatus, id) => {
         const status = {
             id,
             data: {
+                keyName,
                 selectedStatus
             }
         }
@@ -109,6 +112,21 @@ const ProjectsTab = () => {
             toast.success(res?.data?.message)
         }
     };
+
+    // const PropertyHandler = async (selectedProperty, id) => {
+    //     const property = {
+    //         id,
+    //         data: {
+    //             selectedProperty
+    //         }
+    //     }
+    //     console.log(property);
+
+    //     // const res = await updateStatusInProjects(status)
+    //     // if (res?.data?.success) {
+    //     //     toast.success(res?.data?.message)
+    //     // }
+    // };
 
     const handleModal = (record) => {
         setOpen(true)
@@ -146,7 +164,6 @@ const ProjectsTab = () => {
 
 
     }
-
 
     const columns = [
         { title: <span style={titleStyle}>Id</span>, dataIndex: "id", width: 100 },
@@ -227,7 +244,7 @@ const ProjectsTab = () => {
                         placeholder={status}
                         style={{ width: '180px', textAlign: 'center' }}
                         options={statusOptions}
-                        onChange={(value) => statusHandler(value, record.key)}
+                        onChange={(value) => projectsInfoHandler("status", value, record.key)}
                     />
                 </div>
             ),
@@ -236,12 +253,13 @@ const ProjectsTab = () => {
         {
             title: <span style={titleStyle}>Priority</span>,
             dataIndex: "priority",
-            render: (priority) => (
+            render: (priority, record) => (
                 <div className="">
                     <Select
                         placeholder={priority}
                         style={{ width: '180px', textAlign: 'center' }}
-                        options={statusOptions2}
+                        options={propertyOptions}
+                        onChange={(value) => projectsInfoHandler("priority", value, record.key)}
                     />
                 </div>
             ),
@@ -333,7 +351,6 @@ const ProjectsTab = () => {
         console.log(data);
 
     };
-
     const options = [];
     for (let i = 10; i < 36; i++) {
         options.push({
@@ -344,12 +361,10 @@ const ProjectsTab = () => {
     const handleChange = (value) => {
         console.log(`selected ${value}`);
     };
-
-
     const filterByStatus = (v) => {
         const status = {
             status: v
-        }        
+        }
         setParams(status)
     }
 

@@ -4,7 +4,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
 
         getAllProjects: builder.query({
-            providesTags: ["Projects"],
+            providesTags: ["Projects",],
             query: (query) => {                
                 return {
                     url: "/projects",
@@ -14,7 +14,16 @@ export const ProjectsApi = baseApi.injectEndpoints({
             },
             pollingInterval: 10000
         }),
-
+        getAllFavouriteProjects: builder.query({
+            query: (query) => {                
+                return {
+                    url: "/projects/favourite",
+                    method: "GET",
+                    params : query,
+                };
+            },
+            invalidatesTags: ["Projects"],
+        }),
         deleteProject: builder.mutation({
             query: (arrayOfIds) => {
                 return {
@@ -25,7 +34,6 @@ export const ProjectsApi = baseApi.injectEndpoints({
             },
             invalidatesTags: ["Projects"],
         }),
-
         isFavouriteProject: builder.mutation({
             query: (args) => {
                 return {
@@ -36,7 +44,6 @@ export const ProjectsApi = baseApi.injectEndpoints({
             },
             invalidatesTags: ["Projects"],
         }),
-
         updateStatusInProjects : builder.mutation({
             query: (args) => {
                 return {
@@ -47,53 +54,5 @@ export const ProjectsApi = baseApi.injectEndpoints({
             },
             invalidatesTags: ["Projects"],
         }),
-
-
-        // getAllProjects: builder.query({
-        //     providesTags: ["Projects"],
-        //     query: (params) => {
-        //         // Convert params to a query string
-        //         console.log(params);
-        //         const queryString = params ? `dates=${encodeURIComponent(params.dates)}` : '';
-                
-        //         return {
-        //             url: `/projects?${queryString}`,
-        //             method: "GET",
-        //         };
-        //     },
-        //     pollingInterval: 10000
-        // }),
-
-
-
-        // updateProduct: builder.mutation({
-        //     query: (data) => {
-        //         return {
-        //             url: `/products`,
-        //             method: "PATCH",
-        //             body: data
-        //         };
-        //     },
-        //     invalidatesTags: ["Products"],
-        // }),
-
-        // deleteProduct: builder.mutation({
-        //     query: (id) => ({
-        //         url: `/products/${id}`,
-        //         method: "DELETE",
-        //     }),
-        //     invalidatesTags: ["Products"],
-        // }),
-
-        // addProduct: builder.mutation({
-        //     query: (data) => ({
-        //         url: "/products",
-        //         method: "POST",
-        //         body: data
-        //     }),
-        //     invalidatesTags: ["Products"],
-        // }),
-
-
     }),
 });

@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:5000/api/v1",
-  // baseUrl: "https://bd-digital-server.vercel.app/api/v1",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
@@ -30,7 +29,6 @@ const baseQueryWithRefreshToken = async (args, api, extraOptions) => {
     console.log("sending refresh token");
 
     const res = await fetch("http://localhost:5000/api/v1/auth/refresh-token", {
-    // const res = await fetch("https://bd-digital-server.vercel.app/api/v1/auth/refresh-token", {
       method: "POST",
       credentials: "include",
     });
@@ -54,6 +52,6 @@ const baseQueryWithRefreshToken = async (args, api, extraOptions) => {
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: baseQueryWithRefreshToken,
-  tagTypes: ["Projects", "all-users"],
+  tagTypes: ["Projects", "all-users", "favourite-Projects"],
   endpoints: () => ({}),
 });
