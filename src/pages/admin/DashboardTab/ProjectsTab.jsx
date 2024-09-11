@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Button, Col, Modal, Row, Select, Space, Table } from "antd";
+import { Button, Col, DatePicker, Modal, Row, Select, Space, Table } from "antd";
 import { ProjectsApi } from "../../../redux/fetures/prjects/ProjectsApi";
 import { useState } from "react";
 import { FaEdit, FaFile, FaRegEdit, FaRegStar, FaStar } from "react-icons/fa";
@@ -320,11 +320,9 @@ const ProjectsTab = () => {
         {
             title: <span style={titleStyle}>Starts At</span>,
             dataIndex: "createdAt",
-            // render: (date) => moment(date).format('MMMM DD, YYYY'),
             render: (date) => (
                 <div className="">
                     <span className="text-gray-500 opacity-90 text-[15px] font-semibold flex items-center">
-                        {/* {moment(date).format('MMMM DD, YYYY')} */}
                         {date}
                     </span>
                 </div>
@@ -407,6 +405,19 @@ const ProjectsTab = () => {
         setParams(searchField);
     }
 
+    // const [dateRange, setDateRange] = useState([null, null]);
+    // console.log(dateRange);
+
+    
+
+    const handleDateChange = (dates, dateStrings) => {
+        const searchField = {
+            ["date"]: dateStrings
+        }
+        setParams(searchField);
+
+    };
+
 
     return (
         <div>
@@ -434,14 +445,22 @@ const ProjectsTab = () => {
 
                 <div className="mt-4">
                     <Select
-                        placeholder="Select Property"
+                        placeholder="Select Tag"
                         style={{ width: '100%' }}
                         options={tagsOptions}
                         onChange={(value) => filterByStatus("tags", value)}
                     />
                 </div>
 
-
+                <div className="mt-4">
+                    <DatePicker.RangePicker
+                        status="error"
+                        style={{
+                            width: '100%',
+                        }}
+                        onChange={handleDateChange} // Attach the change handler
+                    />
+                </div>
 
             </div>
 
