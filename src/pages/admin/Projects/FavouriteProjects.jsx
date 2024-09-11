@@ -12,12 +12,11 @@ import { CiCircleInfo } from "react-icons/ci";
 import TSForm from "../../../components/form/TSForm";
 import TSInput from "../../../components/form/TSInput";
 import TSSelect from "../../../components/form/TSSelect";
-import SearchBar from "../../../shared/SearchBar";
+import SearchBar from './../../../shared/SearchBar';
 
 const FavouriteProjects = () => {
 
     const [isFavouriteProject] = ProjectsApi.useIsFavouriteProjectMutation()
-    const [updateStatusInProjects] = ProjectsApi.useUpdateStatusInProjectsMutation()
     const [params, setParams] = useState(undefined);
     const { data, isLoading } = ProjectsApi.useGetAllFavouriteProjectsQuery(params);
     const [open, setOpen] = useState(false);
