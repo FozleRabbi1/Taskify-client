@@ -115,6 +115,8 @@ const ProjectsTab = () => {
                 selectedStatus
             }
         }
+        console.log(updatedData);
+        
         const res = await updateProjectsInFo(updatedData)
         if (res?.data?.success) {
             toast.success(res?.data?.message)

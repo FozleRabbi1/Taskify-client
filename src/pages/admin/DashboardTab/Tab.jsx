@@ -22,7 +22,7 @@ const Tab = () => {
                         <ProjectsTab />
                     </div>
                 ) : (
-                    <div className='h-[70vh] p-5'>
+                    <div className=' p-5'>
                         <TaskTab />
                     </div>
                 );
