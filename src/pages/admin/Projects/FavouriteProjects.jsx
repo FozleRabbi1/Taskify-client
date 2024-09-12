@@ -28,8 +28,6 @@ const FavouriteProjects = () => {
     const [deleteProject,] = ProjectsApi.useDeleteProjectMutation()
     const [modalData, setModalData] = useState({})
 
-    console.log(data?.data);
-    
 
     const handleStarClick = async (key, i) => {
         const isFavourite = {
