@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Button, Col, DatePicker, Modal, Row, Select, Space, Table } from "antd";
+import { Button, Checkbox, Col, DatePicker, Modal, Row, Select, Space, Table } from "antd";
 import { ProjectsApi } from "../../../redux/fetures/prjects/ProjectsApi";
 import { useState } from "react";
 import { FaEdit, FaFile, FaRegEdit, FaRegStar, FaStar } from "react-icons/fa";
@@ -7,7 +7,7 @@ import { AiOutlineMessage } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { FaUserLarge } from "react-icons/fa6";
 import { toast } from "react-toastify";
-import { RiDeleteBin5Line, RiDeleteBin6Line, RiFoldersLine } from "react-icons/ri";
+import { RiArrowDownSLine, RiDeleteBin5Line, RiDeleteBin6Line, RiFoldersLine } from "react-icons/ri";
 import { CiCircleInfo } from "react-icons/ci";
 import TSForm from "../../../components/form/TSForm";
 import TSInput from "../../../components/form/TSInput";
@@ -61,7 +61,7 @@ const ProjectsTab = () => {
         value: item,
         label: item,
     }));
-   
+
 
     const tableData = data?.data?.map(({ _id, id, title, users, clients, status, priority, budget, tags, endsAt, startsAt, isFavourite }) => ({
         key: _id,
@@ -75,7 +75,7 @@ const ProjectsTab = () => {
         budget,
         tags,
         startsAt,
-        endsAt ,
+        endsAt,
         isFavourite
     })) || [];
     const titleStyle = { fontWeight: '600', color: '#6b7260', textTransform: 'uppercase' };
@@ -115,8 +115,7 @@ const ProjectsTab = () => {
                 selectedStatus
             }
         }
-        console.log(updatedData);
-        
+
         const res = await updateProjectsInFo(updatedData)
         if (res?.data?.success) {
             toast.success(res?.data?.message)
@@ -177,18 +176,27 @@ const ProjectsTab = () => {
         });
     }
 
-    const duplicateDataHandlear = (id) =>{
+    const duplicateDataHandlear = (id) => {
         const duplicateInfo = {
-            id, 
-            title : "new heading"
+            id,
+            title: "new heading"
         }
         duplicateProjects(duplicateInfo)
     }
 
+    const [isInclude, setIsInclude] = useState(['Id', 'Title', 'User', "Client", "status", "priority", "budget", "tags", "startsAt", "endsAt"])
+
+    const onChange = (checkedValues) => {
+        setIsInclude(checkedValues);
+    };
+
 
     const columns = [
-        { title: <span style={titleStyle}>Id</span>, dataIndex: "id", width: 100 },
-        {
+
+
+        isInclude.includes("Id") && { title: <span style={titleStyle}>Id</span>, dataIndex: "id", width: 100 },
+
+        isInclude.includes("Title") &&  {
             title: <span style={titleStyle}>Title</span>,
             dataIndex: "title",
             render: (title, record) => (
@@ -209,6 +217,7 @@ const ProjectsTab = () => {
                 </span>
             ),
         },
+
         {
             title: <span style={titleStyle}>Users</span>,
             dataIndex: "users",
@@ -322,7 +331,7 @@ const ProjectsTab = () => {
             render: (date) => (
                 <div className="">
                     <span className="text-gray-500 opacity-90 text-[15px] font-semibold flex items-center">
-                    {moment(date).format('MMMM DD, YYYY')}
+                        {moment(date).format('MMMM DD, YYYY')}
                     </span>
                 </div>
             ),
@@ -354,7 +363,7 @@ const ProjectsTab = () => {
                         <RiDeleteBin5Line className="text-xl mr-6 text-red-500" />
                     </button>
 
-                    <button onClick={()=>duplicateDataHandlear(record?.key)} title="Duplicate"><RiFoldersLine className="text-xl mr-6 text-yellow-500" /></button>
+                    <button onClick={() => duplicateDataHandlear(record?.key)} title="Duplicate"><RiFoldersLine className="text-xl mr-6 text-yellow-500" /></button>
 
                     <button title="Quick View"><CiCircleInfo className="text-xl text-blue-600" /></button>
 
@@ -362,7 +371,7 @@ const ProjectsTab = () => {
             ),
         }
 
-    ];
+    ].filter(Boolean);
 
     const handleDelete = () => {
         Swal.fire({
@@ -492,7 +501,7 @@ const ProjectsTab = () => {
                     </button>
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-4 flex items-center">
                     <input
                         type="search"
                         className="my-5 border  flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80  "
@@ -500,6 +509,61 @@ const ProjectsTab = () => {
                         autoComplete="off"
                         onChange={(e) => searchHandlear(e.target.value)}
                     />
+
+                    <div className="relative">
+                        <div className="bg-gray-500 p-2 ml-2 rounded">
+                            <RiArrowDownSLine className="text-white text-xl" />
+                        </div>
+
+                        <div className="absolute top-12 right-0 bg-white shadow-lg z-50 w-[150px] px-4 py-2 ">
+
+                            <Checkbox.Group
+                                style={{
+                                    width: '100%',
+                                }}
+                                onChange={onChange}
+                                defaultValue={['Id', 'Title', 'User', "Client", "status", "priority", "budget", "tags", "startsAt", "endsAt"]}
+                            >
+                                <Row>
+                                    <Col span={24} >
+                                        <Checkbox value="Id">Id</Checkbox>
+                                    </Col>
+                                    <Col span={24} >
+                                        <Checkbox value="Title">Title</Checkbox>
+                                    </Col>
+                                    <Col span={24} >
+                                        <Checkbox value="User">User</Checkbox>
+                                    </Col>
+                                    <Col span={24} >
+                                        <Checkbox value="Client">Client</Checkbox>
+                                    </Col>
+                                    <Col span={24} >
+                                        <Checkbox value="status">status</Checkbox>
+                                    </Col>
+                                    <Col span={24} >
+                                        <Checkbox value="priority">priority</Checkbox>
+                                    </Col>
+                                    <Col span={24} >
+                                        <Checkbox value="budget">budget</Checkbox>
+                                    </Col>
+                                    <Col span={24} >
+                                        <Checkbox value="tags">tags</Checkbox>
+                                    </Col>
+                                    <Col span={24} >
+                                        <Checkbox value="startsAt">startsAt</Checkbox>
+                                    </Col>
+                                    <Col span={24} >
+                                        <Checkbox value="endsAt">endsAt</Checkbox>
+                                    </Col>
+                                </Row>
+                            </Checkbox.Group>
+
+                        </div>
+                    </div>
+
+                    {/* <button onClick={toggleTitleColumnVisibility}>
+                        Title
+                    </button> */}
                 </div>
 
             </div>

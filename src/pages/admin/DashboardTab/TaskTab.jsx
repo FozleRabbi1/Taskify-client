@@ -190,7 +190,7 @@ const TaskTab = () => {
             dataIndex: "title",
             render: (title) => (
                 <span className="text-blue-600 opacity-90 text-[16px] font-semibold flex items-center">
-                    {title}                    
+                    {title}
                     <AiOutlineMessage className="text-red-500 ml-2" />
                 </span>
             ),
@@ -476,7 +476,6 @@ const TaskTab = () => {
                         onChange={(dates, dateStrings) => handleDateChange(dates, dateStrings, "endsAt")}
                     />
                 </div>
-
             </div>
 
             <div className="flex justify-between">
@@ -489,7 +488,7 @@ const TaskTab = () => {
                         <FaFile className="mr-1" /> Save Coloumn Visibility
                     </button>
 
-                    <button className="my-5 border border-gray-600 text-gray-600 flex justify-between items-center px-6 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-gray-600 duration-300 ">
+                    <button onClick={() => { setParams({}) }} className="my-5 border border-gray-600 text-gray-600 flex justify-between items-center px-6 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-gray-600 duration-300 ">
                         <TiDeleteOutline className="mr-1" /> Clear Filter
                     </button>
                 </div>

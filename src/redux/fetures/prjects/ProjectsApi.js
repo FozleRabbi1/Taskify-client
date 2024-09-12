@@ -47,8 +47,6 @@ export const ProjectsApi = baseApi.injectEndpoints({
         }),
         updateProjectsInFo : builder.mutation({
             query: (args) => {
-                console.log(args);
-                
                 return {
                     url: `/projects/${args?.id}`,
                     method: "PUT",
