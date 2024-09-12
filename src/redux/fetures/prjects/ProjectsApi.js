@@ -4,7 +4,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
 
         getAllProjects: builder.query({
-            providesTags: ["Projects",],
+            providesTags: ["Projects", "favourite-Projects"],
             query: (query) => {                
                 return {
                     url: "/projects",
@@ -16,6 +16,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
         }),
         
         getAllFavouriteProjects: builder.query({
+            
             query: (query) => {                
                 return {
                     url: "/projects/favourite",
@@ -23,7 +24,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
                     params : query,
                 };
             },
-            invalidatesTags: ["Projects"],
+            providesTags: ["favourite-Projects"],
         }),
         deleteProject: builder.mutation({
             query: (arrayOfIds) => {
@@ -35,6 +36,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
             },
             invalidatesTags: ["Projects"],
         }),
+
         isFavouriteProject: builder.mutation({
             query: (args) => {
                 return {
@@ -43,8 +45,9 @@ export const ProjectsApi = baseApi.injectEndpoints({
                     body : args.data
                 }
             },
-            invalidatesTags: ["Projects"],
+            invalidatesTags: ["favourite-Projects"],
         }),
+
         updateProjectsInFo : builder.mutation({
             query: (args) => {
                 return {

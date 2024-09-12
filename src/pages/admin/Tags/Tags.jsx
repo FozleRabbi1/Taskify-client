@@ -45,11 +45,9 @@ const Tags = () => {
             dataIndex: "preview",
             render: (preview, record, rowIndex) => (
                 <span className="text-blue-600 opacity-90 text-[16px] font-semibold flex items-center">
-                    {/* { rowIndex / 2 === 0 ? <span>{preview}</span> : "" } */}
                     {
                         <span className={` px-2 rounded-md opacity-80 ${rowIndex % 2 === 0 ? "bg-blue-700 text-white" : "bg-green-700 text-white"  }`} > {preview} </span>
                     }
-                    
                 </span>
             ),
         },
