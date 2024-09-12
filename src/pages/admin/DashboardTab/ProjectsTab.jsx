@@ -184,7 +184,7 @@ const ProjectsTab = () => {
         duplicateProjects(duplicateInfo)
     }
 
-    const [isInclude, setIsInclude] = useState(['Id', 'Title', 'User', "Client", "status", "priority", "budget", "tags", "startsAt", "endsAt"])
+    const [isInclude, setIsInclude] = useState(['Id', 'Title', 'User', "Client", "status", "priority", "budget", "tags", "startsAt", "endsAt", "action"])
 
     const onChange = (checkedValues) => {
         setIsInclude(checkedValues);
@@ -196,7 +196,7 @@ const ProjectsTab = () => {
 
         isInclude.includes("Id") && { title: <span style={titleStyle}>Id</span>, dataIndex: "id", width: 100 },
 
-        isInclude.includes("Title") &&  {
+        isInclude.includes("Title") && {
             title: <span style={titleStyle}>Title</span>,
             dataIndex: "title",
             render: (title, record) => (
@@ -218,7 +218,7 @@ const ProjectsTab = () => {
             ),
         },
 
-        {
+        isInclude.includes("User") && {
             title: <span style={titleStyle}>Users</span>,
             dataIndex: "users",
             render: (users, record) => (
@@ -239,7 +239,7 @@ const ProjectsTab = () => {
             ),
             // width: 200,
         },
-        {
+        isInclude.includes("Client") && {
             title: <span style={titleStyle}>Clients</span>,
             dataIndex: "clients",
             render: (clients) => (
@@ -265,7 +265,7 @@ const ProjectsTab = () => {
             ),
             // width: 200,
         },
-        {
+        isInclude.includes("status") && {
             title: <span style={titleStyle}>Status</span>,
             dataIndex: "status",
             render: (status, record) => (
@@ -280,7 +280,7 @@ const ProjectsTab = () => {
             ),
             // width: 200,
         },
-        {
+        isInclude.includes("priority") &&{
             title: <span style={titleStyle}>Priority</span>,
             dataIndex: "priority",
             render: (priority, record) => (
@@ -294,7 +294,7 @@ const ProjectsTab = () => {
                 </div>
             ),
         },
-        {
+        isInclude.includes("budget") &&{
             title: <span style={titleStyle}>Budget</span>,
             dataIndex: "budget",
             render: (budget) => (
@@ -306,7 +306,7 @@ const ProjectsTab = () => {
             ),
 
         },
-        {
+        isInclude.includes("tags") &&{
             title: <span style={titleStyle}>Tags</span>,
             dataIndex: "tags",
             render: (tags) => (
@@ -325,7 +325,7 @@ const ProjectsTab = () => {
             ),
             // width: 200,
         },
-        {
+        isInclude.includes("startsAt") &&{
             title: <span style={titleStyle}>Starts At</span>,
             dataIndex: "startsAt",
             render: (date) => (
@@ -337,7 +337,7 @@ const ProjectsTab = () => {
             ),
             // width: 200,
         },
-        {
+        isInclude.includes("endsAt") &&{
             title: <span style={titleStyle}>Ends At</span>,
             dataIndex: "endsAt",
             render: (date) => (
@@ -349,7 +349,7 @@ const ProjectsTab = () => {
                 </div>
             ),
         },
-        {
+        isInclude.includes("action") &&{
             title: <span style={titleStyle}>Action</span>,
             dataIndex: "action",
             render: (text, record) => (
@@ -522,7 +522,7 @@ const ProjectsTab = () => {
                                     width: '100%',
                                 }}
                                 onChange={onChange}
-                                defaultValue={['Id', 'Title', 'User', "Client", "status", "priority", "budget", "tags", "startsAt", "endsAt"]}
+                                defaultValue={['Id', 'Title', 'User', "Client", "status", "priority", "budget", "tags", "startsAt", "endsAt", "action"]}
                             >
                                 <Row>
                                     <Col span={24} >
@@ -554,6 +554,9 @@ const ProjectsTab = () => {
                                     </Col>
                                     <Col span={24} >
                                         <Checkbox value="endsAt">endsAt</Checkbox>
+                                    </Col>
+                                    <Col span={24} >
+                                        <Checkbox value="action">Action</Checkbox>
                                     </Col>
                                 </Row>
                             </Checkbox.Group>
