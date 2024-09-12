@@ -28,7 +28,7 @@ const ProjectsTab = () => {
     const [pageSize, setPageSize] = useState(10);
     const [availablePageSizes, setAvailablePageSizes] = useState([5, 10, 15, 20, 25, 30, 35]);
     const [ids, setides] = useState([])
-    const [deleteProject,] = ProjectsApi.useDeleteProjectMutation()
+    const [deleteProject] = ProjectsApi.useDeleteProjectMutation()
     const [modalData, setModalData] = useState({})
     const [isHideTableColom, setIsHideTableColom] = useState(false)
 
@@ -63,7 +63,6 @@ const ProjectsTab = () => {
         label: item,
     }));
 
-
     const tableData = data?.data?.map(({ _id, id, title, users, clients, status, priority, budget, tags, endsAt, startsAt, isFavourite }) => ({
         key: _id,
         _id,
@@ -79,6 +78,7 @@ const ProjectsTab = () => {
         endsAt,
         isFavourite
     })) || [];
+
     const titleStyle = { fontWeight: '600', color: '#6b7260', textTransform: 'uppercase' };
 
     const handlePageChange = (page, pageSize) => {
@@ -122,7 +122,6 @@ const ProjectsTab = () => {
             toast.success(res?.data?.message)
         }
     };
-
 
     const handleModal = (record) => {
         setOpen(true)
@@ -566,9 +565,6 @@ const ProjectsTab = () => {
                         </div>
                     </div>
 
-                    {/* <button onClick={toggleTitleColumnVisibility}>
-                        Title
-                    </button> */}
                 </div>
 
             </div>
