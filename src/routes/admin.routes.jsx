@@ -1,6 +1,7 @@
 import FavouriteProjects from "../pages/admin/Projects/FavouriteProjects";
 import ManageProjects from "../pages/admin/Projects/ManageProjects";
 import Dashboard from "../pages/admin/Dashboard"
+import Tags from "../pages/admin/Tags/tags";
 
 
 export const adminPaths = [
@@ -21,6 +22,11 @@ export const adminPaths = [
                 name: "Favourite Projects",
                 path: "favourite-projects",
                 element: <FavouriteProjects />,
+            },
+            {
+                name: "Tags",
+                path: "tags",
+                element: <Tags />,
             },
 
         ],
