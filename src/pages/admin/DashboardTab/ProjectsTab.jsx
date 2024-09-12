@@ -30,6 +30,7 @@ const ProjectsTab = () => {
     const [ids, setides] = useState([])
     const [deleteProject,] = ProjectsApi.useDeleteProjectMutation()
     const [modalData, setModalData] = useState({})
+    const [isHideTableColom, setIsHideTableColom] = useState(false)
 
     // const uniqueTags = [...new Set(data?.data?.flatMap(item => item.tags))];
 
@@ -280,7 +281,7 @@ const ProjectsTab = () => {
             ),
             // width: 200,
         },
-        isInclude.includes("priority") &&{
+        isInclude.includes("priority") && {
             title: <span style={titleStyle}>Priority</span>,
             dataIndex: "priority",
             render: (priority, record) => (
@@ -294,7 +295,7 @@ const ProjectsTab = () => {
                 </div>
             ),
         },
-        isInclude.includes("budget") &&{
+        isInclude.includes("budget") && {
             title: <span style={titleStyle}>Budget</span>,
             dataIndex: "budget",
             render: (budget) => (
@@ -306,7 +307,7 @@ const ProjectsTab = () => {
             ),
 
         },
-        isInclude.includes("tags") &&{
+        isInclude.includes("tags") && {
             title: <span style={titleStyle}>Tags</span>,
             dataIndex: "tags",
             render: (tags) => (
@@ -325,7 +326,7 @@ const ProjectsTab = () => {
             ),
             // width: 200,
         },
-        isInclude.includes("startsAt") &&{
+        isInclude.includes("startsAt") && {
             title: <span style={titleStyle}>Starts At</span>,
             dataIndex: "startsAt",
             render: (date) => (
@@ -337,7 +338,7 @@ const ProjectsTab = () => {
             ),
             // width: 200,
         },
-        isInclude.includes("endsAt") &&{
+        isInclude.includes("endsAt") && {
             title: <span style={titleStyle}>Ends At</span>,
             dataIndex: "endsAt",
             render: (date) => (
@@ -349,7 +350,7 @@ const ProjectsTab = () => {
                 </div>
             ),
         },
-        isInclude.includes("action") &&{
+        isInclude.includes("action") && {
             title: <span style={titleStyle}>Action</span>,
             dataIndex: "action",
             render: (text, record) => (
@@ -511,11 +512,12 @@ const ProjectsTab = () => {
                     />
 
                     <div className="relative">
-                        <div className="bg-gray-500 p-2 ml-2 rounded">
+
+                        <div onClick={() => { setIsHideTableColom(!isHideTableColom) }} className="bg-gray-500 p-2 ml-2 rounded cursor-pointer">
                             <RiArrowDownSLine className="text-white text-xl" />
                         </div>
 
-                        <div className="absolute top-12 right-0 bg-white shadow-lg z-50 w-[150px] px-4 py-2 ">
+                        <div className={`absolute top-12 right-0 bg-white shadow-lg z-50 w-[150px] px-4 py-2 ${isHideTableColom ? "block" : "hidden"} `}>
 
                             <Checkbox.Group
                                 style={{
@@ -525,37 +527,37 @@ const ProjectsTab = () => {
                                 defaultValue={['Id', 'Title', 'User', "Client", "status", "priority", "budget", "tags", "startsAt", "endsAt", "action"]}
                             >
                                 <Row>
-                                    <Col span={24} >
+                                    <Col span={24} className="mb-2" >
                                         <Checkbox value="Id">Id</Checkbox>
                                     </Col>
-                                    <Col span={24} >
+                                    <Col span={24} className="mb-2" >
                                         <Checkbox value="Title">Title</Checkbox>
                                     </Col>
-                                    <Col span={24} >
+                                    <Col span={24} className="mb-2" >
                                         <Checkbox value="User">User</Checkbox>
                                     </Col>
-                                    <Col span={24} >
+                                    <Col span={24} className="mb-2" >
                                         <Checkbox value="Client">Client</Checkbox>
                                     </Col>
-                                    <Col span={24} >
+                                    <Col span={24} className="mb-2" >
                                         <Checkbox value="status">status</Checkbox>
                                     </Col>
-                                    <Col span={24} >
+                                    <Col span={24} className="mb-2" >
                                         <Checkbox value="priority">priority</Checkbox>
                                     </Col>
-                                    <Col span={24} >
+                                    <Col span={24} className="mb-2" >
                                         <Checkbox value="budget">budget</Checkbox>
                                     </Col>
-                                    <Col span={24} >
+                                    <Col span={24} className="mb-2" >
                                         <Checkbox value="tags">tags</Checkbox>
                                     </Col>
-                                    <Col span={24} >
+                                    <Col span={24} className="mb-2" >
                                         <Checkbox value="startsAt">startsAt</Checkbox>
                                     </Col>
-                                    <Col span={24} >
+                                    <Col span={24} className="mb-2" >
                                         <Checkbox value="endsAt">endsAt</Checkbox>
                                     </Col>
-                                    <Col span={24} >
+                                    <Col span={24} className="mb-2" >
                                         <Checkbox value="action">Action</Checkbox>
                                     </Col>
                                 </Row>
