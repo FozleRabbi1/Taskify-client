@@ -58,7 +58,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
             invalidatesTags: ["Projects"],
         }),
         duplicateProjects : builder.mutation({
-            query: (args) => {                          
+            query: (args) => {                                          
                 return {
                     url: `/projects/${args?.id}`,
                     method: "POST",

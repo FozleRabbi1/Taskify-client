@@ -345,14 +345,12 @@ const FavouriteProjects = () => {
         console.log(`selected ${value}`);
     };
 
-
     const filterByStatus = (v) => {
         const status = {
             status: v
         }
         setParams(status)
     }
-
 
     return (
         <div>
@@ -405,7 +403,6 @@ const FavouriteProjects = () => {
                         </Button>
                     </div>
                 </div>
-
 
                 <Modal
                     title="Update Projecsts"

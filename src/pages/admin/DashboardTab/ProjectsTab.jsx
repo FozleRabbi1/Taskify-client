@@ -176,13 +176,7 @@ const ProjectsTab = () => {
         });
     }
 
-    const duplicateDataHandlear = (id) => {
-        const duplicateInfo = {
-            id,
-            title: "new heading"
-        }
-        duplicateProjects(duplicateInfo)
-    }
+
 
     const [isInclude, setIsInclude] = useState(['Id', 'Title', 'User', "Client", "status", "priority", "budget", "tags", "startsAt", "endsAt", "action"])
 
@@ -191,8 +185,37 @@ const ProjectsTab = () => {
     };
 
 
-    const columns = [
+    // ============================================================= Duplicate Data, Function 
+    const [duplicateOpen, setOpenDuplicate] = useState(false);
+    const [confirmLoading] = useState(false);
+    const [selectedRecord, setSelectedRecord] = useState(null);
 
+    const showModal = (record) => {
+        setSelectedRecord(record);
+        setOpenDuplicate(true);
+    };
+
+    const handleCancel = () => {
+        setOpenDuplicate(false);
+        setSelectedRecord(null);
+    };
+
+    const handleDuplicateSubmit = (e) => {
+        e.preventDefault();
+        const heading = e.target.elements[0].value;
+        const duplicateInfo = {
+            id: selectedRecord._id,
+            title: heading
+        }
+        duplicateProjects(duplicateInfo)
+        e.target.reset();
+        setOpenDuplicate(false);
+        setSelectedRecord(null);
+    };
+    // ============================================================= Duplicate Data, Function 
+
+
+    const columns = [
 
         isInclude.includes("Id") && { title: <span style={titleStyle}>Id</span>, dataIndex: "id", width: 100 },
 
@@ -354,7 +377,6 @@ const ProjectsTab = () => {
             dataIndex: "action",
             render: (text, record) => (
                 <div className="">
-
                     <button title="Update" onClick={() => setOpen(true)} className="text-xl mr-6 text-blue-500">
                         <FaEdit className="text-xl text-blue-500" />
                     </button>
@@ -363,12 +385,15 @@ const ProjectsTab = () => {
                         <RiDeleteBin5Line className="text-xl mr-6 text-red-500" />
                     </button>
 
-                    <button onClick={() => duplicateDataHandlear(record?.key)} title="Duplicate"><RiFoldersLine className="text-xl mr-6 text-yellow-500" /></button>
+                    <button onClick={() => showModal(record)} title="Duplicate">
+                        <RiFoldersLine className="text-xl mr-6 text-yellow-500" />
+                    </button>
 
-                    <button title="Quick View"><CiCircleInfo className="text-xl text-blue-600" /></button>
-
+                    <button title="Quick View">
+                        <CiCircleInfo className="text-xl text-blue-600" />
+                    </button>
                 </div>
-            ),
+            )
         }
 
     ].filter(Boolean);
@@ -427,6 +452,9 @@ const ProjectsTab = () => {
         };
         setParams(searchField);
     };
+
+
+
 
 
     return (
@@ -658,6 +686,23 @@ const ProjectsTab = () => {
                     </div>
                 </div>
             </Modal>
+
+
+
+            <Modal
+                title="Title"
+                open={duplicateOpen}
+                confirmLoading={confirmLoading}
+                onCancel={handleCancel}
+                footer={null}
+            >
+                <form onSubmit={handleDuplicateSubmit}>
+                    <input type="text" placeholder={selectedRecord?.title} className="w-full border px-2 py-2 rounded" />
+
+                    <button type="submit">Duplicate</button>
+                </form>
+            </Modal>
+
         </div>
     );
 };
