@@ -14,12 +14,15 @@ import TSInput from "../../../components/form/TSInput";
 import TSSelect from "../../../components/form/TSSelect";
 import { tagsArray, tagStyles } from "../../../constant/constant";
 import moment from "moment";
+import { UsersApi } from "../../../redux/fetures/Users/usersApi";
 
 const ProjectsTab = () => {
 
     const [isFavouriteProject] = ProjectsApi.useIsFavouriteProjectMutation()
     const [updateProjectsInFo] = ProjectsApi.useUpdateProjectsInFoMutation()
     const [duplicateProjects] = ProjectsApi.useDuplicateProjectsMutation()
+    const [deleteProject] = ProjectsApi.useDeleteProjectMutation()
+    const { data : userData } = UsersApi.useGetAllUsersQuery({})
     const [params, setParams] = useState(undefined);
     const { data, isLoading } = ProjectsApi.useGetAllProjectsQuery(params);
     const [open, setOpen] = useState(false);
@@ -28,11 +31,12 @@ const ProjectsTab = () => {
     const [pageSize, setPageSize] = useState(10);
     const [availablePageSizes, setAvailablePageSizes] = useState([5, 10, 15, 20, 25, 30, 35]);
     const [ids, setides] = useState([])
-    const [deleteProject] = ProjectsApi.useDeleteProjectMutation()
     const [modalData, setModalData] = useState({})
     const [isHideTableColom, setIsHideTableColom] = useState(false)
 
     // const uniqueTags = [...new Set(data?.data?.flatMap(item => item.tags))];
+
+    
 
 
     const handleStarClick = async (key, i) => {
@@ -47,6 +51,11 @@ const ProjectsTab = () => {
             toast.success(res?.data?.message)
         }
     };
+
+    const usersOptions = userData?.data.map((item) => ({
+        value: item?.image,
+        label: `${item?.name?.firstName} ${item?.name?.lastName}`,
+    }));
 
     const statusOptions = ["On Going", "Started", "Default", "In Review", "Completed"].map((item) => ({
         value: item,
@@ -144,7 +153,7 @@ const ProjectsTab = () => {
         // } = record
 
         console.log(record);
-        
+
     }
 
     const singleDataDelete = (id) => {
@@ -163,7 +172,7 @@ const ProjectsTab = () => {
         });
     }
 
-    
+
     const [isInclude, setIsInclude] = useState(['Id', 'Title', 'User', "Client", "status", "priority", "budget", "tags", "startsAt", "endsAt", "action"])
 
     const onChange = (checkedValues) => {
@@ -400,9 +409,14 @@ const ProjectsTab = () => {
         });
     }
 
+
     const onSubmit = async (data) => {
         console.log(data);
 
+    };
+
+    const handleChange = (value) => {
+        console.log(`selected ${value}`);
     };
 
     const options = [];
@@ -413,9 +427,7 @@ const ProjectsTab = () => {
         });
     }
 
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
-    };
+
 
     const filterByStatus = (fieldName, v) => {
         const status = {
@@ -609,7 +621,7 @@ const ProjectsTab = () => {
             </div>
 
 
-            
+
             <Modal
                 title="Update Projecsts"
                 centered
@@ -658,13 +670,14 @@ const ProjectsTab = () => {
                                                         width: '100%',
                                                     }}
                                                     placeholder="Please select"
-                                                    defaultValue={['a10', 'c12']}
+                                                    defaultValue={[]}
                                                     onChange={handleChange}
-                                                    options={options}
+                                                    options={usersOptions}
                                                 />
                                             </Space>
                                         </Col>
                                     </Row>
+
                                     <Button htmlType="submit">Update</Button>
                                 </TSForm>
                             </Col>
