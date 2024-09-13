@@ -127,37 +127,24 @@ const ProjectsTab = () => {
         setOpen(true)
         setModalData(record)
 
-        const {
-            budget,
-            clients,
-            createdAt,
-            id,
-            isFavourite,
-            key,
-            priority,
-            status,
-            tags,
-            title,
-            updatedAt,
-            users,
-            _id
-        } = record
+        // const {
+        //     budget,
+        //     clients,
+        //     createdAt,
+        //     id,
+        //     isFavourite,
+        //     key,
+        //     priority,
+        //     status,
+        //     tags,
+        //     title,
+        //     updatedAt,
+        //     users,
+        //     _id
+        // } = record
 
-        console.log(budget,
-            clients,
-            createdAt,
-            id,
-            isFavourite,
-            key,
-            priority,
-            status,
-            tags,
-            title,
-            updatedAt,
-            users,
-            _id);
-
-
+        console.log(record);
+        
     }
 
     const singleDataDelete = (id) => {
@@ -176,8 +163,7 @@ const ProjectsTab = () => {
         });
     }
 
-
-
+    
     const [isInclude, setIsInclude] = useState(['Id', 'Title', 'User', "Client", "status", "priority", "budget", "tags", "startsAt", "endsAt", "action"])
 
     const onChange = (checkedValues) => {
@@ -623,6 +609,7 @@ const ProjectsTab = () => {
             </div>
 
 
+            
             <Modal
                 title="Update Projecsts"
                 centered
@@ -631,7 +618,6 @@ const ProjectsTab = () => {
                 onCancel={() => setOpen(false)}
                 width={1000}
             >
-
                 <div>
                     <div>
                         <h2 className="text-center font-semibold text-4xl mb-2 text-green-500">Update Comming Soon</h2>
@@ -688,18 +674,21 @@ const ProjectsTab = () => {
             </Modal>
 
 
-
             <Modal
-                title="Title"
+                title="Warning"
                 open={duplicateOpen}
                 confirmLoading={confirmLoading}
                 onCancel={handleCancel}
                 footer={null}
             >
                 <form onSubmit={handleDuplicateSubmit}>
-                    <input type="text" placeholder={selectedRecord?.title} className="w-full border px-2 py-2 rounded" />
+                    <p className="my-5 text-[16px] opacity-80 font-semibold ">Are You Sure You Want to Duplicate?</p>
+                    <label htmlFor="" className=" opacity-80 font-semibold"> Update Title </label>
+                    <input type="text" placeholder={selectedRecord?.title} required className="w-full border mt-2 px-2 py-2 rounded" />
 
-                    <button type="submit">Duplicate</button>
+                    <div className="flex justify-end">
+                        <button type="submit" className=" bg-blue-700 px-6 py-2 mt-4 font-semibold text-white text-md rounded-md ">Yes</button>
+                    </div>
                 </form>
             </Modal>
 
