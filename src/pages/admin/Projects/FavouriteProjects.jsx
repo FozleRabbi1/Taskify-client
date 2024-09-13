@@ -360,14 +360,17 @@ const FavouriteProjects = () => {
         <SearchBar/>
 
             <div className="bg-white p-5 mt-14 rounded">
+            
                 <div className="mt-4">
                     <Select
-                        placeholder="Select Status"
+                        placeholder="Select Status ( update soon ) "
                         style={{ width: '33%' }}
                         options={statusOptions}
+                        disabled={true}
                         onChange={(value) => filterByStatus(value)}
                     />
                 </div>
+
                 <div className="flex gap-2">
                     <button onClick={() => handleDelete()} className="my-5 border border-red-600 text-red-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-red-600 duration-300 ">
                         <RiDeleteBin6Line className="mr-1" /> Delete Selected
