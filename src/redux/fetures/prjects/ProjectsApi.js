@@ -13,8 +13,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
                 };
             },
             pollingInterval: 10000
-        }),
-        
+        }),        
         getAllFavouriteProjects: builder.query({
             providesTags: ["favourite-Projects"],            
             query: (query) => {                
@@ -24,18 +23,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
                     params : query,
                 };
             },
-        }),
-        deleteProject: builder.mutation({
-            query: (arrayOfIds) => {
-                return {
-                    url: `/projects`,
-                    method: "DELETE",
-                    body : arrayOfIds
-                }
-            },
-            invalidatesTags: ["Projects"],
-        }),
-
+        }),       
         isFavouriteProject: builder.mutation({
             query: (args) => {
                 return {
@@ -46,7 +34,6 @@ export const ProjectsApi = baseApi.injectEndpoints({
             },
             invalidatesTags: ["favourite-Projects"],
         }),
-
         updateProjectsInFo : builder.mutation({
             query: (args) => {
                 return {
@@ -67,5 +54,26 @@ export const ProjectsApi = baseApi.injectEndpoints({
             },
             invalidatesTags: ["Projects"],
         }),
+        updateSingleProjects : builder.mutation({
+            query: (args) => {                                          
+                return {
+                    url: `/projects/singleProject/${args?.id}`,
+                    method: "PATCH",
+                    body : args.data
+                }
+            },
+            invalidatesTags: ["Projects"],
+        }),
+        deleteProject: builder.mutation({
+            query: (arrayOfIds) => {
+                return {
+                    url: `/projects`,
+                    method: "DELETE",
+                    body : arrayOfIds
+                }
+            },
+            invalidatesTags: ["Projects"],
+        }),
+
     }),
 });

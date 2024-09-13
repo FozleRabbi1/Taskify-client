@@ -22,10 +22,11 @@ const ProjectsTab = () => {
     const [updateProjectsInFo] = ProjectsApi.useUpdateProjectsInFoMutation()
     const [duplicateProjects] = ProjectsApi.useDuplicateProjectsMutation()
     const [deleteProject] = ProjectsApi.useDeleteProjectMutation()
-    const { data : userData } = UsersApi.useGetAllUsersQuery({})
+    const [updateSingleProjects] = ProjectsApi.useUpdateSingleProjectsMutation()
+    const { data: userData } = UsersApi.useGetAllUsersQuery({})
     const [params, setParams] = useState(undefined);
     const { data, isLoading } = ProjectsApi.useGetAllProjectsQuery(params);
-    const [open, setOpen] = useState(false);
+    // const [open, setOpen] = useState(false);
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
@@ -36,7 +37,7 @@ const ProjectsTab = () => {
 
     // const uniqueTags = [...new Set(data?.data?.flatMap(item => item.tags))];
 
-    
+
 
 
     const handleStarClick = async (key, i) => {
@@ -56,6 +57,7 @@ const ProjectsTab = () => {
         value: item?.image,
         label: `${item?.name?.firstName} ${item?.name?.lastName}`,
     }));
+
 
     const statusOptions = ["On Going", "Started", "Default", "In Review", "Completed"].map((item) => ({
         value: item,
@@ -132,29 +134,46 @@ const ProjectsTab = () => {
         }
     };
 
+
+    //========================================================== update data
+
+    const [users, setUser] = useState([])
+    const [tags, setTags] = useState([])
+    const [updateId, setUpdateId] = useState("")
+    const [openUpdateModal, setOpenUpdateModal] = useState(false);
+    const onSubmit = async (data) => {
+        const updateData = {
+            id: updateId,
+            data: {
+                budget: data.budget,
+                priority: data.property,
+                status: data.status,
+                title: data.title,
+                users: users,
+                tags,
+            }
+        }
+        updateSingleProjects(updateData);
+        setOpenUpdateModal(false)
+    };
+
+    const handleChange = (value) => {
+        setUser(value);
+    };
+    const handleTagChange = (value) => {
+        setTags(value);
+    };
+
     const handleModal = (record) => {
-        setOpen(true)
+        setOpenUpdateModal(true)
         setModalData(record)
-
-        // const {
-        //     budget,
-        //     clients,
-        //     createdAt,
-        //     id,
-        //     isFavourite,
-        //     key,
-        //     priority,
-        //     status,
-        //     tags,
-        //     title,
-        //     updatedAt,
-        //     users,
-        //     _id
-        // } = record
-
-        console.log(record);
-
+        setUpdateId(record.key)
     }
+
+    //========================================================== update data
+
+
+
 
     const singleDataDelete = (id) => {
         Swal.fire({
@@ -235,7 +254,6 @@ const ProjectsTab = () => {
                 </span>
             ),
         },
-
         isInclude.includes("User") && {
             title: <span style={titleStyle}>Users</span>,
             dataIndex: "users",
@@ -267,14 +285,14 @@ const ProjectsTab = () => {
                             {clients.map((url, index) => (
                                 <img className={`border-2 border-gray-300 ${index >= 1 ? "-ml-5" : ""} hover:z-10 hover:-mt-2 hover:shadow-md duration-300 cursor-pointer`} key={index} src={url} alt={`User ${index + 1}`} style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                             ))}
-                            <Button onClick={() => setOpen(true)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
+                            <Button onClick={() => setOpenUpdateModal(true)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
                                 <FaRegEdit className="text-xl text-blue-600" />
                             </Button>
                         </div>
                     ) : (
                         <div className="flex items-center">
                             <h2 className="bg-blue-600 text-white font-medium px-2 rounded-md uppercase opacity-80 flex items-center">Not Assigned</h2>
-                            <Button onClick={() => setOpen(true)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
+                            <Button onClick={() => setOpenUpdateModal(true)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
                                 <FaRegEdit className="text-xl text-blue-600" />
                             </Button>
                         </div>
@@ -372,7 +390,7 @@ const ProjectsTab = () => {
             dataIndex: "action",
             render: (text, record) => (
                 <div className="">
-                    <button title="Update" onClick={() => setOpen(true)} className="text-xl mr-6 text-blue-500">
+                    <button title="Update" onClick={() => setOpenUpdateModal(true)} className="text-xl mr-6 text-blue-500">
                         <FaEdit className="text-xl text-blue-500" />
                     </button>
 
@@ -408,17 +426,6 @@ const ProjectsTab = () => {
             }
         });
     }
-
-
-    const onSubmit = async (data) => {
-        console.log(data);
-
-    };
-
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
-    };
-
     const options = [];
     for (let i = 10; i < 36; i++) {
         options.push({
@@ -426,8 +433,6 @@ const ProjectsTab = () => {
             value: i.toString(36) + i,
         });
     }
-
-
 
     const filterByStatus = (fieldName, v) => {
         const status = {
@@ -450,9 +455,6 @@ const ProjectsTab = () => {
         };
         setParams(searchField);
     };
-
-
-
 
 
     return (
@@ -623,16 +625,16 @@ const ProjectsTab = () => {
 
 
             <Modal
-                title="Update Projecsts"
                 centered
-                open={open}
-                onOk={() => setOpen(false)}
-                onCancel={() => setOpen(false)}
+                open={openUpdateModal}
+                // onOk={() => setOpen(false)}
+                onCancel={() => setOpenUpdateModal(false)}
                 width={1000}
+                footer={null}
             >
                 <div>
                     <div>
-                        <h2 className="text-center font-semibold text-4xl mb-2 text-green-500">Update Comming Soon</h2>
+                        <h2 className="font-semibold text-xl mb-5 opacity-80">Update Projects</h2>
                         <Row align="middle">
                             <Col span={24}>
                                 <TSForm onSubmit={onSubmit} className="w-full">
@@ -669,16 +671,55 @@ const ProjectsTab = () => {
                                                     style={{
                                                         width: '100%',
                                                     }}
-                                                    placeholder="Please select"
+                                                    placeholder="Please select Users"
                                                     defaultValue={[]}
                                                     onChange={handleChange}
                                                     options={usersOptions}
                                                 />
+
                                             </Space>
                                         </Col>
+                                        <Col span={24} md={{ span: 12 }} lg={{ span: 12 }}>
+                                            <label className="text-[14px] uppercase"> Select Tags </label>
+                                            <Space
+                                                style={{
+                                                    width: '100%',
+                                                    marginTop: "3px",
+                                                    padding: "4px"
+                                                }}
+                                                direction="vertical"
+                                            >
+                                                <Select
+                                                    size="large"
+                                                    mode="multiple"
+                                                    allowClear
+                                                    style={{
+                                                        width: '100%',
+                                                    }}
+                                                    placeholder="Please select Tags"
+                                                    defaultValue={[]}
+                                                    onChange={handleTagChange}
+                                                    options={tagsOptions}
+                                                />
+
+                                            </Space>
+                                        </Col>
+
+                                        <Col span={24} md={{ span: 12 }} lg={{ span: 12 }}>
+                                            <TSSelect
+                                                name="property"
+                                                label="Property"
+                                                options={propertyOptions}
+                                                placeholder="Select Property"
+                                            >
+                                            </TSSelect>
+                                        </Col>
+
                                     </Row>
 
-                                    <Button htmlType="submit">Update</Button>
+                                    <div className="flex justify-end">
+                                        <Button htmlType="submit" className="mt-5">Update</Button>
+                                    </div>
                                 </TSForm>
                             </Col>
                         </Row>
