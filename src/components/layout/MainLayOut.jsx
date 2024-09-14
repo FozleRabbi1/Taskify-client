@@ -7,7 +7,7 @@ const { Content } = Layout;
 const MainLayout = () => {
 
     return (
-        <div>
+        <div className="">
             <Layout style={{ height: "100vh" }}> 
                 <SideBar /> 
                 <Layout style={{ overflow: "auto" }}>

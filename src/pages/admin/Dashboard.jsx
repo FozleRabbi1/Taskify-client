@@ -2,21 +2,82 @@
 import { FaArrowRight, FaBars, FaRegFile } from "react-icons/fa";
 import SearchBar from "../../shared/SearchBar";
 import { IoBagCheck, IoBagOutline } from "react-icons/io5";
-import {  BsFileCheckFill } from "react-icons/bs";
+import { BsFileCheckFill } from "react-icons/bs";
 import { BiSolidUserDetail } from "react-icons/bi";
 import ApexChart from "./ApexChart/ApexChart";
 import { useState } from "react";
 import Tab from "./DashboardTab/Tab";
+import { ProjectsApi } from "../../redux/fetures/prjects/ProjectsApi";
+import { TodosApi } from "../../redux/fetures/todos/todos";
+import { Checkbox, Table } from "antd";
+import moment from "moment";
 
 
 
 const Dashboard = () => {
-    const [series, setSeries] = useState([44, 55, 41, 30]);
-    const [series2, setSeries2] = useState([60, 70, 80, 100]);
-    const [series3, setSeries3] = useState([60,100]);
-    const totalSeries = series.reduce((acc, item)=> acc + item)
-    const totalSeries2 = series2.reduce((acc, item)=> acc + item)
-    const totalSeries3 = series3.reduce((acc, item)=> acc + item)
+    const { data } = ProjectsApi.useTotalDataCountQuery()
+    const { data: todoData, isLoading } = TodosApi.useGetAllTodosQuery();
+    const [checkedTodos] = TodosApi.useCheckedTodosMutation()
+
+    const projectDataArray = data?.data?.projectData && Object.values(data?.data?.projectData);
+    const tasksDataArray = data?.data?.allTasksData && Object.values(data?.data?.allTasksData);
+    const todosDataArray = data?.data?.todoData && Object.values(data?.data?.todoData);
+
+    const totalSeries = projectDataArray?.reduce((acc, item) => acc + item)
+    const totalSeries2 = tasksDataArray?.reduce((acc, item) => acc + item)
+
+
+    const tableData =
+        todoData?.data?.map(({ _id, UpdatedAt, title, Description, Priority, title2, checked }) => ({
+            key: _id,
+            UpdatedAt,
+            title,
+            Description,
+            Priority,
+            title2,
+            checked
+        })) || [];
+    const titleStyle = { fontWeight: '600', color: '#6b7260', textTransform: 'uppercase' };
+
+
+    const checkedHandlear = async (e) => {
+        await checkedTodos({ id: e })
+    };
+
+    const columns = [
+        {
+            title: <span style={titleStyle}>Todo</span>,
+            dataIndex: "title",
+            render: (text, record) => (
+                <span className="text-gray-400 opacity-90 text-[16px] font-semibold flex">
+                    <Checkbox onClick={() => checkedHandlear(record.key)} checked={record.checked === true} ></Checkbox>
+                    <div className="ml-4">
+                        <h2 className={`text-xl text-gray-600 ${record.checked ? "line-through" : ""} `}>{record.title}</h2>
+                        {moment(record?.title2).format('MMMM DD, YYYY h:mm:ss A')}
+                    </div>
+                </span>
+            ),
+        },
+
+        // {
+        //     title: <span style={titleStyle}>Action</span>,
+        //     dataIndex: "action",
+        //     render: (text, record) => (
+        //         <div className="">
+        //             <button
+        //                 title="Update"
+        //                 onClick={() => handleUpdateData(record.key)}
+        //                 className="text-xl mr-6 text-blue-500"
+        //             >
+        //                 <FaEdit className="text-xl text-blue-500" />
+        //             </button>
+        //             <button title="Delete">
+        //                 <RiDeleteBin5Line className="text-xl mr-6 text-red-500" />
+        //             </button>
+        //         </div>
+        //     ),
+        // },
+    ];
 
 
     const cardsData = [
@@ -31,29 +92,33 @@ const Dashboard = () => {
         { _id: 2, title: "Default", icon: IoBagOutline, textColor: "text-green-500", },
         { _id: 3, title: "On Going", icon: IoBagOutline, textColor: "text-yellow-500", },
         { _id: 4, title: "In Review", icon: IoBagOutline, textColor: "text-red-500", },
+        { _id: 5, title: "Completed", icon: IoBagOutline, textColor: "text-green-700", },
     ];
     const chartJsonDataTitleArray = chartJsonData?.map(item => item.title)
-    
+
+
     const chartJsonData2 = [
-        { _id: 1, title: "Started", icon: FaRegFile , textColor: "text-blue-500", },
-        { _id: 2, title: "Default", icon: FaRegFile , textColor: "text-green-500", },
-        { _id: 3, title: "On Going", icon: FaRegFile , textColor: "text-yellow-500", },
-        { _id: 4, title: "In Review", icon: FaRegFile , textColor: "text-red-500", },
+        { _id: 1, title: "Started", icon: FaRegFile, textColor: "text-blue-500", },
+        { _id: 2, title: "Default", icon: FaRegFile, textColor: "text-green-500", },
+        { _id: 3, title: "On Going", icon: FaRegFile, textColor: "text-yellow-500", },
+        { _id: 4, title: "In Review", icon: FaRegFile, textColor: "text-red-500", },
+        { _id: 5, title: "Completed", icon: FaRegFile, textColor: "text-green-700", },
     ];
+
     const chartJsonDataTitleArray2 = chartJsonData2?.map(item => item.title)
-    
+
     const chartJsonData3 = [
-        { _id: 1, title: "Done", icon: FaRegFile , textColor: "text-blue-500", },
-        { _id: 2, title: "Pending", icon: FaRegFile , textColor: "text-green-500", },
+        { _id: 1, title: "Done", icon: FaRegFile, textColor: "text-blue-500", },
+        { _id: 2, title: "Pending", icon: FaRegFile, textColor: "text-green-500", },
     ];
     const chartJsonDataTitleArray3 = chartJsonData3?.map(item => item.title)
-
 
     const chartTitle = [
         { _id: 1, title: "Project Statistics" },
         { _id: 2, title: "Task Statistics" },
         { _id: 3, title: "Todos Overview" },
     ]
+
 
     return (
         <div>
@@ -79,9 +144,12 @@ const Dashboard = () => {
 
                     <div className="bg-white px-10 rounded-lg">
                         <h2 className="text-lg font-semibold text-gray-500 my-2">Project Statistics</h2>
+
                         <div className="w-[300px]">
-                            <ApexChart series={series} labels={chartJsonDataTitleArray} />
+                            <ApexChart series={projectDataArray} labels={chartJsonDataTitleArray} />
                         </div>
+
+
                         <div className="flex justify-between mt-4">
                             <ul>
                                 {
@@ -93,23 +161,25 @@ const Dashboard = () => {
                                 }
                                 <li className="flex items-center mb-2 font-bold text-gray-500"> <FaBars size={20} className={`size-10 p-2 bg-blue-50 rounded-lg mr-3`} />  total</li>
                             </ul>
+
                             <ul>
                                 {
-                                    series.map(item => (
+                                    projectDataArray?.map(item => (
                                         <li key={item._id} className="mb-5 size-10 p-2 font-semibold text-gray-500 "> {item}</li>
                                     ))
                                 }
                                 <li className="mb-2 size-10 p-2 font-semibold text-gray-500"> {totalSeries}</li>
 
                             </ul>
-                        </div>
-                    </div>
 
+                        </div>
+
+                    </div>
 
                     <div className="bg-white px-10 rounded-lg">
                         <h2 className="text-lg font-semibold text-gray-500 my-2">Task Statistics</h2>
                         <div className="w-[300px]">
-                        <ApexChart series={series2} labels={chartJsonDataTitleArray2} />
+                            <ApexChart series={tasksDataArray} labels={chartJsonDataTitleArray2} />
                         </div>
                         <div className="flex justify-between mt-4">
                             <ul>
@@ -122,43 +192,49 @@ const Dashboard = () => {
                                 }
                                 <li className="flex items-center mb-2 font-bold text-gray-500"> <FaBars size={20} className={`size-10 p-2 bg-blue-50 rounded-lg mr-3`} />  total</li>
                             </ul>
+
                             <ul>
                                 {
-                                    series.map(item => (
+                                    tasksDataArray?.map(item => (
                                         <li key={item._id} className="mb-5 size-10 p-2 font-semibold text-gray-500 "> {item}</li>
                                     ))
                                 }
+
                                 <li className="mb-2 size-10 p-2 font-semibold text-gray-500"> {totalSeries2}</li>
 
                             </ul>
+
                         </div>
                     </div>
 
-                    <div className="bg-white px-10 rounded-lg">
-                        <h2 className="text-lg font-semibold text-gray-500 my-2">Task Statistics</h2>
+                    <div className="bg-white pl-10 rounded-lg h-[60vh] overflow-hidden ">
+                        <h2 className="text-lg font-semibold text-gray-500 my-2">Todos Overview</h2>
                         <div className="w-[300px]">
-                        <ApexChart series={series2} labels={chartJsonDataTitleArray3} />
+                            <ApexChart series={todosDataArray} labels={chartJsonDataTitleArray3} />
                         </div>
-                        <div className="mt-4">
-                           <ul>
-                            <li> <input type="checkbox" className="mb-2 size-5 p-2 font-semibold text-gray-500" /> Item </li>
-                            <li> <input type="checkbox" className="mb-2 size-5 p-2 font-semibold text-gray-500" /> Item </li>
-                            <li> <input type="checkbox" className="mb-2 size-5 p-2 font-semibold text-gray-500" /> Item </li>
-                            <li> <input type="checkbox" className="mb-2 size-5 p-2 font-semibold text-gray-500" /> Item </li>
-                           </ul>
+
+                        <div className="mt-4 h-[60%] overflow-auto">
+                            <div className="overflow-x-auto py-10">
+                                <Table
+                                    loading={isLoading}
+                                    columns={columns}
+                                    dataSource={tableData}
+                                    scroll={{ x: 'max-content' }}
+                                    pagination={false}
+                                />
+                            </div>
                         </div>
+
                     </div>
-
-
 
                 </div>
             </div>
             <div className="py-5" >
-                <Tab/>
+                <Tab />
                 <h2 className="mb-4 mt-6 text-[15px] text-gray-500 font-semibold">© 2024 , Made with ❤️ by <span className="text-blue-500 mr-4">Infinitie Technologies</span> v1.0.10</h2>
 
             </div>
-           
+
 
         </div>
     );

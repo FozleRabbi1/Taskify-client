@@ -4,7 +4,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
 
         getAllProjects: builder.query({
-            providesTags: ["Projects", "favourite-Projects"],
+            providesTags: ["Projects", "favourite-Projects", "todos"],
             query: (query) => {                
                 return {
                     url: "/projects",
@@ -13,7 +13,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
                 };
             },
             pollingInterval: 10000
-        }),        
+        }),     
         getAllFavouriteProjects: builder.query({
             providesTags: ["favourite-Projects"],            
             query: (query) => {                
@@ -23,7 +23,19 @@ export const ProjectsApi = baseApi.injectEndpoints({
                     params : query,
                 };
             },
-        }),       
+        }),    
+        totalDataCount: builder.query({
+            providesTags: ["Projects", "favourite-Projects", "todos"],
+            query: (query) => {                
+                return {
+                    url: "/projects/totalDataCount",
+                    method: "GET",
+                    params : query,
+                };
+            },
+            pollingInterval: 10000
+        }),        
+              
         isFavouriteProject: builder.mutation({
             query: (args) => {
                 return {

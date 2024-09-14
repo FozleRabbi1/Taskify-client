@@ -5,6 +5,7 @@ import { useState } from "react";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import moment from "moment";
 import SearchBar from "../../../shared/SearchBar";
+import { toast } from "react-toastify";
 
 const Todos = () => {
     const { data, isLoading } = TodosApi.useGetAllTodosQuery();
@@ -30,8 +31,11 @@ const Todos = () => {
         setUpdateId(id);
     };
 
-    const checkedHandlear = (e) => {
-        checkedTodos({id : e})
+    const checkedHandlear = async (e) => {
+        const res = await checkedTodos({ id: e })
+        if (res) {
+            toast.success("status update successfully")
+        }
     };
 
     const columns = [
@@ -52,7 +56,7 @@ const Todos = () => {
             title: <span style={titleStyle}>Priority</span>,
             dataIndex: "Priority",
             render: (Priority) => (
-                <span className="text-gray-500 opacity-90 text-[16px] font-semibold flex items-center">
+                <span className={`text-gray-500 opacity-90 text-[16px] font-semibold flex items-center justify-center rounded ${Priority === "high" ? "text-red-600 bg-red-200" : Priority === "medium" ? "text-yellow-600 bg-yellow-200" : "text-green-600 bg-green-200"}`}>
                     {Priority}
                 </span>
             ),

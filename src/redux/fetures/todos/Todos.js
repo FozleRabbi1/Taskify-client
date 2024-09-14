@@ -3,8 +3,9 @@ import { baseApi } from './../../api/baseApi';
 export const TodosApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
 
+
         getAllTodos: builder.query({
-            providesTags: ["todos",],
+            providesTags: ["Projects", "favourite-Projects", "todos"],
             query: () => {                
                 return {
                     url: "/todos",
@@ -15,7 +16,7 @@ export const TodosApi = baseApi.injectEndpoints({
         }),
 
         checkedTodos: builder.mutation({
-            invalidatesTags: ["todos",],
+            invalidatesTags: ["Projects", "favourite-Projects", "todos"],
             query: ({id}) => {
                 return {
                     url: `/todos/${id}`,
@@ -23,6 +24,8 @@ export const TodosApi = baseApi.injectEndpoints({
                 };
             },
         }),
+
+
 
     }),
 });
