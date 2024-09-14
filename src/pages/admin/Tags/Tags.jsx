@@ -1,4 +1,4 @@
-import { Button, Col, Modal, Row, Space, Table } from "antd";
+import { Button, Col, Modal, Row, Table } from "antd";
 import { TagsApi } from "../../../redux/fetures/tags/TagsApi";
 import SearchBar from "../../../shared/SearchBar";
 import { useState } from "react";
@@ -12,13 +12,15 @@ const Tags = () => {
 
     const [params, setParams] = useState(undefined);
     const { data, isLoading } = TagsApi.useGetAllTagsQuery(params)
+    const [updateSingleTags] = TagsApi.useUpdateSingleTagsMutation()
+    const [deleteTags] = TagsApi.useDeleteTagsMutation()
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
     const [ids, setides] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
     const [availablePageSizes, setAvailablePageSizes] = useState([5, 10, 15, 20, 25, 30, 35]);
     const [open, setOpen] = useState(false);
-
+    const [updateId, setUpdateId] = useState("")
 
     const tableData = data?.data?.map(({ _id, id, title, preview }) => ({
         key: _id,
@@ -28,6 +30,44 @@ const Tags = () => {
         preview
     })) || [];
     const titleStyle = { fontWeight: '600', color: '#6b7260', textTransform: 'uppercase' };
+
+    const handleSingleTagDelete = (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `You won't remove `,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteTags({ idArray: id });
+            }
+        });
+    }
+
+    const handleUpdateData = (id) => {
+        setOpen(true)
+        setUpdateId(id)
+    }
+
+    const onSubmit = async (data) => {
+        let updateData = {
+            id: updateId,
+            data: {
+                title: data.title ? data.title : undefined,
+                preview: data.preview ? data.preview : undefined,
+            }
+        };
+
+        const filteredData = Object.fromEntries(
+            Object.entries(updateData.data).filter(([, value]) => value !== undefined && value !== null)
+        );
+        updateData = { ...updateData, data: filteredData };
+        updateSingleTags(updateData);
+        setOpen(false);
+    };
 
     const columns = [
         { title: <span style={titleStyle}>Id</span>, dataIndex: "id", width: 100 },
@@ -46,7 +86,7 @@ const Tags = () => {
             render: (preview, record, rowIndex) => (
                 <span className="text-blue-600 opacity-90 text-[16px] font-semibold flex items-center">
                     {
-                        <span className={` px-2 rounded-md opacity-80 ${rowIndex % 2 === 0 ? "bg-blue-700 text-white" : "bg-green-700 text-white"  }`} > {preview} </span>
+                        <span className={` px-2 rounded-md opacity-80 ${rowIndex % 2 === 0 ? "bg-blue-700 text-white" : "bg-green-700 text-white"}`} > {preview} </span>
                     }
                 </span>
             ),
@@ -54,18 +94,16 @@ const Tags = () => {
         {
             title: <span style={titleStyle}>Action</span>,
             dataIndex: "action",
-            render: () => (
+            render: (text, record) => (
                 <div className="">
 
-                    <button title="Update" onClick={() => setOpen(true)} className="text-xl mr-6 text-blue-500">
+                    <button title="Update" onClick={() => handleUpdateData(record.key)} className="text-xl mr-6 text-blue-500">
                         <FaEdit className="text-xl text-blue-500" />
                     </button>
 
                     <button title="Delete">
-                        <RiDeleteBin5Line className="text-xl mr-6 text-red-500" />
+                        <RiDeleteBin5Line onClick={() => handleSingleTagDelete(record.key)} className="text-xl mr-6 text-red-500" />
                     </button>
-
-
                 </div>
             ),
         }
@@ -74,7 +112,7 @@ const Tags = () => {
     const handleDelete = () => {
         Swal.fire({
             title: 'Are you sure?',
-            text: `You won't remove This User`,
+            text: `You won't remove `,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -82,7 +120,7 @@ const Tags = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                // deleteProject({ idArray: ids });
+                deleteTags({ idArray: ids });
             }
         });
     }
@@ -174,43 +212,32 @@ const Tags = () => {
             <h2 className="pb-10 pt-5 mt-6 text-[15px] text-gray-500 font-semibold">© 2024 , Made with ❤️ by <span className="text-blue-500 mr-4">Infinitie Technologies</span> v1.0.10</h2>
 
             <Modal
-                title="Update Projecsts"
+                title="Update Tags"
                 centered
                 open={open}
-                onOk={() => setOpen(false)}
                 onCancel={() => setOpen(false)}
                 width={1000}
+                footer={null}
             >
 
                 <div>
                     <div>
-                        <h2 className="text-center font-semibold text-4xl mb-2 text-green-500">Update Comming Soon</h2>
                         <Row align="middle">
                             <Col span={24}>
-                                <TSForm className="w-full">
+                                <TSForm onSubmit={onSubmit} className="w-full">
                                     <Row gutter={[16, 16]} className="w-full flex">
                                         <Col span={24} md={{ span: 12 }} lg={{ span: 12 }}>
-                                            <TSInput type="text" name="title" label="Title" placeholder="cool"></TSInput>
+                                            <TSInput type="text" name="title" label="Title" placeholder="Please Inter Title"></TSInput>
                                         </Col>
 
                                         <Col span={24} md={{ span: 12 }} lg={{ span: 12 }}>
-                                            <TSInput type="text" name="budget" label="budget" placeholder="Please Inter Budget"></TSInput>
+                                            <TSInput type="text" name="preview" label="Preview" placeholder="Please Inter preview"></TSInput>
                                         </Col>
-                                        <Col span={24} md={{ span: 12 }} lg={{ span: 12 }}>
-                                            <label className="text-[14px] uppercase"> Select Users </label>
-                                            <Space
-                                                style={{
-                                                    width: '100%',
-                                                    marginTop: "3px",
-                                                    padding: "4px"
-                                                }}
-                                                direction="vertical"
-                                            >
 
-                                            </Space>
-                                        </Col>
                                     </Row>
-                                    <Button htmlType="submit">Update</Button>
+                                    <div className="flex justify-end">
+                                        <Button htmlType="submit">Update</Button>
+                                    </div>
                                 </TSForm>
                             </Col>
                         </Row>

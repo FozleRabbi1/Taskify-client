@@ -13,8 +13,28 @@ export const TagsApi = baseApi.injectEndpoints({
                 };
             },
             pollingInterval: 10000
-        }),      
+        }),
+        deleteTags: builder.mutation({
+            invalidatesTags: ["tags",],
+            query: (arrayOfId) => {                
+                return {
+                    url: "/tags",
+                    method: "DELETE",
+                    body : arrayOfId,
+                };
+            },
+        }),
 
+        updateSingleTags : builder.mutation({
+            query: (args) => {                                          
+                return {
+                    url: `/tags/${args?.id}`,
+                    method: "PATCH",
+                    body : args.data
+                }
+            },
+            invalidatesTags: ["tags"],
+        }),
 
     }),
 });
