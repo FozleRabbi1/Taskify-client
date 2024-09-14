@@ -141,20 +141,26 @@ const ProjectsTab = () => {
     const [tags, setTags] = useState([])
     const [updateId, setUpdateId] = useState("")
     const [openUpdateModal, setOpenUpdateModal] = useState(false);
+
     const onSubmit = async (data) => {
-        const updateData = {
+        let updateData = {
             id: updateId,
             data: {
                 budget: data.budget,
                 priority: data.property,
                 status: data.status,
                 title: data.title,
-                users: users,
-                tags,
+                users: users.length ? users : undefined, 
+                tags: tags.length ? tags : undefined 
             }
-        }
-        updateSingleProjects(updateData);
-        setOpenUpdateModal(false)
+        };
+
+        const filteredData = Object.fromEntries(
+            Object.entries(updateData.data).filter(([, value]) => value !== undefined && value !== null)
+        );
+        updateData = { ...updateData, data: filteredData };
+        updateSingleProjects(updateData); 
+        setOpenUpdateModal(false);
     };
 
     const handleChange = (value) => {
