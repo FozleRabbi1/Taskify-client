@@ -4,20 +4,23 @@ import { Checkbox, Table } from "antd";
 import { useState } from "react";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import moment from "moment";
+import SearchBar from "../../../shared/SearchBar";
 
 const Todos = () => {
     const { data, isLoading } = TodosApi.useGetAllTodosQuery();
+    const [checkedTodos] = TodosApi.useCheckedTodosMutation()
     const [open, setOpen] = useState(false);
     const [updateId, setUpdateId] = useState("");
 
     const tableData =
-        data?.data?.map(({ _id, UpdatedAt, title, Description, Priority, title2 }) => ({
+        data?.data?.map(({ _id, UpdatedAt, title, Description, Priority, title2, checked }) => ({
             key: _id,
             UpdatedAt,
             title,
             Description,
             Priority,
             title2,
+            checked
         })) || [];
 
     const titleStyle = { fontWeight: '600', color: '#6b7260', textTransform: 'uppercase' };
@@ -27,8 +30,8 @@ const Todos = () => {
         setUpdateId(id);
     };
 
-    const onChange = (e) => {
-        console.log(`checked = ${e.target.checked}`);
+    const checkedHandlear = (e) => {
+        checkedTodos({id : e})
     };
 
     const columns = [
@@ -37,9 +40,9 @@ const Todos = () => {
             dataIndex: "title",
             render: (text, record) => (
                 <span className="text-gray-400 opacity-90 text-[16px] font-semibold flex">
-                    <Checkbox onChange={onChange}></Checkbox>
+                    <Checkbox onClick={() => checkedHandlear(record.key)} checked={record.checked === true} ></Checkbox>
                     <div className="ml-4">
-                        <h2 className="text-xl text-gray-600">{record.title}</h2>
+                        <h2 className={`text-xl text-gray-600 ${record.checked ? "line-through" : ""} `}>{record.title}</h2>
                         {moment(record?.title2).format('MMMM DD, YYYY h:mm:ss A')}
                     </div>
                 </span>
@@ -94,7 +97,8 @@ const Todos = () => {
 
     return (
         <div>
-            <h2>This is the todo page</h2>
+
+            <SearchBar />
 
             <div className="overflow-x-auto py-10">
                 <Table
@@ -103,7 +107,7 @@ const Todos = () => {
                     columns={columns}
                     dataSource={tableData}
                     scroll={{ x: 'max-content' }}
-                    pagination={false} 
+                    pagination={false}
                 />
             </div>
         </div>

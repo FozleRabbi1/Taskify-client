@@ -66,7 +66,7 @@ const SearchBar = () => {
                         <span className="bg-green-700 size-3 block rounded-full m-1 absolute -bottom-2 right-0 border border-white"></span>
                     </div>
 
-                    <div className={`absolute ${isOpen ? "block" : "hidden"} bg-white py-3  -ml-[150px] w-[200px] flex flex-col items-center shadow-lg top-14 `}>
+                    <div className={`absolute ${isOpen ? "block" : "hidden"} bg-white py-3  -ml-[150px] w-[200px] flex flex-col items-center shadow-lg top-14 z-40 `}>
                         <div className="flex justify-between border-b pb-5 w-full px-6">
                             {/* <img className="size-10 rounded-full" src={data?.data?.image} alt="" /> */}
 
