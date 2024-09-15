@@ -56,13 +56,13 @@ const TasksCard = () => {
 
                                     </div>
                                 </div>
-                                <h2 className="text-lg  mt-2 opacity-80">{item.status}</h2>
+                                <h2 className="text-lg  mt-2 opacity-80">Status</h2>
                                 <Select
                                     placeholder={item.status}
                                     style={{ width: '100%', textAlign: 'center' }}
                                     options={statusOptions}
                                 />
-                                <h2 className="text-lg  mt-2 opacity-80">{item.priority}</h2>
+                                <h2 className="text-lg  mt-2 opacity-80">Priority</h2>
                                 <Select
                                     placeholder={item.priority}
                                     style={{ width: '100%', textAlign: 'center' }}
@@ -106,13 +106,13 @@ const TasksCard = () => {
 
                                     </div>
                                 </div>
-                                <h2 className="text-lg  mt-2 opacity-80">{item.status}</h2>
+                                <h2 className="text-lg  mt-2 opacity-80">Status</h2>
                                 <Select
                                     placeholder={item.status}
                                     style={{ width: '100%', textAlign: 'center' }}
                                     options={statusOptions}
                                 />
-                                <h2 className="text-lg  mt-2 opacity-80">{item.priority}</h2>
+                                <h2 className="text-lg  mt-2 opacity-80">Priority</h2>
                                 <Select
                                     placeholder={item.priority}
                                     style={{ width: '100%', textAlign: 'center' }}
@@ -158,13 +158,13 @@ const TasksCard = () => {
 
                                     </div>
                                 </div>
-                                <h2 className="text-lg  mt-2 opacity-80">{item.status}</h2>
+                                <h2 className="text-lg  mt-2 opacity-80">Status</h2>
                                 <Select
                                     placeholder={item.status}
                                     style={{ width: '100%', textAlign: 'center' }}
                                     options={statusOptions}
                                 />
-                                <h2 className="text-lg  mt-2 opacity-80">{item.priority}</h2>
+                                <h2 className="text-lg  mt-2 opacity-80">Priority</h2>
                                 <Select
                                     placeholder={item.priority}
                                     style={{ width: '100%', textAlign: 'center' }}
@@ -207,19 +207,19 @@ const TasksCard = () => {
 
                                     </div>
                                 </div>
-                                <h2 className="text-lg  mt-2 opacity-80">{item.status}</h2>
+                                <h2 className="text-lg  mt-2 opacity-80">Status</h2>
                                 <Select
                                     placeholder={item.status}
                                     style={{ width: '100%', textAlign: 'center' }}
                                     options={statusOptions}
                                 />
-                                <h2 className="text-lg  mt-2 opacity-80">{item.priority}</h2>
+                                <h2 className="text-lg  mt-2 opacity-80">Priority</h2>
                                 <Select
                                     placeholder={item.priority}
                                     style={{ width: '100%', textAlign: 'center' }}
                                     options={propertyOptions}
                                 />
-                                 <span className="text-gray-500 opacity-90 text-[15px] font-semibold flex items-center mt-3">
+                                <span className="text-gray-500 opacity-90 text-[15px] font-semibold flex items-center mt-3">
                                     {moment(item.startsAt).format('MMMM DD, YYYY')}
                                 </span>
                                 <span className="text-gray-500 opacity-90 text-[15px] font-semibold flex items-center mt-3">
@@ -259,13 +259,13 @@ const TasksCard = () => {
 
                                     </div>
                                 </div>
-                                <h2 className="text-lg  mt-2 opacity-80">{item.status}</h2>
+                                <h2 className="text-lg  mt-2 opacity-80">Status</h2>
                                 <Select
                                     placeholder={item.status}
                                     style={{ width: '100%', textAlign: 'center' }}
                                     options={statusOptions}
                                 />
-                                <h2 className="text-lg  mt-2 opacity-80">{item.priority}</h2>
+                                <h2 className="text-lg  mt-2 opacity-80">Priority</h2>
                                 <Select
                                     placeholder={item.priority}
                                     style={{ width: '100%', textAlign: 'center' }}
