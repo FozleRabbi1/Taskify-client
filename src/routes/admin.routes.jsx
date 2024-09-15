@@ -3,6 +3,7 @@ import ManageProjects from "../pages/admin/Projects/ManageProjects";
 import Dashboard from "../pages/admin/Dashboard"
 import Tags from "../pages/admin/Tags/tags";
 import Todos from "../pages/admin/Todos/Todos";
+import Tasks from "../pages/admin/Tasks/Tasks";
 
 
 export const adminPaths = [
@@ -31,6 +32,11 @@ export const adminPaths = [
             },
 
         ],
+    },
+    {
+        name: "Tasks",
+        path: "tasks",
+        element: <Tasks />,
     },
     {
         name: "Todos",

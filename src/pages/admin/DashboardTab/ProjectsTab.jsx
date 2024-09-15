@@ -37,9 +37,6 @@ const ProjectsTab = () => {
 
     // const uniqueTags = [...new Set(data?.data?.flatMap(item => item.tags))];
 
-
-
-
     const handleStarClick = async (key, i) => {
         const isFavourite = {
             id: key,
@@ -264,6 +261,7 @@ const ProjectsTab = () => {
             title: <span style={titleStyle}>Users</span>,
             dataIndex: "users",
             render: (users, record) => (
+                
                 <div style={{ display: 'flex', gap: '8px' }} className="flex items-center">
                     {
                         users.length === 0 ? <FaUserLarge className="size-[30px] rounded-full text-gray-300" /> :
@@ -274,6 +272,7 @@ const ProjectsTab = () => {
                                     ))
                                 } </>
                     }
+
                     <Button onClick={() => handleModal(record)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
                         <FaRegEdit className="text-xl text-blue-600" />
                     </Button>

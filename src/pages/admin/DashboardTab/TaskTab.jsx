@@ -15,6 +15,7 @@ import TSSelect from "../../../components/form/TSSelect";
 import { tagsArray } from "../../../constant/constant";
 import moment from "moment";
 import { TiDeleteOutline } from "react-icons/ti";
+import { useLocation } from "react-router-dom";
 
 const TaskTab = () => {
 
@@ -418,10 +419,13 @@ const TaskTab = () => {
     };
 
 
+    const location = useLocation();
+    const pathSegments = location.pathname.split('/');
+    const lastSegment = pathSegments[pathSegments.length - 1];
+
     return (
         <div>
-
-            <h2 className="text-2xl text-gray-500 font-bold">Admin's Tasks</h2>
+            <h2 className={`text-2xl text-gray-500 font-bold ${lastSegment === "tasks" && "hidden"} `}>Admin's Tasks</h2>
 
             <div className="grid grid-cols-3 gap-10">
                 <div className="mt-4">
