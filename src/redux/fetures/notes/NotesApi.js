@@ -26,32 +26,27 @@ export const NotesApi = baseApi.injectEndpoints({
             }
         }),
 
+        deleteNote: builder.mutation({
+            invalidatesTags: ["notes",],
+            query: ({id}) => {                                
+                return {
+                    url: `/notes/${id}`,
+                    method: "DELETE",
+                };
+            },
+        }),
+        
 
-
-
-
-
-        // deleteTags: builder.mutation({
-        //     invalidatesTags: ["tags",],
-        //     query: (arrayOfId) => {                
-        //         return {
-        //             url: "/tags",
-        //             method: "DELETE",
-        //             body : arrayOfId,
-        //         };
-        //     },
-        // }),
-
-        // updateSingleTags : builder.mutation({
-        //     query: (args) => {                                          
-        //         return {
-        //             url: `/tags/${args?.id}`,
-        //             method: "PATCH",
-        //             body : args.data
-        //         }
-        //     },
-        //     invalidatesTags: ["tags"],
-        // }),
+        updateSingleNote : builder.mutation({
+            query: (args) => {                                          
+                return {
+                    url: `/notes/${args?.id}`,
+                    method: "PATCH",
+                    body : args.formData
+                }
+            },
+            invalidatesTags: ["notes"],
+        }),
 
     }),
 });
