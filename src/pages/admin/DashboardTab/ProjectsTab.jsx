@@ -15,6 +15,7 @@ import TSSelect from "../../../components/form/TSSelect";
 import { tagsArray, tagStyles } from "../../../constant/constant";
 import moment from "moment";
 import { UsersApi } from "../../../redux/fetures/Users/usersApi";
+import { useLocation } from "react-router-dom";
 
 const ProjectsTab = () => {
 
@@ -464,11 +465,14 @@ const ProjectsTab = () => {
         setParams(searchField);
     };
 
+    const location = useLocation();
+    const pathSegments = location.pathname.split('/');
+    const lastSegment = pathSegments[pathSegments.length - 1];
 
     return (
         <div>
 
-            <h2 className="text-2xl text-gray-500 font-bold">Admin's Projects</h2>
+            <h2 className={`text-2xl text-gray-500 font-bold ${lastSegment !== "dashboard"  ? "hidden" : ""} `}>Admin's Projects</h2>
 
             <div className="grid grid-cols-3 gap-10">
                 <div className="mt-4">

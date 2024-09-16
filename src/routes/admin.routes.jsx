@@ -4,6 +4,7 @@ import Dashboard from "../pages/admin/Dashboard"
 import Tags from "../pages/admin/Tags/tags";
 import Todos from "../pages/admin/Todos/Todos";
 import Tasks from "../pages/admin/Tasks/Tasks";
+import Notes from "../pages/notes/Notes";
 
 
 export const adminPaths = [
@@ -42,6 +43,11 @@ export const adminPaths = [
         name: "Todos",
         path: "todo",
         element: <Todos />,
+    },
+    {
+        name: "Notes",
+        path: "nots",
+        element: <Notes />,
     },
   
 ]

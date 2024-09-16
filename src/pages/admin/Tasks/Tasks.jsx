@@ -37,7 +37,7 @@ const Tasks = () => {
             <SearchBar />
 
             <div className="flex justify-end mt-10">
-                <button className="bg-blue-600 text-2xl px-2 py-1 text-white rounded-md " onClick={() => handleLayout(layOut)} > {layOut ? <LuLayoutDashboard /> : <GiHamburgerMenu />}   </button>
+                <button className="bg-blue-600 text-2xl px-2 py-1 text-white rounded-md " onClick={() => handleLayout(layOut)} > {layOut === "true" ? <LuLayoutDashboard /> : <GiHamburgerMenu />}   </button>
             </div>
 
             <div className="my-10 bg-white p-5 rounded-xl ">
