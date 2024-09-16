@@ -9,6 +9,7 @@ import JoditEditor from 'jodit-react';
 import 'react-quill/dist/quill.snow.css';
 import { NotesApi } from "../../redux/fetures/notes/NotesApi";
 import { toast } from "react-toastify";
+import FooterHeadline from "../../shared/FooterHeadline";
 
 
 const Notes = () => {
@@ -31,13 +32,17 @@ const Notes = () => {
     const [open, setOpen] = useState(false);
     // const [value, setValue] = useState('');
 
+    const randomRotation = Math.floor(Math.random() * 6);
+    const positiveOrNegative = Math.random() < 0.5 ? -1 : 1;
+    const finalRotation = randomRotation * positiveOrNegative;
 
 
     const onSubmit = async (data) => {
         const formData = {
             title: data.title,
-            content,
-            color
+            contentData: content,
+            color,
+            finalRotation
 
         }
         const res = createNotes(formData);
@@ -64,70 +69,40 @@ const Notes = () => {
 
                         {
                             data?.data?.map(item => {
-                                const randomRotation = Math.floor(Math.random() * 6);
-                                const positiveOrNegative = Math.random() < 0.5 ? -1 : 1;
-                                const finalRotation = randomRotation * positiveOrNegative;
-
                                 return (
-                                    <div
-                                        key={item._id}
-                                        className={`p-3 ${item.color === "Green" ? "bg-green-200" : item.color === "Red" ? "bg-red-200" : "bg-yellow-200"}`}
-                                        style={{ transform: `rotate(${finalRotation}deg)` }}
-                                    >
-                                        <h2 className="text-xl font-semibold text-gray-600">{item.title}</h2>
-                                        <div className="content">
-                                            <div dangerouslySetInnerHTML={{ __html: item.content }} />
+                                    <div key={item._id} className="transform transition-transform duration-300 hover:scale-105">
+                                        <div
+                                            className={`p-5 shadow-lg hover:shadow-2xl transform transition-transform duration-300 ${item.color === "Green" ? "bg-green-200" : item.color === "Red" ? "bg-red-200" : "bg-yellow-200"}`}
+                                            style={{
+                                                transform: `rotate(${item.finalRotation}deg)`
+                                            }}
+                                        >
+                                            <div
+                                                className="hover:scale-110 transform transition-transform duration-300"
+                                                style={{
+                                                    transform: `rotate(${item.finalRotation}deg)`,
+                                                }}
+                                            >
+                                                <h2 className="text-xl font-semibold text-gray-600">{item.title}</h2>
+                                                <div className="content">
+                                                    <div dangerouslySetInnerHTML={{ __html: item?.contentData }} />
+                                                </div>
+                                                {item?.createdAt && (
+                                                    <h2 className="text-lg font-semibold text-black">
+                                                        CreatedAt: <span className="text-blue-600">{item?.createdAt}</span>
+                                                    </h2>
+                                                )}
+                                            </div>
                                         </div>
-                                        {item?.createdAt && (
-                                            <h2 className="text-lg font-semibold text-black">
-                                                CreatedAt: <span className="text-blue-600">{item?.createdAt}</span>
-                                            </h2>
-                                        )}
                                     </div>
                                 );
                             })
                         }
-
-
-                        {/* {
-                            data?.data?.map(item => {
-                                const randomRotation = Math.floor(Math.random() * 5);
-
-                                return (
-                                    <div
-                                        key={item._id}
-                                        className={`p-3 shadow-md ${item.color === "Green" ? "bg-green-200" : item.color === "Red" ? "bg-red-200" : "bg-yellow-200"}`}
-                                        style={{ transform: `rotate(${randomRotation}deg)` }} 
-                                    >
-                                        <h2 className="text-xl font-semibold text-gray-600">{item.title}</h2>
-                                        <div className="content">
-                                            <div dangerouslySetInnerHTML={{ __html: item.content }} />
-                                        </div>
-                                        {item?.createdAt && (
-                                            <h2 className="text-lg font-semibold text-black">
-                                                CreatedAt: <span className="text-blue-600">{item?.createdAt}</span>
-                                            </h2>
-                                        )}
-                                    </div>
-                                );
-                            })
-                        } */}
-
-
-
-                        {/* {
-                            data?.data?.map(item => <div key={item._id} className={`rotate-3 p-3 ${item.color === "Green" ? "bg-green-200" : item.color === "Red" ? "bg-red-200" : "bg-yellow-200"}`}>
-                                <h2 className="text-xl font-semibold text-gray-600">{item.title}</h2>
-                                <div className="content">
-                                    <div dangerouslySetInnerHTML={{ __html: item.content }} />
-                                </div>
-                                {
-                                    item?.createdAt && <h2 className="text-lg font-semibold text-black"> createdAt : <span className="text-blue-600">{item?.createdAt} </span></h2>
-                                }
-
-                            </div>)
-                        } */}
                     </div>
+                </div>
+
+                <div className="pb-10">
+                <FooterHeadline/>
                 </div>
 
 
