@@ -16,7 +16,7 @@ import FooterHeadline from './../../shared/FooterHeadline';
 
 
 const Dashboard = () => {
-    const { data } = ProjectsApi.useTotalDataCountQuery()
+    const { data, isLoading: totalLoading } = ProjectsApi.useTotalDataCountQuery()
     const { data: todoData, isLoading } = TodosApi.useGetAllTodosQuery();
     const [checkedTodos] = TodosApi.useCheckedTodosMutation()
 
@@ -59,25 +59,6 @@ const Dashboard = () => {
                 </span>
             ),
         },
-
-        // {
-        //     title: <span style={titleStyle}>Action</span>,
-        //     dataIndex: "action",
-        //     render: (text, record) => (
-        //         <div className="">
-        //             <button
-        //                 title="Update"
-        //                 onClick={() => handleUpdateData(record.key)}
-        //                 className="text-xl mr-6 text-blue-500"
-        //             >
-        //                 <FaEdit className="text-xl text-blue-500" />
-        //             </button>
-        //             <button title="Delete">
-        //                 <RiDeleteBin5Line className="text-xl mr-6 text-red-500" />
-        //             </button>
-        //         </div>
-        //     ),
-        // },
     ];
 
 
@@ -141,98 +122,106 @@ const Dashboard = () => {
             </div>
 
             <div>
-                <div className="grid grid-cols-3 gap-10" >
 
-                    <div className="bg-white px-10 rounded-lg">
-                        <h2 className="text-lg font-semibold text-gray-500 my-2">Project Statistics</h2>
+                {
+                    totalLoading | isLoading ? <div className="h-[40vh] flex justify-center items-center"> <h2 className="text-xl font-semibold">Loading...</h2> </div>
+                        :
+                        <div className="grid grid-cols-3 gap-10" >
 
-                        <div className="w-[300px]">
-                            <ApexChart series={projectDataArray} labels={chartJsonDataTitleArray} />
-                        </div>
+                            <div className="bg-white px-10 rounded-lg">
+                                <h2 className="text-lg font-semibold text-gray-500 my-2">Project Statistics</h2>
+
+                                <div className="w-[300px]">
+                                    <ApexChart series={projectDataArray} labels={chartJsonDataTitleArray} />
+                                </div>
 
 
-                        <div className="flex justify-between mt-4">
-                            <ul>
-                                {
-                                    chartJsonData.map(item => (
-                                        <li key={item._id} className="flex items-center mb-5 font-bold text-gray-500">
-                                            {item.icon && <item.icon size={20} className={`size-10 p-2 bg-blue-50 rounded-lg mr-3 ${item.textColor}`} />} {item.title}
-                                        </li>
-                                    ))
-                                }
-                                <li className="flex items-center mb-2 font-bold text-gray-500"> <FaBars size={20} className={`size-10 p-2 bg-blue-50 rounded-lg mr-3`} />  total</li>
-                            </ul>
+                                <div className="flex justify-between mt-4">
+                                    <ul>
+                                        {
+                                            chartJsonData.map(item => (
+                                                <li key={item._id} className="flex items-center mb-5 font-bold text-gray-500">
+                                                    {item.icon && <item.icon size={20} className={`size-10 p-2 bg-blue-50 rounded-lg mr-3 ${item.textColor}`} />} {item.title}
+                                                </li>
+                                            ))
+                                        }
+                                        <li className="flex items-center mb-2 font-bold text-gray-500"> <FaBars size={20} className={`size-10 p-2 bg-blue-50 rounded-lg mr-3`} />  total</li>
+                                    </ul>
 
-                            <ul>
-                                {
-                                    projectDataArray?.map(item => (
-                                        <li key={item._id} className="mb-5 size-10 p-2 font-semibold text-gray-500 "> {item}</li>
-                                    ))
-                                }
-                                <li className="mb-2 size-10 p-2 font-semibold text-gray-500"> {totalSeries}</li>
+                                    <ul>
+                                        {
+                                            projectDataArray?.map(item => (
+                                                <li key={item._id} className="mb-5 size-10 p-2 font-semibold text-gray-500 "> {item}</li>
+                                            ))
+                                        }
+                                        <li className="mb-2 size-10 p-2 font-semibold text-gray-500"> {totalSeries}</li>
 
-                            </ul>
+                                    </ul>
 
-                        </div>
+                                </div>
 
-                    </div>
-
-                    <div className="bg-white px-10 rounded-lg">
-                        <h2 className="text-lg font-semibold text-gray-500 my-2">Task Statistics</h2>
-                        <div className="w-[300px]">
-                            <ApexChart series={tasksDataArray} labels={chartJsonDataTitleArray2} />
-                        </div>
-                        <div className="flex justify-between mt-4">
-                            <ul>
-                                {
-                                    chartJsonData2.map(item => (
-                                        <li key={item._id} className="flex items-center mb-5 font-bold text-gray-500">
-                                            {item.icon && <item.icon size={20} className={`size-10 p-2 bg-blue-50 rounded-lg mr-3 ${item.textColor}`} />} {item.title}
-                                        </li>
-                                    ))
-                                }
-                                <li className="flex items-center mb-2 font-bold text-gray-500"> <FaBars size={20} className={`size-10 p-2 bg-blue-50 rounded-lg mr-3`} />  total</li>
-                            </ul>
-
-                            <ul>
-                                {
-                                    tasksDataArray?.map(item => (
-                                        <li key={item._id} className="mb-5 size-10 p-2 font-semibold text-gray-500 "> {item}</li>
-                                    ))
-                                }
-
-                                <li className="mb-2 size-10 p-2 font-semibold text-gray-500"> {totalSeries2}</li>
-
-                            </ul>
-
-                        </div>
-                    </div>
-
-                    <div className="bg-white pl-10 rounded-lg h-[60vh] overflow-hidden ">
-                        <h2 className="text-lg font-semibold text-gray-500 my-2">Todos Overview</h2>
-                        <div className="w-[300px]">
-                            <ApexChart series={todosDataArray} labels={chartJsonDataTitleArray3} />
-                        </div>
-
-                        <div className="mt-4 h-[60%] overflow-auto">
-                            <div className="overflow-x-auto py-10">
-                                <Table
-                                    loading={isLoading}
-                                    columns={columns}
-                                    dataSource={tableData}
-                                    scroll={{ x: 'max-content' }}
-                                    pagination={false}
-                                />
                             </div>
+
+                            <div className="bg-white px-10 rounded-lg">
+                                <h2 className="text-lg font-semibold text-gray-500 my-2">Task Statistics</h2>
+                                <div className="w-[300px]">
+                                    <ApexChart series={tasksDataArray} labels={chartJsonDataTitleArray2} />
+                                </div>
+                                <div className="flex justify-between mt-4">
+                                    <ul>
+                                        {
+                                            chartJsonData2.map(item => (
+                                                <li key={item._id} className="flex items-center mb-5 font-bold text-gray-500">
+                                                    {item.icon && <item.icon size={20} className={`size-10 p-2 bg-blue-50 rounded-lg mr-3 ${item.textColor}`} />} {item.title}
+                                                </li>
+                                            ))
+                                        }
+                                        <li className="flex items-center mb-2 font-bold text-gray-500"> <FaBars size={20} className={`size-10 p-2 bg-blue-50 rounded-lg mr-3`} />  total</li>
+                                    </ul>
+
+                                    <ul>
+                                        {
+                                            tasksDataArray?.map(item => (
+                                                <li key={item._id} className="mb-5 size-10 p-2 font-semibold text-gray-500 "> {item}</li>
+                                            ))
+                                        }
+
+                                        <li className="mb-2 size-10 p-2 font-semibold text-gray-500"> {totalSeries2}</li>
+
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                            <div className="bg-white pl-10 rounded-lg h-[60vh] overflow-hidden ">
+                                <h2 className="text-lg font-semibold text-gray-500 my-2">Todos Overview</h2>
+                                <div className="w-[300px]">
+                                    <ApexChart series={todosDataArray} labels={chartJsonDataTitleArray3} />
+                                </div>
+
+                                <div className="mt-4 h-[60%] overflow-auto">
+                                    <div className="overflow-x-auto py-10">
+                                        <Table
+                                            loading={isLoading}
+                                            columns={columns}
+                                            dataSource={tableData}
+                                            scroll={{ x: 'max-content' }}
+                                            pagination={false}
+                                        />
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
 
-                    </div>
+                }
 
-                </div>
             </div>
+
             <div className="py-5" >
                 <Tab />
-                <FooterHeadline/>
+                <FooterHeadline />
 
             </div>
 

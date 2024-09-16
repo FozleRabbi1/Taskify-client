@@ -21,13 +21,10 @@ const Notes = () => {
     const [updateSingleNote] = NotesApi.useUpdateSingleNoteMutation()
     const { data } = NotesApi.useGetAllNotesQuery()
 
-
-
     const propertyOptions = ["Red", "Green", "Yellow"].map((item) => ({
         value: item,
         label: item,
     }));
-
 
     const editor = useRef(null)
     const [content, setContent] = useState("")
