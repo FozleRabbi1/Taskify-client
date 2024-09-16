@@ -29,6 +29,7 @@ const SearchBar = () => {
     const dispatch = useAppDispatch();
     const handleLOgout = () => {
         dispatch(logOut());
+        localStorage.removeItem("layout")
         navigate("/login")
 
     };

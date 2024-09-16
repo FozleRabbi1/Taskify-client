@@ -13,10 +13,12 @@ const Login = () => {
     const dispatch = useAppDispatch();
     const [login] = authApi.useLoginMutation();
 
+
+
     const onSubmit = async (data) => {
-        console.log(data);
         try {
-            const res = await login(data).unwrap();          
+            // const res = await login(data).unwrap();          
+            const res = await login({email : "fozlerabbishuvo@gmail.com", password : "admin123"}).unwrap();          
             const token = res.data.accessToken;
             const user = verifyToken(token);
             dispatch(setUser({ user, token }));
@@ -30,8 +32,8 @@ const Login = () => {
     return (
         <Row justify="center" align="middle" style={{ height: "100vh" }}>
             <TSForm onSubmit={onSubmit}>
-                <TSInput type="text" name="email" label="Email"></TSInput>
-                <TSInput type="text" name="password" label="Password"></TSInput>
+                <TSInput type="text" name="email" label="Email" placeholder="fozlerabbishuvo@gmail.com"></TSInput>
+                <TSInput type="text" name="password" label="Password" placeholder="admin123"></TSInput>
                 <Button htmlType="submit">Login</Button>
             </TSForm>
         </Row>

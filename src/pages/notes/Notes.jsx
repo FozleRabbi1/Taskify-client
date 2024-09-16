@@ -44,6 +44,11 @@ const Notes = () => {
             color,
             finalRotation
         }
+        if (formData.contentData === "") {
+            toast.warning("text content is required")
+            return
+        }
+
         const res = createNotes(formData);
         if (res) {
             toast.success("Note Create Successfully")
@@ -84,7 +89,7 @@ const Notes = () => {
         );
         const updateData = {
             id: updateId,
-            formData: filteredFormData,  
+            formData: filteredFormData,
         };
         const res = updateSingleNote(updateData);
         if (res) {
