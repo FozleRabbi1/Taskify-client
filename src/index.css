@@ -8,13 +8,48 @@
 }
 
 .status-default .ant-select-selector {
-    color: #dc2626; /* Tailwind red-300 */
+    color: #dc2626;
+    /* Tailwind red-300 */
 }
 
 .status-ongoing .ant-select-selector {
-    color: #22c55e; /* Tailwind green-500 */
+    color: #22c55e;
+    /* Tailwind green-500 */
 }
 
 .status-in-review .ant-select-selector {
-    color: #facc15; /* Tailwind yellow-400 */
+    color: #facc15;
+    /* Tailwind yellow-400 */
+}
+
+
+
+/* ===================================text editor css ======================== */
+.content h1 {
+    @apply text-4xl font-bold text-gray-600;
+}
+
+.content h2 {
+    @apply text-3xl font-bold text-gray-600;
+}
+
+.content h3 {
+    @apply text-2xl font-bold text-gray-600;
+}
+
+.content h4 {
+    @apply text-xl font-bold text-gray-600;
+}
+
+.content h5 {
+    @apply text-lg font-bold text-gray-600;
+}
+
+
+.content p {
+    @apply text-base;
+}
+
+.content ul {
+    @apply list-disc pl-5;
 }
