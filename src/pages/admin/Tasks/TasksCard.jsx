@@ -3,7 +3,13 @@ import { ProjectsApi } from "../../../redux/fetures/prjects/ProjectsApi";
 import moment from "moment";
 
 const TasksCard = () => {
-    const { data } = ProjectsApi.useGetAllProjectsQuery(undefined);
+    const { data, isLoading } = ProjectsApi.useGetAllProjectsQuery(undefined);
+
+    if (isLoading) {
+        return <div className="h-[60vh] flex justify-center items-center">
+            <p className="text-3xl font-bold text-center " >Loading...</p>
+        </div>
+    }
 
     const defaultData = data?.data?.filter(item => item.status === "Default")
     const Completed = data?.data?.filter(item => item.status === "Completed")

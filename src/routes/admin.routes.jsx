@@ -43,20 +43,5 @@ export const adminPaths = [
         path: "todo",
         element: <Todos />,
     },
-    {
-        name: "Projects 2",
-        children: [
-            {
-                name: "Manage Projects 2",
-                path: "manage-projects",
-                element: <ManageProjects />,
-            },
-            {
-                name: "Favourite Projects 2",
-                path: "favourite-projects",
-                element: <FavouriteProjects />,
-            },
-
-        ],
-    },
+  
 ]

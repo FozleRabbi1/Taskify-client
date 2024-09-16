@@ -156,7 +156,10 @@ const ProjectsTab = () => {
             Object.entries(updateData.data).filter(([, value]) => value !== undefined && value !== null)
         );
         updateData = { ...updateData, data: filteredData };
-        updateSingleProjects(updateData); 
+        const res =  updateSingleProjects(updateData); 
+        if(res){
+            toast.success("Succreefully update your project")
+        }
         setOpenUpdateModal(false);
     };
 
