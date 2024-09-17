@@ -11,51 +11,55 @@ import { HiMiniBars3BottomLeft } from "react-icons/hi2";
 import { BiNotepad } from "react-icons/bi";
 
 
-export const adminPaths = [
+export const adminPaths = (todosData) => [
     {
-        logo:<FaHome className="text-red-500" />,
-        name: "Dashboard",
-        path: "dashboard",
-        element: <Dashboard />,
+      logo: <FaHome className="text-red-500" />,
+      name: "Dashboard",
+      path: "dashboard",
+      element: <Dashboard />,
     },
     {
-        logo : <BsBagHeartFill className="text-green-500" />,
-        name: "Projects",
-        children: [
-            {
-                name: "Manage Projects",
-                path: "manage-projects",
-                element: <ManageProjects />,
-            },
-            {
-                name: "Favourite Projects",
-                path: "favourite-projects",
-                element: <FavouriteProjects />,
-            },
-            {
-                name: "Tags",
-                path: "tags",
-                element: <Tags />,
-            },
-        ],
+      logo: <BsBagHeartFill className="text-green-500" />,
+      name: "Projects",
+      children: [
+        {
+          name: "Manage Projects",
+          path: "manage-projects",
+          element: <ManageProjects />,
+        },
+        {
+          name: "Favourite Projects",
+          path: "favourite-projects",
+          element: <FavouriteProjects />,
+        },
+        {
+          name: "Tags",
+          path: "tags",
+          element: <Tags />,
+        },
+      ],
     },
     {
-        logo : <FaFileUpload className="text-blue-500"  />,
-        name: "Tasks",
-        path: "tasks",
-        element: <Tasks />,
+      logo: <FaFileUpload className="text-blue-500" />,
+      name: "Tasks",
+      path: "tasks",
+      element: <Tasks />,
     },
     {
-        logo : <HiMiniBars3BottomLeft className="text-gray-600"  />,
-        name: "Todos",
-        path: "todo",
-        element: <Todos />,
+      logo: <HiMiniBars3BottomLeft className="text-gray-600" />,
+      notification: (
+        <span className="text-md bg-red-600 text-white font-bold rounded-lg flex justify-center items-center size-5">
+          {todosData || 0}
+        </span>
+      ),
+      name: "Todos",
+      path: "todo",
+      element: <Todos />,
     },
     {
-        logo : <BiNotepad className="text-blue-700"  />,
-        name: "Notes",
-        path: "nots",
-        element: <Notes />,
+      logo: <BiNotepad className="text-blue-700" />,
+      name: "Notes",
+      path: "nots",
+      element: <Notes />,
     },
-  
-]
+  ];

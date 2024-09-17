@@ -9,6 +9,7 @@ export const sidebarItemGenerator = (items, role) => {
           <NavLink to={`/${role}/${item.path}`} className="flex items-center gap-2">
             {item.logo && <span className="text-xl">{item.logo}</span>} 
             {item.name}
+            {item.notification && <span className="">{item.notification}</span>} 
           </NavLink>
         ),
       });

@@ -3,6 +3,7 @@ import { sidebarItemGenerator } from "../../utils/sidebarItemGenerator";
 import { adminPaths } from "../../routes/admin.routes";
 import { AiOutlineRight } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
+import { TodosApi } from "../../redux/fetures/todos/todos";
 
 const { Sider } = Layout;
 
@@ -11,7 +12,10 @@ const userRole = {
 };
 
 const SideBar = () => {
-    const sideBarItems = sidebarItemGenerator(adminPaths, userRole.ADMIN);
+    const { data: todosData } = TodosApi.useGetAllTodosQuery();
+    
+
+    const sideBarItems = sidebarItemGenerator(adminPaths(todosData?.meta), userRole.ADMIN);
 
     const text = (
         <div className="flex flex-col gap-2">

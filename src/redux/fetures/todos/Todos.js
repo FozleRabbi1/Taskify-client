@@ -12,6 +12,13 @@ export const TodosApi = baseApi.injectEndpoints({
                     method: "GET",
                 };
             },
+
+            transformResponse: (response) => {
+                return {
+                  data: response.data,
+                  meta: response.meta,
+                };
+              },
             pollingInterval: 10000
         }),
 

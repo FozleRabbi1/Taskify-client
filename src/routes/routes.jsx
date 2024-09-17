@@ -30,7 +30,7 @@ const routes = createBrowserRouter([
         element: (
             <App></App>
         ),
-        children: routeGenerator(adminPaths),
+        children: routeGenerator(adminPaths("")),
     },
     {
         path : "/login",
