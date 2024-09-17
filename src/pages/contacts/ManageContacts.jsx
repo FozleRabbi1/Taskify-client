@@ -19,21 +19,12 @@ const ManageContacts = () => {
 
 
     const onSubmit = async (data) => {
-
         console.log(data);
         console.log(user);
         console.log(project);
         console.log(contract);
         console.log(startAt);
         console.log(endsAt);
-
-
-
-        // const res = createContact(data);
-
-        // if (res) {
-        //     toast.success("Note Create Successfully")
-        // }
     };
 
     const onChangeStartsAt = (date, dateString) => {
