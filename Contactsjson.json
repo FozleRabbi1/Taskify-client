@@ -1,0 +1,24 @@
+[
+    {
+        "title" : "VBVB",
+        "client" : "md aynal haque",
+        "project" : "Project Planning for AI and ML",
+        "type" : "Website",
+        "startsAt" : "September 09, 2024",
+        "endsAt" : "September 14, 2024",
+        "value" : 10.00,
+        "status" : "Partially Signed",
+        "createdBy" : "Admin Infinitie"
+    },
+    {
+        "title" : "Ryder Rate Limiting Contract",
+        "client" : "Ryder Share",
+        "project" : "Test project",
+        "type" : "BugFix Temp Contract",
+        "startsAt" : "September 09, 2024",
+        "endsAt" : "September 14, 2024",
+        "value" : 10.00,
+        "status" : "Signed",
+        "createdBy" : "Yomoadmin admin"
+    }
+]

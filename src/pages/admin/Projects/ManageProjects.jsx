@@ -93,8 +93,6 @@ const ManageProjects = () => {
             </div>
 
 
-
-
             {/* ===================== Added Projects Modal =============================*/}
 
             <Modal
