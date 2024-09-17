@@ -3,7 +3,7 @@ import { FaArrowRight, FaBars, FaRegFile } from "react-icons/fa";
 import SearchBar from "../../shared/SearchBar";
 import { IoBagCheck, IoBagOutline } from "react-icons/io5";
 import { BsFileCheckFill } from "react-icons/bs";
-import { BiSolidUserDetail } from "react-icons/bi";
+import { BiNotepad, BiSolidUserDetail } from "react-icons/bi";
 import ApexChart from "./ApexChart/ApexChart";
 import { useState } from "react";
 import Tab from "./DashboardTab/Tab";
@@ -70,21 +70,21 @@ const Dashboard = () => {
     ]
 
     const chartJsonData = [
-        { _id: 1, title: "Started", icon: IoBagOutline, textColor: "text-blue-500", },
-        { _id: 2, title: "Default", icon: IoBagOutline, textColor: "text-green-500", },
-        { _id: 3, title: "On Going", icon: IoBagOutline, textColor: "text-yellow-500", },
+        { _id: 1, title: "On Going", icon: IoBagOutline, textColor: "text-blue-500", },
+        { _id: 2, title: "Completed", icon: IoBagOutline, textColor: "text-green-500", },
+        { _id: 3, title: "Started", icon: IoBagOutline, textColor: "text-yellow-500", },
         { _id: 4, title: "In Review", icon: IoBagOutline, textColor: "text-red-500", },
-        { _id: 5, title: "Completed", icon: IoBagOutline, textColor: "text-green-700", },
+        { _id: 5, title: "Default", icon: IoBagOutline, textColor: "text-green-700", },
     ];
     const chartJsonDataTitleArray = chartJsonData?.map(item => item.title)
 
 
     const chartJsonData2 = [
-        { _id: 1, title: "Started", icon: FaRegFile, textColor: "text-blue-500", },
-        { _id: 2, title: "Default", icon: FaRegFile, textColor: "text-green-500", },
-        { _id: 3, title: "On Going", icon: FaRegFile, textColor: "text-yellow-500", },
-        { _id: 4, title: "In Review", icon: FaRegFile, textColor: "text-red-500", },
-        { _id: 5, title: "Completed", icon: FaRegFile, textColor: "text-green-700", },
+        { _id: 1, title: "On Going", icon: BiNotepad, textColor: "text-blue-500", },
+        { _id: 2, title: "Completed", icon: BiNotepad, textColor: "text-green-500", },
+        { _id: 3, title: "Started", icon: BiNotepad, textColor: "text-yellow-500", },
+        { _id: 4, title: "In Review", icon: BiNotepad, textColor: "text-red-500", },
+        { _id: 5, title: "Default", icon: BiNotepad, textColor: "text-green-700", },
     ];
 
     const chartJsonDataTitleArray2 = chartJsonData2?.map(item => item.title)
@@ -94,12 +94,7 @@ const Dashboard = () => {
         { _id: 2, title: "Pending", icon: FaRegFile, textColor: "text-green-500", },
     ];
     const chartJsonDataTitleArray3 = chartJsonData3?.map(item => item.title)
-
-    const chartTitle = [
-        { _id: 1, title: "Project Statistics" },
-        { _id: 2, title: "Task Statistics" },
-        { _id: 3, title: "Todos Overview" },
-    ]
+  
 
 
     return (

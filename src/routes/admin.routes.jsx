@@ -48,7 +48,7 @@ export const adminPaths = (todosData) => [
     {
       logo: <HiMiniBars3BottomLeft className="text-gray-600" />,
       notification: (
-        <span className="text-md bg-red-600 text-white font-bold rounded-lg flex justify-center items-center size-5">
+        <span className={`text-md ${todosData !== 0 ? "bg-red-600" : "bg-green-600" } text-white font-bold rounded flex justify-center items-center size-5`}>
           {todosData || 0}
         </span>
       ),

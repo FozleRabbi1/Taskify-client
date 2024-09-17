@@ -9,6 +9,7 @@ import { propertyOptions, statusOptions, tagsOptions } from "../../../utils/opti
 import { UsersApi } from "../../../redux/fetures/Users/usersApi";
 import { ProjectsApi } from "../../../redux/fetures/prjects/ProjectsApi";
 import { toast } from "react-toastify";
+import { FaPlus } from "react-icons/fa";
 
 
 const ManageProjects = () => {
@@ -21,9 +22,7 @@ const ManageProjects = () => {
     }));
 
 
-
     //========================================================== add project data  
-
     const [users, setUser] = useState([]);
     const [clients, setClients] = useState([]);
     const [tags, setTags] = useState([]);
@@ -61,9 +60,6 @@ const ManageProjects = () => {
         setOpenUpdateModal(false);
     };
 
-
-
-
     const handleChange = (value) => {
         setUser(value);
     };
@@ -83,12 +79,13 @@ const ManageProjects = () => {
 
 
 
+
     return (
         <div className="">
             <SearchBar />
 
             <div className="flex justify-end mt-10">
-                <button onClick={() => handleModal()} className="bg-green-600 px-4 py-2 rounded-md text-md text-white" >Add</button>
+                <button onClick={() => handleModal()} className="bg-green-600 px-4 py-2 rounded-md text-md text-white" > <FaPlus /> </button>
             </div>
 
             <div className="mt-10 bg-white p-5 rounded-md ">
