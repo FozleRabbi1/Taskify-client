@@ -13,7 +13,20 @@ export const ProjectsApi = baseApi.injectEndpoints({
                 };
             },
             pollingInterval: 10000
-        }),     
+        }),    
+
+        addProject: builder.mutation({
+            invalidatesTags: ["Projects"],
+            query: (data) => {                
+                return {
+                    url: "/projects",
+                    method: "POST",
+                    body : data.data,
+                };
+            },
+        }),    
+
+
         getAllFavouriteProjects: builder.query({
             providesTags: ["favourite-Projects"],            
             query: (query) => {                
@@ -23,7 +36,8 @@ export const ProjectsApi = baseApi.injectEndpoints({
                     params : query,
                 };
             },
-        }),    
+        }),  
+
         totalDataCount: builder.query({
             providesTags: ["Projects", "favourite-Projects", "todos"],
             query: (query) => {                

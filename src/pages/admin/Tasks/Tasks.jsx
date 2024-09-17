@@ -16,9 +16,8 @@ const Tasks = () => {
         } else {
           setLayout(storedLayout);
         }
-      }, [layOut]);
+      }, [layOut]);    
       
-
     const handleLayout = (v) => {
         if (v === "true") {
             setLayout("false")

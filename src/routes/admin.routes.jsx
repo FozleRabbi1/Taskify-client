@@ -31,7 +31,6 @@ export const adminPaths = [
                 path: "tags",
                 element: <Tags />,
             },
-
         ],
     },
     {

@@ -12,10 +12,11 @@ import { CiCircleInfo } from "react-icons/ci";
 import TSForm from "../../../components/form/TSForm";
 import TSInput from "../../../components/form/TSInput";
 import TSSelect from "../../../components/form/TSSelect";
-import { tagsArray, tagStyles } from "../../../constant/constant";
+import { tagStyles } from "../../../constant/constant";
 import moment from "moment";
 import { UsersApi } from "../../../redux/fetures/Users/usersApi";
 import { useLocation } from "react-router-dom";
+import { propertyOptions, statusOptions, tagsOptions } from "../../../utils/optionsUtils";
 
 const ProjectsTab = () => {
 
@@ -56,21 +57,6 @@ const ProjectsTab = () => {
         label: `${item?.name?.firstName} ${item?.name?.lastName}`,
     }));
 
-
-    const statusOptions = ["On Going", "Started", "Default", "In Review", "Completed"].map((item) => ({
-        value: item,
-        label: item,
-    }));
-
-    const propertyOptions = ["Default", "High", "Medium", "Low"].map((item) => ({
-        value: item,
-        label: item,
-    }));
-
-    const tagsOptions = tagsArray.map((item) => ({
-        value: item,
-        label: item,
-    }));
 
     const tableData = data?.data?.map(({ _id, id, title, users, clients, status, priority, budget, tags, endsAt, startsAt, isFavourite }) => ({
         key: _id,
@@ -236,10 +222,11 @@ const ProjectsTab = () => {
     // ============================================================= Duplicate Data, Function 
 
 
+
+
     const columns = [
 
         isInclude.includes("Id") && { title: <span style={titleStyle}>Id</span>, dataIndex: "id", width: 100 },
-
         isInclude.includes("Title") && {
             title: <span style={titleStyle}>Title</span>,
             dataIndex: "title",
@@ -419,6 +406,11 @@ const ProjectsTab = () => {
         }
 
     ].filter(Boolean);
+
+
+    
+
+
 
     const handleDelete = () => {
         Swal.fire({
