@@ -19,7 +19,8 @@ const SearchBar = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/v1/auth/${currentUser?.email}`)
+        fetch(`https://taskify-server-sable.vercel.app/api/v1/auth/${currentUser?.email}`)
+        // fetch(`http://localhost:5000/api/v1/auth/${currentUser?.email}`)
             .then(res => res.json())
             .then(data => setData(data))
     }, [currentUser?.email])

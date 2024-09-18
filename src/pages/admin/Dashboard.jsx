@@ -18,7 +18,7 @@ import FooterHeadline from './../../shared/FooterHeadline';
 const Dashboard = () => {
     const { data, isLoading: totalLoading } = ProjectsApi.useTotalDataCountQuery()
     const { data: todoData, isLoading } = TodosApi.useGetAllTodosQuery();
-    const [checkedTodos] = TodosApi.useCheckedTodosMutation()
+    const [checkedTodos, { isLoading: checkedLoading }] = TodosApi.useCheckedTodosMutation()
 
     const projectDataArray = data?.data?.projectData && Object.values(data?.data?.projectData);
     const tasksDataArray = data?.data?.allTasksData && Object.values(data?.data?.allTasksData);
@@ -94,7 +94,7 @@ const Dashboard = () => {
         { _id: 2, title: "Pending", icon: FaRegFile, textColor: "text-green-500", },
     ];
     const chartJsonDataTitleArray3 = chartJsonData3?.map(item => item.title)
-  
+
 
 
     return (
@@ -197,7 +197,7 @@ const Dashboard = () => {
                                 <div className="mt-4 h-[60%] overflow-auto">
                                     <div className="overflow-x-auto py-10">
                                         <Table
-                                            loading={isLoading}
+                                            loading={isLoading || checkedLoading}
                                             columns={columns}
                                             dataSource={tableData}
                                             scroll={{ x: 'max-content' }}

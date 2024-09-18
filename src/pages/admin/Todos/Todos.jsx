@@ -9,11 +9,11 @@ import { toast } from "react-toastify";
 
 const Todos = () => {
     const { data, isLoading } = TodosApi.useGetAllTodosQuery();
-    const [checkedTodos] = TodosApi.useCheckedTodosMutation()
+    const [checkedTodos, { isLoading: checkedLoading }] = TodosApi.useCheckedTodosMutation()
     const [open, setOpen] = useState(false);
     const [updateId, setUpdateId] = useState("");
 
-    
+
 
     const tableData =
         data?.data?.map(({ _id, UpdatedAt, title, Description, Priority, title2, checked }) => ({
@@ -46,7 +46,9 @@ const Todos = () => {
             dataIndex: "title",
             render: (text, record) => (
                 <span className="text-gray-400 opacity-90 text-[16px] font-semibold flex">
+
                     <Checkbox onClick={() => checkedHandlear(record.key)} checked={record.checked === true} ></Checkbox>
+
                     <div className="ml-4">
                         <h2 className={`text-xl text-gray-600 ${record.checked ? "line-through" : ""} `}>{record.title}</h2>
                         {moment(record?.title2).format('MMMM DD, YYYY h:mm:ss A')}
@@ -109,7 +111,7 @@ const Todos = () => {
             <div className="overflow-x-auto py-10">
                 <Table
                     bordered
-                    loading={isLoading}
+                    loading={isLoading || checkedLoading}
                     columns={columns}
                     dataSource={tableData}
                     scroll={{ x: 'max-content' }}
