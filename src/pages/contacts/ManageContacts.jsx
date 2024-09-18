@@ -1,4 +1,4 @@
-import { FaEdit, FaPlus } from "react-icons/fa";
+import { FaEdit, FaFile, FaPlus } from "react-icons/fa";
 import { ContactsApi } from "../../redux/fetures/contacts/ContactsApi";
 import SearchBar from "../../shared/SearchBar";
 import { useState } from "react";
@@ -9,13 +9,14 @@ import { clientOptions, contentStatusOptions, contentTypeOptions, projectsOption
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../redux/fetures/auth/authSlice";
-import { RiArrowDownSLine, RiDeleteBin5Line, RiFoldersLine } from "react-icons/ri";
+import { RiArrowDownSLine, RiDeleteBin5Line, RiDeleteBin6Line, RiFoldersLine } from "react-icons/ri";
 import moment from "moment";
 
 const ManageContacts = () => {
     const currentUser = useSelector(selectCurrentUser);
     const [createContact] = ContactsApi.useCreateContactMutation();
-    const { data, isLoading } = ContactsApi.useGetAllContactsQuery();
+    const [params, setParams] = useState(undefined);
+    const { data, isLoading } = ContactsApi.useGetAllContactsQuery(params);
     const [isHideTableColom, setIsHideTableColom] = useState(false);
     const [pageSize, setPageSize] = useState(10);
     const [currentPage, setCurrentPage] = useState(1);
@@ -83,7 +84,17 @@ const ManageContacts = () => {
 
     const columns = [
 
-        isInclude.includes("Id") && { title: <span style={titleStyle}>Id</span>, dataIndex: "id", width: 100 },
+        isInclude.includes("Id") && {
+            title: <span style={titleStyle}>Id</span>, dataIndex: "id",
+            render: (id) => (
+                <div className="">
+                    <span className="text-blue-500 opacity-90 text-[16px] font-semibold flex items-center">
+                        CTR-{id}
+                    </span>
+                </div>
+            ),
+            width: 100
+        },
         isInclude.includes("Title") && {
             title: <span style={titleStyle}>Title</span>,
             dataIndex: "title",
@@ -170,6 +181,7 @@ const ManageContacts = () => {
     ].filter(Boolean);
 
 
+    // =========================================================================Table function ================================================
     const onSelectChange = (newSelectedRowKeys) => {
         setSelectedRowKeys(newSelectedRowKeys);
         const selectedIds = newSelectedRowKeys.map(key => {
@@ -178,12 +190,10 @@ const ManageContacts = () => {
         }).filter(_id => _id !== null);
         setides(selectedIds);
     };
-
     const rowSelection = {
         selectedRowKeys,
         onChange: onSelectChange,
     };
-
     const handlePageChange = (page, pageSize) => {
         setCurrentPage(page);
         setPageSize(pageSize);
@@ -195,9 +205,15 @@ const ManageContacts = () => {
             setAvailablePageSizes([...availablePageSizes, newPageSize]);
         }
     };
+    // =========================================================================Table function ================================================
 
 
-
+    const filterByOptions = (fieldName, v) => {
+        const status = {
+            [fieldName]: v
+        }
+        setParams(status)
+    }
 
 
 
@@ -209,60 +225,141 @@ const ManageContacts = () => {
                 <button onClick={() => setOpen(true)} className="bg-blue-600  px-4 py-2 text-white rounded-md "  >  <FaPlus />   </button>
             </div>
 
-            <div className="w-full  flex justify-end my-10 ">
-                <div className="relative">
+            <div>
+                <div className="grid grid-cols-3 gap-10">
 
-                    <div onClick={() => { setIsHideTableColom(!isHideTableColom) }} className="bg-gray-500 p-2 ml-2 rounded cursor-pointer">
-                        <RiArrowDownSLine className="text-white text-xl" />
+                    <div className="mt-4">
+                        <Select
+                            placeholder="Select Projects"
+                            style={{ width: '100%' }}
+                            options={projectsOptions}
+                            onChange={(value) => filterByOptions("project", value)}
+                        />
                     </div>
 
-                    <div className={`absolute top-12 right-0 bg-white shadow-lg z-50 w-[150px] px-4 py-2 ${isHideTableColom ? "block" : "hidden"} `}>
+                    <div className="mt-4">
+                        <Select
+                            placeholder="Select Type"
+                            style={{ width: '100%' }}
+                            options={contentTypeOptions}
+                            onChange={(value) => filterByOptions("type", value)}
+                        />
+                    </div>
 
-                        <Checkbox.Group
+                    <div className="mt-4">
+                        <Select
+                            placeholder="Select Status"
+                            style={{ width: '100%' }}
+                            options={contentStatusOptions}
+                            onChange={(value) => filterByOptions("status", value)}
+                        />
+                    </div>
+
+                    <div className="mt-4">
+                        <DatePicker.RangePicker
+                            status="error"
                             style={{
                                 width: '100%',
+                                border: "1px solid gray",
+                                color: "gray"
                             }}
-                            onChange={onChange}
-                            defaultValue={['Id', 'Title', "Client", "status", "project", "budget", "type", "startAt", "endsAt", "createdBy", "action"]}
-                        >
-                            <Row>
-                                <Col span={24} className="mb-2" >
-                                    <Checkbox value="Id">Id</Checkbox>
-                                </Col>
-                                <Col span={24} className="mb-2" >
-                                    <Checkbox value="Title">Title</Checkbox>
-                                </Col>
-                                <Col span={24} className="mb-2" >
-                                    <Checkbox value="Client">Client</Checkbox>
-                                </Col>
-                                <Col span={24} className="mb-2" >
-                                    <Checkbox value="status">status</Checkbox>
-                                </Col>
-                                <Col span={24} className="mb-2" >
-                                    <Checkbox value="project">Project</Checkbox>
-                                </Col>
-                                <Col span={24} className="mb-2" >
-                                    <Checkbox value="budget">budget</Checkbox>
-                                </Col>
-                                <Col span={24} className="mb-2" >
-                                    <Checkbox value="type">Type</Checkbox>
-                                </Col>
-                                <Col span={24} className="mb-2" >
-                                    <Checkbox value="startAt">start At</Checkbox>
-                                </Col>
-                                <Col span={24} className="mb-2" >
-                                    <Checkbox value="endsAt">endsAt</Checkbox>
-                                </Col>
-                                <Col span={24} className="mb-2" >
-                                    <Checkbox value="createdBy">Created By</Checkbox>
-                                </Col>
-                                <Col span={24} className="mb-2" >
-                                    <Checkbox value="action">Action</Checkbox>
-                                </Col>
-                            </Row>
-                        </Checkbox.Group>
+                            placeholder="Start Date Between"
+                        // onChange={(dates, dateStrings) => handleDateChange(dates, dateStrings, "startsAt")}
+                        />
+                    </div>
+
+                    <div className="mt-4">
+                        <DatePicker.RangePicker
+                            status="error"
+                            style={{
+                                width: '100%',
+                                border: "1px solid gray",
+                                color: "gray"
+                            }}
+                            placeholder="End Date Between"
+                        // onChange={(dates, dateStrings) => handleDateChange(dates, dateStrings, "endsAt")}
+                        />
+                    </div>
+
+                </div>
+
+                <div className="flex justify-between">
+                    <div className="flex gap-2">
+                        <button className="my-5 border border-red-600 text-red-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-red-600 duration-300 ">
+                            <RiDeleteBin6Line className="mr-1" /> Delete Selected
+                        </button>
+
+                        <button className="my-5 border border-blue-600 text-blue-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-blue-600 duration-300 ">
+                            <FaFile className="mr-1" /> Save Coloumn Visibility
+                        </button>
+                    </div>
+
+                    <div className="mt-4 flex items-center">
+                        <input
+                            type="search"
+                            className="my-5 border  flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80  "
+                            placeholder="Search"
+                            autoComplete="off"
+                            onChange={(e) => filterByOptions("searchTerm", e.target.value)}
+                        />
+
+                        <div className="relative">
+
+                            <div onClick={() => { setIsHideTableColom(!isHideTableColom) }} className="bg-gray-500 p-2 ml-2 rounded cursor-pointer">
+                                <RiArrowDownSLine className="text-white text-xl" />
+                            </div>
+
+                            <div className={`absolute top-12 right-0 bg-white shadow-lg z-50 w-[150px] px-4 py-2 ${isHideTableColom ? "block" : "hidden"} `}>
+
+                                <Checkbox.Group
+                                    style={{
+                                        width: '100%',
+                                    }}
+                                    onChange={onChange}
+                                    defaultValue={['Id', 'Title', "Client", "status", "project", "budget", "type", "startAt", "endsAt", "createdBy", "action"]}
+                                >
+                                    <Row>
+                                        <Col span={24} className="mb-2" >
+                                            <Checkbox value="Id">Id</Checkbox>
+                                        </Col>
+                                        <Col span={24} className="mb-2" >
+                                            <Checkbox value="Title">Title</Checkbox>
+                                        </Col>
+                                        <Col span={24} className="mb-2" >
+                                            <Checkbox value="Client">Client</Checkbox>
+                                        </Col>
+                                        <Col span={24} className="mb-2" >
+                                            <Checkbox value="status">status</Checkbox>
+                                        </Col>
+                                        <Col span={24} className="mb-2" >
+                                            <Checkbox value="project">Project</Checkbox>
+                                        </Col>
+                                        <Col span={24} className="mb-2" >
+                                            <Checkbox value="budget">budget</Checkbox>
+                                        </Col>
+                                        <Col span={24} className="mb-2" >
+                                            <Checkbox value="type">Type</Checkbox>
+                                        </Col>
+                                        <Col span={24} className="mb-2" >
+                                            <Checkbox value="startAt">start At</Checkbox>
+                                        </Col>
+                                        <Col span={24} className="mb-2" >
+                                            <Checkbox value="endsAt">endsAt</Checkbox>
+                                        </Col>
+                                        <Col span={24} className="mb-2" >
+                                            <Checkbox value="createdBy">Created By</Checkbox>
+                                        </Col>
+                                        <Col span={24} className="mb-2" >
+                                            <Checkbox value="action">Action</Checkbox>
+                                        </Col>
+                                    </Row>
+                                </Checkbox.Group>
+
+                            </div>
+                        </div>
 
                     </div>
+
                 </div>
             </div>
 

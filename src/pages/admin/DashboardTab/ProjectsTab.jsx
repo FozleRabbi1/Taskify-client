@@ -407,11 +407,6 @@ const ProjectsTab = () => {
 
     ].filter(Boolean);
 
-
-    
-
-
-
     const handleDelete = () => {
         Swal.fire({
             title: 'Are you sure?',
@@ -467,6 +462,7 @@ const ProjectsTab = () => {
             <h2 className={`text-2xl text-gray-500 font-bold ${lastSegment !== "dashboard"  ? "hidden" : ""} `}>Admin's Projects</h2>
 
             <div className="grid grid-cols-3 gap-10">
+                
                 <div className="mt-4">
                     <Select
                         placeholder="Select Status"
@@ -528,7 +524,7 @@ const ProjectsTab = () => {
                         <RiDeleteBin6Line className="mr-1" /> Delete Selected
                     </button>
 
-                    <button onClick={() => handleDelete()} className="my-5 border border-blue-600 text-blue-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-blue-600 duration-300 ">
+                    <button  className="my-5 border border-blue-600 text-blue-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-blue-600 duration-300 ">
                         <FaFile className="mr-1" /> Save Coloumn Visibility
                     </button>
                 </div>

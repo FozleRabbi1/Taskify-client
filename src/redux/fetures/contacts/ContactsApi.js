@@ -5,10 +5,11 @@ export const ContactsApi = baseApi.injectEndpoints({
 
         getAllContacts: builder.query({
             providesTags: ["contacts"],
-            query: () => {                
+            query: (query) => {         
                 return {
                     url: "/contacts",
                     method: "GET",
+                    params : query,
                 };
             },
             pollingInterval: 10000
