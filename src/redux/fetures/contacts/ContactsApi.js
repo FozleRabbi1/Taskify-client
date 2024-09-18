@@ -3,16 +3,16 @@ import { baseApi } from './../../api/baseApi';
 export const ContactsApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
 
-        // getAllNotes: builder.query({
-        //     providesTags: ["notes"],
-        //     query: () => {                
-        //         return {
-        //             url: "/notes",
-        //             method: "GET",
-        //         };
-        //     },
-        //     pollingInterval: 10000
-        // }),
+        getAllContacts: builder.query({
+            providesTags: ["contacts"],
+            query: () => {                
+                return {
+                    url: "/contacts",
+                    method: "GET",
+                };
+            },
+            pollingInterval: 10000
+        }),
 
 
         createContact: builder.mutation({

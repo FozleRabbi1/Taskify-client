@@ -127,38 +127,6 @@ const TaskTab = () => {
     const handleModal = (record) => {
         setOpen(true)
         setModalData(record)
-
-        const {
-            budget,
-            clients,
-            createdAt,
-            id,
-            isFavourite,
-            key,
-            priority,
-            status,
-            tags,
-            title,
-            updatedAt,
-            users,
-            _id
-        } = record
-
-        console.log(budget,
-            clients,
-            createdAt,
-            id,
-            isFavourite,
-            key,
-            priority,
-            status,
-            tags,
-            title,
-            updatedAt,
-            users,
-            _id);
-
-
     }
 
     const singleDataDelete = (id) => {
@@ -425,7 +393,7 @@ const TaskTab = () => {
 
     return (
         <div>
-            <h2 className={`text-2xl text-gray-500 font-bold ${lastSegment === "tasks"  ? "hidden" : ""} `}>Admin's Tasks</h2>
+            <h2 className={`text-2xl text-gray-500 font-bold ${lastSegment === "tasks" ? "hidden" : ""} `}>Admin's Tasks</h2>
 
             <div className="grid grid-cols-3 gap-10">
                 <div className="mt-4">

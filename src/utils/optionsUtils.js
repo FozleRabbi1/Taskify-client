@@ -153,3 +153,8 @@ export const clientsArray = [
     value: item,
     label: item,
 }));
+
+ export const contentStatusOptions = ["properly signed", "signed"].map((item) => ({
+    value: item,
+    label: item,
+}));
