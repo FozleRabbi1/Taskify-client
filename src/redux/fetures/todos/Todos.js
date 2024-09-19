@@ -22,7 +22,7 @@ export const TodosApi = baseApi.injectEndpoints({
         }),
 
         checkedTodos: builder.mutation({
-            invalidatesTags: ["Projects", "favourite-Projects", "todos"],
+            invalidatesTags: ["Projects", "todos"],
             query: ({id}) => {
                 return {
                     url: `/todos/${id}`,
@@ -46,7 +46,7 @@ export const TodosApi = baseApi.injectEndpoints({
             invalidatesTags: ["todos"],            
             query: (idArray) => {
                 return {
-                    url: `/todos`,
+                    url: `/todos/delete`,
                     method : "DELETE",
                     body : idArray
                 };
