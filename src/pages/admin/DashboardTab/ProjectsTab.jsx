@@ -407,7 +407,9 @@ const ProjectsTab = () => {
 
     ].filter(Boolean);
 
-    const handleDelete = () => {
+    const handleMultipleDataDelete = () => {
+        console.log(ids);
+        
         Swal.fire({
             title: 'Are you sure?',
             text: `You won't remove This User`,
@@ -520,7 +522,7 @@ const ProjectsTab = () => {
 
             <div className="flex justify-between">
                 <div className="flex gap-2">
-                    <button onClick={() => handleDelete()} className="my-5 border border-red-600 text-red-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-red-600 duration-300 ">
+                    <button onClick={() => handleMultipleDataDelete()} className="my-5 border border-red-600 text-red-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-red-600 duration-300 ">
                         <RiDeleteBin6Line className="mr-1" /> Delete Selected
                     </button>
 

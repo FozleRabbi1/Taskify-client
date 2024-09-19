@@ -73,6 +73,7 @@ const ManageContacts = () => {
         status,
         createdBy,
     })) || [];
+
     const titleStyle = { fontWeight: '600', color: '#6b7260', textTransform: 'uppercase' };
 
     const [isInclude, setIsInclude] = useState(['Id', 'Title', "Client", "status", "project", "budget", "type", "startAt", "endsAt", "createdBy", "action"])
@@ -109,6 +110,13 @@ const ManageContacts = () => {
         isInclude.includes("status") && {
             title: <span style={titleStyle}>Status</span>,
             dataIndex: "status",
+            render: (status) => (
+                <div className="">
+                    <span className={` opacity-90 text-[15px] font-semibold flex items-center text-white justify-center px-2 py-1 rounded-md uppercase  ${status === "signed" ? "bg-green-400" : "bg-yellow-500"} `}>
+                        {status}
+                    </span>
+                </div>
+            ),
 
         },
         isInclude.includes("project") && {
@@ -122,7 +130,7 @@ const ManageContacts = () => {
             render: (budget) => (
                 <div className="">
                     <span className="text-gray-500 opacity-90 text-[15px] font-semibold flex items-center">
-                        {budget}
+                    ₹ {budget}
                     </span>
                 </div>
             ),
@@ -214,7 +222,6 @@ const ManageContacts = () => {
         }
         setParams(status)
     }
-
 
 
     return (
@@ -415,7 +422,7 @@ const ManageContacts = () => {
                             </Col>
 
                             <Col span={24} md={{ span: 12 }} lg={{ span: 12 }} className="" >
-                                <TSInput type="number" name="budget" label="budget" placeholder="Please Inter Budget"></TSInput>
+                                <TSInput type="number" name="budget" label="budget" placeholder="₹  Please Inter Budget"></TSInput>
                             </Col>
 
                             <Col span={24} md={{ span: 12 }} lg={{ span: 12 }} className="" >

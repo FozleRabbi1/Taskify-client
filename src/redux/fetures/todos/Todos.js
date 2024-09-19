@@ -12,7 +12,6 @@ export const TodosApi = baseApi.injectEndpoints({
                     method: "GET",
                 };
             },
-
             transformResponse: (response) => {
                 return {
                   data: response.data,
@@ -32,7 +31,26 @@ export const TodosApi = baseApi.injectEndpoints({
             },
         }),
 
+        updateTodos: builder.mutation({
+            invalidatesTags: ["todos"],            
+            query: (args) => {
+                return {
+                    url: `/todos/updateTodo/${args?.id}`,
+                    method: "PATCH",
+                    body : args?.formData
+                };
+            },
+        }),
 
-
+        deleteTodos: builder.mutation({
+            invalidatesTags: ["todos"],            
+            query: (idArray) => {
+                return {
+                    url: `/todos`,
+                    method : "DELETE",
+                    body : idArray
+                };
+            },
+        }),
     }),
 });

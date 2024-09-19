@@ -4,8 +4,8 @@ import { toast } from "react-toastify";
 
 
 const baseQuery = fetchBaseQuery({
-  // baseUrl: "http://localhost:5000/api/v1",
-  baseUrl: "https://taskify-server-sable.vercel.app/api/v1",
+  baseUrl: "http://localhost:5000/api/v1",
+  // baseUrl: "https://taskify-server-sable.vercel.app/api/v1",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
@@ -29,8 +29,8 @@ const baseQueryWithRefreshToken = async (args, api, extraOptions) => {
   if (result?.error?.status === 401) {
     console.log("sending refresh token");
 
-    // const res = await fetch("http://localhost:5000/api/v1/auth/refresh-token", {
-    const res = await fetch("https://taskify-server-sable.vercel.app/api/v1/auth/refresh-token", {
+    const res = await fetch("http://localhost:5000/api/v1/auth/refresh-token", {
+    // const res = await fetch("https://taskify-server-sable.vercel.app/api/v1/auth/refresh-token", {
       method: "POST",
       credentials: "include",
     });

@@ -15,6 +15,11 @@ export const propertyOptions = ["Default", "High", "Medium", "Low"].map((item) =
     label: item,
 }));
 
+export const todoPropertyOptions = ["high", "medium", "low"].map((item) => ({
+    value: item,
+    label: item,
+}));
+
 export const clientsArray = [
     "client Two",
     "Client One",
