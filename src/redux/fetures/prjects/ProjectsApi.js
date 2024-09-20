@@ -5,7 +5,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
 
         getAllProjects: builder.query({
             providesTags: ["Projects", "favourite-Projects", "todos"],
-            query: (query) => {                
+            query: (query) => {                        
                 return {
                     url: "/projects",
                     method: "GET",

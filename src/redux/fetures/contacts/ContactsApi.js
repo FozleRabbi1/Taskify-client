@@ -5,7 +5,8 @@ export const ContactsApi = baseApi.injectEndpoints({
 
         getAllContacts: builder.query({
             providesTags: ["contacts"],
-            query: (query) => {         
+            query: (query) => { 
+                console.log(query);
                 return {
                     url: "/contacts",
                     method: "GET",
@@ -26,28 +27,37 @@ export const ContactsApi = baseApi.injectEndpoints({
                 };
             }
         }),
+        updateContacts : builder.mutation({
+            invalidatesTags: ["contacts"],
+            query: (args) => {                                          
+                return {
+                    url: `/contacts/${args?.id}`,
+                    method: "PATCH",
+                    body : args.data
+                }
+            },
+        }),
+        duplicateContacts : builder.mutation({
+            query: (args) => {                                          
+                return {
+                    url: `/contacts/${args?.id}`,
+                    method: "POST",
+                    body : args
+                }
+            },
+            invalidatesTags: ["contacts"],
+        }),
 
-        // deleteNote: builder.mutation({
-        //     invalidatesTags: ["notes",],
-        //     query: ({id}) => {                                
-        //         return {
-        //             url: `/notes/${id}`,
-        //             method: "DELETE",
-        //         };
-        //     },
-        // }),
-        
-
-        // updateSingleNote : builder.mutation({
-        //     query: (args) => {                                          
-        //         return {
-        //             url: `/notes/${args?.id}`,
-        //             method: "PATCH",
-        //             body : args.formData
-        //         }
-        //     },
-        //     invalidatesTags: ["notes"],
-        // }),
+        deleteContacts : builder.mutation({
+            invalidatesTags: ["contacts"],
+            query: (arrayOfIds) => {                
+                return {
+                    url: `/contacts`,
+                    method: "DELETE",
+                    body : arrayOfIds
+                }
+            },
+        }),
 
     }),
 });

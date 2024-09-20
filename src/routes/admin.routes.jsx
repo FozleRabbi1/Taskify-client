@@ -75,8 +75,8 @@ export const adminPaths = (todosData) => [
         element: <ManageContacts />,
       },
       {
-        name: "Contact Types",
-        path: "contact-types",
+        name: "Our Employees",
+        path: "our-employees",
         element: <ContactTypes />,
       }
     ],

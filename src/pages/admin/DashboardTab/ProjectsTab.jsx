@@ -408,8 +408,6 @@ const ProjectsTab = () => {
     ].filter(Boolean);
 
     const handleMultipleDataDelete = () => {
-        console.log(ids);
-        
         Swal.fire({
             title: 'Are you sure?',
             text: `You won't remove This User`,
@@ -424,6 +422,7 @@ const ProjectsTab = () => {
             }
         });
     }
+    
     const options = [];
     for (let i = 10; i < 36; i++) {
         options.push({
@@ -460,7 +459,6 @@ const ProjectsTab = () => {
 
     return (
         <div>
-
             <h2 className={`text-2xl text-gray-500 font-bold ${lastSegment !== "dashboard"  ? "hidden" : ""} `}>Admin's Projects</h2>
 
             <div className="grid grid-cols-3 gap-10">
