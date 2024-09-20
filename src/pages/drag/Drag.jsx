@@ -2,7 +2,7 @@
 const Drag = () => {
     return (
         <div>
-            
+            <h2>drag</h2>
         </div>
     );
 };
