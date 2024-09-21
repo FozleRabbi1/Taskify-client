@@ -1,8 +1,9 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import authApi from '../../redux/fetures/auth/authApi';
-import { useNavigate } from 'react-router-dom';
-import { Select } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
+import { Select, Spin } from 'antd';
+import { toast } from 'react-toastify';
 
 const VITE_image_upload_key = import.meta.env.VITE_image_upload_key
 const Register = () => {
@@ -13,7 +14,7 @@ const Register = () => {
         label: item,
     }));
 
-    const [role , setRole] = useState("")
+    const [role, setRole] = useState("")
 
     const {
         register,
@@ -23,7 +24,7 @@ const Register = () => {
     } = useForm();
     const [registerUser] = authApi.useRegisterUserMutation()
     const [customLoading, setCustomLoading] = useState(false)
-    const image_hosting_url = `https://api.imgbb.com/1/upload?key=${VITE_image_upload_key}`;  
+    const image_hosting_url = `https://api.imgbb.com/1/upload?key=${VITE_image_upload_key}`;
 
     const onSubmit = async (data) => {
         setCustomLoading(true);
@@ -44,18 +45,25 @@ const Register = () => {
                     role,
                     image: photoUrl,
                 };
-                const res = await registerUser(newData);                
-                if (res) {
-                    reset(); 
+                const res = await registerUser(newData);
+
+                if (res?.error?.status === 400) {
+                    console.log(res?.error?.data?.errorSources);
+                    res?.error?.data?.errorSources.map(item => toast.error(item?.message) )
+                }
+
+                if (res?.data?.success) {
+                    reset();
                     navigate("/login");
                 }
+
             } else {
                 console.error("Image upload failed");
             }
         } catch (error) {
             console.error("Error occurred:", error);
         } finally {
-            setCustomLoading(false); 
+            setCustomLoading(false);
         }
     };
 
@@ -125,9 +133,9 @@ const Register = () => {
 
                     <Select
                         placeholder="Select Role"
-                        style={{ width: '100%' , height : "40px" }}
+                        style={{ width: '100%', height: "40px" }}
                         options={roleOptions}
-                        onChange={(value) => setRole( value)}
+                        onChange={(value) => setRole(value)}
                     />
 
                     <div className="mb-6">
@@ -161,15 +169,15 @@ const Register = () => {
                         )}
                     </div>
 
+                    <p className="font-semibold mb-3">If You Already Registred? <Link to="/login" className="text-green-600">Login</Link> </p>
+
                     <button
                         type="submit"
                         className="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                         {
-                            customLoading ? <span className="loading loading-spinner loading-sm"></span> : "Register"
+                            customLoading ? <Spin size="small" /> : "Register"
                         }
-
-
                     </button>
                 </form>
             </div>

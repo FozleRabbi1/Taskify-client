@@ -6,7 +6,7 @@ import { verifyToken } from './../../utils/verifyToken';
 import { setUser } from "../../redux/fetures/auth/authSlice";
 import { Button, Row } from "antd";
 import authApi from './../../redux/fetures/auth/authApi';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -23,8 +23,7 @@ const Login = () => {
             const token = res.data.accessToken;
             const user = verifyToken(token);
             dispatch(setUser({ user, token }));
-            navigate("/dashboard")
-            
+            navigate("/dashboard");            
         } catch (err) {
             console.log(err);
         }
@@ -35,7 +34,12 @@ const Login = () => {
             <TSForm onSubmit={onSubmit}>
                 <TSInput type="text" name="email" label="Email" placeholder="email"></TSInput>
                 <TSInput type="text" name="password" label="Password" placeholder="password"></TSInput>
+                
+                <p className="font-semibold mb-3">If You Not Registred? <Link to="/register" className="text-green-600">Registration</Link> </p>
+
                 <Button htmlType="submit">Login</Button>
+
+
             </TSForm>
         </Row>
     );

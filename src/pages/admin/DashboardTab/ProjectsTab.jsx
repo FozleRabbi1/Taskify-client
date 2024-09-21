@@ -274,21 +274,21 @@ const ProjectsTab = () => {
         isInclude.includes("Client") && {
             title: <span style={titleStyle}>Clients</span>,
             dataIndex: "clients",
-            render: (clients) => (
+            render: (clients, record) => (
                 <div style={{ display: 'flex', gap: '8px' }}>
                     {clients?.length !== 0 ? (
                         <div className="flex items-center">
                             {clients.map((url, index) => (
                                 <img className={`border-2 border-gray-300 ${index >= 1 ? "-ml-5" : ""} hover:z-10 hover:-mt-2 hover:shadow-md duration-300 cursor-pointer`} key={index} src={url} alt={`User ${index + 1}`} style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                             ))}
-                            <Button onClick={() => setOpenUpdateModal(true)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
+                            <Button onClick={() => handleModal(record, record?.key)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
                                 <FaRegEdit className="text-xl text-blue-600" />
                             </Button>
                         </div>
                     ) : (
                         <div className="flex items-center">
                             <h2 className="bg-blue-600 text-white font-medium px-2 rounded-md uppercase opacity-80 flex items-center">Not Assigned</h2>
-                            <Button onClick={() => setOpenUpdateModal(true)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
+                            <Button onClick={() => handleModal(record, record?.key)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
                                 <FaRegEdit className="text-xl text-blue-600" />
                             </Button>
                         </div>
