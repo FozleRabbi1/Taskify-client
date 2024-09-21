@@ -27,7 +27,7 @@ const ManageContacts = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [availablePageSizes, setAvailablePageSizes] = useState([5, 10, 15, 20, 25, 30, 35]);
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-    const [ids, setides] = useState([])   // ======= for multiple delete
+    const [ids, setides] = useState([])   // ======= for delete
     const [open, setOpen] = useState([false, ""]);
     const [user, setUser] = useState("")
     const [project, setProject] = useState("")
@@ -35,8 +35,6 @@ const ManageContacts = () => {
     const [contractStatus, setContractStatus] = useState("")
     const [startAt, setStartsAt] = useState("")
     const [endsAt, setEndsAt] = useState("")
-
-    
 
 
     // ======================================= Add and Update Contacts Info Data , Function Start
@@ -184,7 +182,6 @@ const ManageContacts = () => {
 
 
     const columns = [
-
         isInclude.includes("Id") && {
             title: <span style={titleStyle}>Id</span>, dataIndex: "id",
             render: (id) => (
@@ -323,8 +320,9 @@ const ManageContacts = () => {
         setParams(status)
     }
     // ========================================================================Filter Query=========================================================
-
-
+    
+    
+    // ========================================================================Date Filter Query=========================================================
     const handleDateChange = (dates, dateStrings, additionalParam) => {
         const searchField = {
             ["date"]: dateStrings,
@@ -332,6 +330,7 @@ const ManageContacts = () => {
         };
         setParams(searchField);
     };
+    // ========================================================================Date Filter Query=========================================================
 
 
     return (

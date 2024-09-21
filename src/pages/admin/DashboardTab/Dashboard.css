@@ -5,8 +5,8 @@
   
   .custom-submit-button {
     position: absolute;
-    top: 8px; /* Adjust the top positioning as needed */
-    right: 8px; /* Adjust the right positioning as needed */
-    z-index: 10; /* Ensure the button appears above other elements */
+    top: 8px; 
+    right: 8px; 
+    z-index: 10; 
   }
   

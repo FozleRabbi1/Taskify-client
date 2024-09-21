@@ -2,12 +2,18 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import authApi from '../../redux/fetures/auth/authApi';
 import { useNavigate } from 'react-router-dom';
+import { Select } from 'antd';
 
 const VITE_image_upload_key = import.meta.env.VITE_image_upload_key
 const Register = () => {
     const navigate = useNavigate()
 
+    const roleOptions = ["user", "client"].map((item) => ({
+        value: item,
+        label: item,
+    }));
 
+    const [role , setRole] = useState("")
 
     const {
         register,
@@ -35,6 +41,7 @@ const Register = () => {
                 const newData = {
                     ...rest,
                     ...user,
+                    role,
                     image: photoUrl,
                 };
                 const res = await registerUser(newData);                
@@ -116,6 +123,13 @@ const Register = () => {
                         )}
                     </div>
 
+                    <Select
+                        placeholder="Select Role"
+                        style={{ width: '100%' , height : "40px" }}
+                        options={roleOptions}
+                        onChange={(value) => setRole( value)}
+                    />
+
                     <div className="mb-6">
                         <label className="block text-gray-700 text-sm font-bold mb-2">Set JPG / PNG / JPEG Photo </label>
                         <input type="file"  {...register("image", { required: true })} className="my-2 border-none rounded-md w-8/12 md:w-8/12 lg:w-6/12 max-w-xs text-black mx-2" />
@@ -138,7 +152,6 @@ const Register = () => {
                                     message: 'Password must be at least 6 characters long',
                                 },
                                 pattern: {
-                                    // value: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
                                     message: 'Password must include upper, lower, number, and special character',
                                 },
                             })}

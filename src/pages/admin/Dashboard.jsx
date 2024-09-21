@@ -96,11 +96,9 @@ const Dashboard = () => {
     const chartJsonDataTitleArray3 = chartJsonData3?.map(item => item.title)
 
 
-
     return (
         <div>
             <SearchBar />
-
             <div>
                 <div className="grid grid-cols-4 my-5 gap-5">
                     {
@@ -117,11 +115,10 @@ const Dashboard = () => {
             </div>
 
             <div>
-
                 {
                     totalLoading | isLoading ? <div className="h-[40vh] flex justify-center items-center"> <h2 className="text-xl font-semibold">Loading...</h2> </div>
                         :
-                        <div className="grid grid-cols-3 gap-10" >
+                        <div className="grid grid-cols-3 gap-10">
 
                             <div className="bg-white px-10 rounded-lg">
                                 <h2 className="text-lg font-semibold text-gray-500 my-2">Project Statistics</h2>
@@ -129,8 +126,6 @@ const Dashboard = () => {
                                 <div className="w-[300px]">
                                     <ApexChart series={projectDataArray} labels={chartJsonDataTitleArray} />
                                 </div>
-
-
                                 <div className="flex justify-between mt-4">
                                     <ul>
                                         {
@@ -142,7 +137,6 @@ const Dashboard = () => {
                                         }
                                         <li className="flex items-center mb-2 font-bold text-gray-500"> <FaBars size={20} className={`size-10 p-2 bg-blue-50 rounded-lg mr-3`} />  total</li>
                                     </ul>
-
                                     <ul>
                                         {
                                             projectDataArray?.map(item => (
@@ -150,11 +144,8 @@ const Dashboard = () => {
                                             ))
                                         }
                                         <li className="mb-2 size-10 p-2 font-semibold text-gray-500"> {totalSeries}</li>
-
                                     </ul>
-
                                 </div>
-
                             </div>
 
                             <div className="bg-white px-10 rounded-lg">
@@ -180,20 +171,15 @@ const Dashboard = () => {
                                                 <li key={item._id} className="mb-5 size-10 p-2 font-semibold text-gray-500 "> {item}</li>
                                             ))
                                         }
-
                                         <li className="mb-2 size-10 p-2 font-semibold text-gray-500"> {totalSeries2}</li>
-
                                     </ul>
-
                                 </div>
                             </div>
-
                             <div className="bg-white pl-10 rounded-lg h-[60vh] overflow-hidden ">
                                 <h2 className="text-lg font-semibold text-gray-500 my-2">Todos Overview</h2>
                                 <div className="w-[300px]">
                                     <ApexChart series={todosDataArray} labels={chartJsonDataTitleArray3} />
                                 </div>
-
                                 <div className="mt-4 h-[60%] overflow-auto">
                                     <div className="overflow-x-auto py-10">
                                         <Table
@@ -205,22 +191,14 @@ const Dashboard = () => {
                                         />
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
-
                 }
-
             </div>
-
             <div className="py-5" >
                 <Tab />
                 <FooterHeadline />
-
             </div>
-
-
         </div>
     );
 };

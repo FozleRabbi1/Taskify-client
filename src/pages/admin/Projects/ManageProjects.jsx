@@ -14,10 +14,19 @@ import { FaPlus } from "react-icons/fa";
 
 const ManageProjects = () => {
     const { data: userData } = UsersApi.useGetAllUsersQuery({})
-    const [addProject] = ProjectsApi.useAddProjectMutation()
+    const [addProject] = ProjectsApi.useAddProjectMutation()    
 
-    const usersOptions = userData?.data.map((item) => ({
-        value: item?.image,
+    const usersOptions = userData?.data?.user.map((item) => ({
+        value: item?._id,
+        label: `${item?.name?.firstName} ${item?.name?.lastName}`,
+    }));
+
+    console.log(userData);
+    console.log(usersOptions);
+    
+
+    const clientOptions = userData?.data?.client.map((item) => ({
+        value: item?._id,
         label: `${item?.name?.firstName} ${item?.name?.lastName}`,
     }));
 
@@ -29,6 +38,7 @@ const ManageProjects = () => {
     const [openUpdateModal, setOpenUpdateModal] = useState(false);
     const [getStartsAt, setStartsAt] = useState(""); 
     const [getEndsAt, setEndsAt] = useState("");   
+    
 
     const onSubmit = async (data) => {
         const startsAtFormattedDate = getStartsAt; 
@@ -45,8 +55,8 @@ const ManageProjects = () => {
                 priority: data.property,  
                 status: data.status,
                 title: data.title,
-                users: users,
-                clients: clients,
+                usersId: users,
+                clientsId: clients,
                 tags: tags,
                 startsAt: getStartsAt?.dateString,
                 endsAt: getEndsAt?.dateString,
@@ -93,8 +103,8 @@ const ManageProjects = () => {
             </div>
 
 
-            {/* ===================== Added Projects Modal =============================*/}
 
+            {/* ===================== Added Projects Modal =============================*/}
             <Modal
                 centered
                 open={openUpdateModal}
@@ -147,7 +157,6 @@ const ManageProjects = () => {
                                                     onChange={handleChange}
                                                     options={usersOptions}
                                                 />
-
                                             </Space>
                                         </Col>
 
@@ -171,7 +180,7 @@ const ManageProjects = () => {
                                                     placeholder="Please select clients"
                                                     defaultValue={[]}
                                                     onChange={handleCkientsChange}
-                                                    options={usersOptions}
+                                                    options={clientOptions}
                                                 />
 
                                             </Space>
@@ -252,14 +261,7 @@ const ManageProjects = () => {
             </Modal>
             
             {/* ===================== Added Projects Modal =============================*/}
-
-
-
-
-
-
         </div>
-
     );
 };
 

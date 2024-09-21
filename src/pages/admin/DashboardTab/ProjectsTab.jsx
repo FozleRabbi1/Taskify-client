@@ -52,7 +52,7 @@ const ProjectsTab = () => {
         }
     };
 
-    const usersOptions = userData?.data.map((item) => ({
+    const usersOptions = userData?.data?.user.map((item) => ({
         value: item?.image,
         label: `${item?.name?.firstName} ${item?.name?.lastName}`,
     }));
@@ -118,9 +118,7 @@ const ProjectsTab = () => {
         }
     };
 
-
     //========================================================== update data
-
     const [users, setUser] = useState([])
     const [tags, setTags] = useState([])
     const [updateId, setUpdateId] = useState("")
@@ -139,10 +137,16 @@ const ProjectsTab = () => {
             }
         };
 
+        console.log(updateData);
+        
+
         const filteredData = Object.fromEntries(
             Object.entries(updateData.data).filter(([, value]) => value !== undefined && value !== null)
         );
         updateData = { ...updateData, data: filteredData };
+
+
+
         const res =  updateSingleProjects(updateData); 
         if(res){
             toast.success("Succreefully update your project")
@@ -157,10 +161,10 @@ const ProjectsTab = () => {
         setTags(value);
     };
 
-    const handleModal = (record) => {
+    const handleModal = (record, id) => {
         setOpenUpdateModal(true)
         setModalData(record)
-        setUpdateId(record.key)
+        setUpdateId(id)
     }
 
     //========================================================== update data
@@ -183,10 +187,7 @@ const ProjectsTab = () => {
             }
         });
     }
-
-
     const [isInclude, setIsInclude] = useState(['Id', 'Title', 'User', "Client", "status", "priority", "budget", "tags", "startsAt", "endsAt", "action"])
-
     const onChange = (checkedValues) => {
         setIsInclude(checkedValues);
     };
@@ -225,7 +226,6 @@ const ProjectsTab = () => {
 
 
     const columns = [
-
         isInclude.includes("Id") && { title: <span style={titleStyle}>Id</span>, dataIndex: "id", width: 100 },
         isInclude.includes("Title") && {
             title: <span style={titleStyle}>Title</span>,
@@ -264,7 +264,7 @@ const ProjectsTab = () => {
                                 } </>
                     }
 
-                    <Button onClick={() => handleModal(record)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
+                    <Button onClick={() => handleModal(record, record?.key)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
                         <FaRegEdit className="text-xl text-blue-600" />
                     </Button>
                 </div>
@@ -386,7 +386,8 @@ const ProjectsTab = () => {
             dataIndex: "action",
             render: (text, record) => (
                 <div className="">
-                    <button title="Update" onClick={() => setOpenUpdateModal(true)} className="text-xl mr-6 text-blue-500">
+
+                    <button title="Update"  onClick={() => handleModal(record, record?.key)}  className="text-xl mr-6 text-blue-500">
                         <FaEdit className="text-xl text-blue-500" />
                     </button>
 
@@ -401,10 +402,10 @@ const ProjectsTab = () => {
                     <button title="Quick View">
                         <CiCircleInfo className="text-xl text-blue-600" />
                     </button>
+
                 </div>
             )
         }
-
     ].filter(Boolean);
 
     const handleMultipleDataDelete = () => {
@@ -460,9 +461,7 @@ const ProjectsTab = () => {
     return (
         <div>
             <h2 className={`text-2xl text-gray-500 font-bold ${lastSegment !== "dashboard"  ? "hidden" : ""} `}>Admin's Projects</h2>
-
-            <div className="grid grid-cols-3 gap-10">
-                
+            <div className="grid grid-cols-3 gap-10">                
                 <div className="mt-4">
                     <Select
                         placeholder="Select Status"
@@ -471,7 +470,6 @@ const ProjectsTab = () => {
                         onChange={(value) => filterByStatus("status", value)}
                     />
                 </div>
-
                 <div className="mt-4">
                     <Select
                         placeholder="Select Property"
@@ -480,7 +478,6 @@ const ProjectsTab = () => {
                         onChange={(value) => filterByStatus("priority", value)}
                     />
                 </div>
-
                 <div className="mt-4">
                     <Select
                         placeholder="Select Tag"
@@ -489,7 +486,6 @@ const ProjectsTab = () => {
                         onChange={(value) => filterByStatus("tags", value)}
                     />
                 </div>
-
                 <div className="mt-4">
                     <DatePicker.RangePicker
                         status="error"
@@ -502,7 +498,6 @@ const ProjectsTab = () => {
                         onChange={(dates, dateStrings) => handleDateChange(dates, dateStrings, "startsAt")}
                     />
                 </div>
-
                 <div className="mt-4">
                     <DatePicker.RangePicker
                         status="error"
@@ -515,7 +510,6 @@ const ProjectsTab = () => {
                         onChange={(dates, dateStrings) => handleDateChange(dates, dateStrings, "endsAt")}
                     />
                 </div>
-
             </div>
 
             <div className="flex justify-between">
@@ -523,7 +517,6 @@ const ProjectsTab = () => {
                     <button onClick={() => handleMultipleDataDelete()} className="my-5 border border-red-600 text-red-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-red-600 duration-300 ">
                         <RiDeleteBin6Line className="mr-1" /> Delete Selected
                     </button>
-
                     <button  className="my-5 border border-blue-600 text-blue-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-blue-600 duration-300 ">
                         <FaFile className="mr-1" /> Save Coloumn Visibility
                     </button>
