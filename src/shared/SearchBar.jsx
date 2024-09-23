@@ -53,7 +53,7 @@ const SearchBar = () => {
 
 
             <div className="flex justify-end items-center ">
-                <h2 className="bg-red-500 text-md font-semibold px-2 text-white rounded-md uppercase ">demo mode</h2>
+                {/* <h2 className="bg-red-500 text-md font-semibold px-2 text-white rounded-md uppercase ">demo mode</h2> */}
 
                 <IoIosNotificationsOutline className="text-3xl mx-2 font-extrabold text-gray-500" />
                 <Popover placement="rightTop" title={text}>

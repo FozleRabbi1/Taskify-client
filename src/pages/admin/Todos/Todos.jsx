@@ -12,6 +12,8 @@ import TSInput from "../../../components/form/TSInput";
 import TSSelect from "../../../components/form/TSSelect";
 import { todoPropertyOptions } from "../../../utils/optionsUtils";
 import Swal from "sweetalert2";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../../redux/fetures/auth/authSlice";
 
 const Todos = () => {
     const { data, isLoading } = TodosApi.useGetAllTodosQuery();
@@ -22,6 +24,7 @@ const Todos = () => {
     const [openUpdateModal, setOpenUpdateModal] = useState(false);
     const [ids, setides] = useState([])
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+    const currentUser = useSelector(selectCurrentUser);
 
     const tableData =
         data?.data?.map(({ _id, id, UpdatedAt, title, Description, Priority, title2, checked }) => ({
@@ -78,8 +81,16 @@ const Todos = () => {
     // =================================================== Delete Fun Start
 
     const handleDelete = () => {
+        if(!ids.length){
+            toast.warning("You Can't Select Any Project")
+            return
+        }
+        if (currentUser?.role !== "Admin") {
+            toast.error("Only Admin Can Delete It")
+            return
+        }
         Swal.fire({
-            title: 'Are you sure?',
+            title: 'Are you sureee?',
             text: `You won't remove This User`,
             icon: 'warning',
             showCancelButton: true,
@@ -104,7 +115,12 @@ const Todos = () => {
         selectedRowKeys,
         onChange: onSelectChange,
     };
+
     const deleteSingleData = (id) => {
+        if(currentUser?.role !== "Admin"){
+            toast.error("Only Admin Can Delete It")
+            return
+        }
         Swal.fire({
             title: 'Are you sure?',
             text: `You won't remove This User`,

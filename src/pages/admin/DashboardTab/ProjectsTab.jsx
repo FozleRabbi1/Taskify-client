@@ -17,9 +17,11 @@ import moment from "moment";
 import { UsersApi } from "../../../redux/fetures/Users/usersApi";
 import { useLocation } from "react-router-dom";
 import { propertyOptions, statusOptions, tagsOptions } from "../../../utils/optionsUtils";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../../redux/fetures/auth/authSlice";
 
 const ProjectsTab = () => {
-
+    const currentUser = useSelector(selectCurrentUser);
     const [isFavouriteProject] = ProjectsApi.useIsFavouriteProjectMutation()
     const [updateProjectsInFo] = ProjectsApi.useUpdateProjectsInFoMutation()
     const [duplicateProjects] = ProjectsApi.useDuplicateProjectsMutation()
@@ -132,13 +134,13 @@ const ProjectsTab = () => {
                 priority: data.property,
                 status: data.status,
                 title: data.title,
-                users: users.length ? users : undefined, 
-                tags: tags.length ? tags : undefined 
+                users: users.length ? users : undefined,
+                tags: tags.length ? tags : undefined
             }
         };
 
         console.log(updateData);
-        
+
 
         const filteredData = Object.fromEntries(
             Object.entries(updateData.data).filter(([, value]) => value !== undefined && value !== null)
@@ -147,8 +149,8 @@ const ProjectsTab = () => {
 
 
 
-        const res =  updateSingleProjects(updateData); 
-        if(res){
+        const res = updateSingleProjects(updateData);
+        if (res) {
             toast.success("Succreefully update your project")
         }
         setOpenUpdateModal(false);
@@ -173,6 +175,10 @@ const ProjectsTab = () => {
 
 
     const singleDataDelete = (id) => {
+        if(currentUser?.role !== "Admin"){
+            toast.error("Only Admin Can Delete It")
+            return
+        }
         Swal.fire({
             title: 'Are you sure?',
             text: `You won't remove This User`,
@@ -252,7 +258,7 @@ const ProjectsTab = () => {
             title: <span style={titleStyle}>Users</span>,
             dataIndex: "users",
             render: (users, record) => (
-                
+
                 <div style={{ display: 'flex', gap: '8px' }} className="flex items-center">
                     {
                         users.length === 0 ? <FaUserLarge className="size-[30px] rounded-full text-gray-300" /> :
@@ -387,7 +393,7 @@ const ProjectsTab = () => {
             render: (text, record) => (
                 <div className="">
 
-                    <button title="Update"  onClick={() => handleModal(record, record?.key)}  className="text-xl mr-6 text-blue-500">
+                    <button title="Update" onClick={() => handleModal(record, record?.key)} className="text-xl mr-6 text-blue-500">
                         <FaEdit className="text-xl text-blue-500" />
                     </button>
 
@@ -409,6 +415,14 @@ const ProjectsTab = () => {
     ].filter(Boolean);
 
     const handleMultipleDataDelete = () => {
+        if(!ids.length){
+            toast.warning("You Can't Select Any Project")
+            return
+        }
+        if(currentUser?.role !== "Admin"){
+            toast.error("Only Admin Can Delete It")
+            return
+        }
         Swal.fire({
             title: 'Are you sure?',
             text: `You won't remove This User`,
@@ -423,7 +437,7 @@ const ProjectsTab = () => {
             }
         });
     }
-    
+
     const options = [];
     for (let i = 10; i < 36; i++) {
         options.push({
@@ -460,8 +474,8 @@ const ProjectsTab = () => {
 
     return (
         <div>
-            <h2 className={`text-2xl text-gray-500 font-bold ${lastSegment !== "dashboard"  ? "hidden" : ""} `}>Admin's Projects</h2>
-            <div className="grid grid-cols-3 gap-10">                
+            <h2 className={`text-2xl text-gray-500 font-bold ${lastSegment !== "dashboard" ? "hidden" : ""} `}>Admin's Projects</h2>
+            <div className="grid grid-cols-3 gap-10">
                 <div className="mt-4">
                     <Select
                         placeholder="Select Status"
@@ -517,7 +531,7 @@ const ProjectsTab = () => {
                     <button onClick={() => handleMultipleDataDelete()} className="my-5 border border-red-600 text-red-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-red-600 duration-300 ">
                         <RiDeleteBin6Line className="mr-1" /> Delete Selected
                     </button>
-                    <button  className="my-5 border border-blue-600 text-blue-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-blue-600 duration-300 ">
+                    <button className="my-5 border border-blue-600 text-blue-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-blue-600 duration-300 ">
                         <FaFile className="mr-1" /> Save Coloumn Visibility
                     </button>
                 </div>

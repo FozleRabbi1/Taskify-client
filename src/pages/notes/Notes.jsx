@@ -13,6 +13,8 @@ import { toast } from "react-toastify";
 import FooterHeadline from "../../shared/FooterHeadline";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../redux/fetures/auth/authSlice";
 
 
 const Notes = () => {
@@ -20,6 +22,7 @@ const Notes = () => {
     const [deleteNote] = NotesApi.useDeleteNoteMutation()
     const [updateSingleNote] = NotesApi.useUpdateSingleNoteMutation()
     const { data } = NotesApi.useGetAllNotesQuery()
+    const currentUser = useSelector(selectCurrentUser);
 
     const propertyOptions = ["Red", "Green", "Yellow"].map((item) => ({
         value: item,
@@ -55,9 +58,11 @@ const Notes = () => {
         }
     };
 
-
-
     const deletehandlear = (id) => {
+        if(currentUser?.role !== "Admin"){
+            toast.error("Only Admin Can Delete It")
+            return
+        }
         Swal.fire({
             title: 'Are you sure?',
             text: `You won't remove This User`,

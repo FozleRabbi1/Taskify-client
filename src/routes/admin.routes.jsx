@@ -12,6 +12,8 @@ import { BiNotepad } from "react-icons/bi";
 import { MdOutlineContactMail } from "react-icons/md";
 import ManageContacts from "../pages/contacts/ManageContacts";
 import ContactTypes from "../pages/contacts/ContactTypes";
+import { PiUsers } from "react-icons/pi";
+import Users from "../pages/users/Users";
 
 
 export const adminPaths = (todosData) => [
@@ -80,5 +82,11 @@ export const adminPaths = (todosData) => [
         element: <ContactTypes />,
       }
     ],
+  },
+  {
+    logo: <PiUsers className="text-blue-700" />,
+    name: "Users",
+    path: "users",
+    element: <Users />,
   },
 ];

@@ -109,6 +109,14 @@ const ManageContacts = () => {
 
     // ========================================================================Delete Function Start =================================================
     const handleMultipleDataDelete = () => {
+        if(!ids.length){
+            toast.warning("You Can't Select Any Project")
+            return
+        }
+        if (currentUser?.role !== "Admin") {
+            toast.error("Only Admin Can Delete It")
+            return
+        }
         Swal.fire({
             title: 'Are you sure?',
             text: `You won't remove this`,
@@ -128,6 +136,10 @@ const ManageContacts = () => {
     }
 
     const handleSingleDataDelete = (id) => {
+        if (currentUser?.role !== "Admin") {
+            toast.error("Only Admin Can Delete It")
+            return
+        }
         Swal.fire({
             title: 'Are you sure?',
             text: `You won't remove this`,
@@ -320,8 +332,8 @@ const ManageContacts = () => {
         setParams(status)
     }
     // ========================================================================Filter Query=========================================================
-    
-    
+
+
     // ========================================================================Date Filter Query=========================================================
     const handleDateChange = (dates, dateStrings, additionalParam) => {
         const searchField = {

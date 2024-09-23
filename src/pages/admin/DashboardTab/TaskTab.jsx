@@ -16,6 +16,8 @@ import { tagsArray } from "../../../constant/constant";
 import moment from "moment";
 import { TiDeleteOutline } from "react-icons/ti";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../../redux/fetures/auth/authSlice";
 
 const TaskTab = () => {
 
@@ -32,6 +34,7 @@ const TaskTab = () => {
     const [ids, setides] = useState([])
     const [deleteProject,] = ProjectsApi.useDeleteProjectMutation()
     const [modalData, setModalData] = useState({})
+    const currentUser = useSelector(selectCurrentUser);
 
     // const uniqueTags = [...new Set(data?.data?.flatMap(item => item.tags))];
 
@@ -130,6 +133,10 @@ const TaskTab = () => {
     }
 
     const singleDataDelete = (id) => {
+        if (currentUser?.role !== "Admin") {
+            toast.error("Only Admin Can Delete It")
+            return
+        }
         Swal.fire({
             title: 'Are you sure?',
             text: `You won't remove This User`,
@@ -332,6 +339,10 @@ const TaskTab = () => {
     ];
 
     const handleDelete = () => {
+        if(currentUser?.role !== "Admin"){
+            toast.error("Only Admin Can Delete It")
+            return
+        }
         Swal.fire({
             title: 'Are you sure?',
             text: `You won't remove This User`,

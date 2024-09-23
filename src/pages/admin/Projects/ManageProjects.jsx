@@ -39,7 +39,6 @@ const ManageProjects = () => {
     const [getStartsAt, setStartsAt] = useState(""); 
     const [getEndsAt, setEndsAt] = useState("");   
     
-
     const onSubmit = async (data) => {
         const startsAtFormattedDate = getStartsAt; 
         const endsAtFormattedDate = getEndsAt;     

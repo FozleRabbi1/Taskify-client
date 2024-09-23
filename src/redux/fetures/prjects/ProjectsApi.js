@@ -16,7 +16,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
         }),
 
         addProject: builder.mutation({
-            invalidatesTags: ["Projects"],            
+            invalidatesTags: ["Projects", "all-users"],            
             query: (data) => {                
                 return {
                     url: "/projects",
@@ -67,7 +67,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
                     body : args.data
                 }
             },
-            invalidatesTags: ["Projects"],
+            invalidatesTags: ["Projects", "all-users"],
         }),
         duplicateProjects : builder.mutation({
             query: (args) => {                                          
