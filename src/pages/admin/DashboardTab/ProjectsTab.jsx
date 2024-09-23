@@ -55,7 +55,7 @@ const ProjectsTab = () => {
     };
 
     const usersOptions = userData?.data?.user.map((item) => ({
-        value: item?.image,
+        value: item?._id,
         label: `${item?.name?.firstName} ${item?.name?.lastName}`,
     }));
 
@@ -139,18 +139,13 @@ const ProjectsTab = () => {
             }
         };
 
-        console.log(updateData);
-
-
         const filteredData = Object.fromEntries(
             Object.entries(updateData.data).filter(([, value]) => value !== undefined && value !== null)
         );
         updateData = { ...updateData, data: filteredData };
 
-
-
-        const res = updateSingleProjects(updateData);
-        if (res) {
+        const res = await updateSingleProjects(updateData);
+        if (res?.data?.success) {
             toast.success("Succreefully update your project")
         }
         setOpenUpdateModal(false);
@@ -170,9 +165,6 @@ const ProjectsTab = () => {
     }
 
     //========================================================== update data
-
-
-
 
     const singleDataDelete = (id) => {
         if(currentUser?.role !== "Admin"){
@@ -227,8 +219,6 @@ const ProjectsTab = () => {
         setSelectedRecord(null);
     };
     // ============================================================= Duplicate Data, Function 
-
-
 
 
     const columns = [
