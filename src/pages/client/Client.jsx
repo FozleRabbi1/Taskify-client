@@ -5,7 +5,7 @@ import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { RiArrowDownSLine, RiDeleteBin5Line } from "react-icons/ri";
 
-const Users = () => {
+const Client = () => {
 
 
     const [isHideTableColom, setIsHideTableColom] = useState(false)
@@ -16,7 +16,7 @@ const Users = () => {
     const [availablePageSizes, setAvailablePageSizes] = useState([5, 10, 15, 20, 25, 30, 35]);
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
 
-    const tableData = data?.data?.user.map(({ _id, Id, name, email, role, number, image, projects }) => ({
+    const tableData = data?.data?.client.map(({ _id, Id, name, email, role, number, image, projects }) => ({
         key: _id,
         _id,
         Id,
@@ -226,4 +226,4 @@ const Users = () => {
     );
 };
 
-export default Users;
+export default Client;

@@ -4,10 +4,14 @@ import authApi from '../../redux/fetures/auth/authApi';
 import { Link, useNavigate } from 'react-router-dom';
 import { Select, Spin } from 'antd';
 import { toast } from 'react-toastify';
+import PhoneInput from 'react-phone-number-input'
+import 'react-phone-number-input/style.css'
 
 const VITE_image_upload_key = import.meta.env.VITE_image_upload_key
 const Register = () => {
     const navigate = useNavigate()
+    const [phoneNumber, setPhoneNumber] = useState("")
+    
 
     const roleOptions = ["user", "client"].map((item) => ({
         value: item,
@@ -44,12 +48,13 @@ const Register = () => {
                     ...user,
                     role,
                     image: photoUrl,
+                    number : phoneNumber
                 };
                 const res = await registerUser(newData);
 
                 if (res?.error?.status === 400) {
                     console.log(res?.error?.data?.errorSources);
-                    res?.error?.data?.errorSources.map(item => toast.error(item?.message) )
+                    res?.error?.data?.errorSources.map(item => toast.error(item?.message))
                 }
 
                 if (res?.data?.success) {
@@ -131,15 +136,35 @@ const Register = () => {
                         )}
                     </div>
 
-                    <Select
-                        placeholder="Select Role"
-                        style={{ width: '100%', height: "40px" }}
-                        options={roleOptions}
-                        onChange={(value) => setRole(value)}
-                    />
+                    <div className="mb-4">
+                        <label htmlFor="" className="block text-sm font-medium text-gray-700">
+                            Phone Number
+                        </label>
+                        <PhoneInput
+                            className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            international
+                            defaultCountry="BD"
+                            value={phoneNumber}
+                            onChange={setPhoneNumber} />
+
+                    </div>
+
+                    <div>
+                        <label htmlFor="" className="block text-sm font-medium text-gray-700">
+                            Select Role
+                        </label>
+
+                        <Select
+                        className='mb-3'
+                            placeholder="Select Role"
+                            style={{ width: '100%', height: "40px" }}
+                            options={roleOptions}
+                            onChange={(value) => setRole(value)}
+                        />
+                    </div>
 
                     <div className="mb-6">
-                        <label className="block text-gray-700 text-sm font-bold mb-2">Set JPG / PNG / JPEG Photo </label>
+                        <label className="block text-gray-700 text-sm font-bold mb-1 ">Set JPG / PNG / JPEG Photo </label>
                         <input type="file"  {...register("image", { required: true })} className="my-2 border-none rounded-md w-8/12 md:w-8/12 lg:w-6/12 max-w-xs text-black mx-2" />
                         {errors.exampleRequired && <span>This field is required</span>}
                     </div>

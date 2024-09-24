@@ -14,6 +14,7 @@ import ManageContacts from "../pages/contacts/ManageContacts";
 import ContactTypes from "../pages/contacts/ContactTypes";
 import { PiUsers } from "react-icons/pi";
 import Users from "../pages/users/Users";
+import Client from "../pages/client/Client";
 
 
 export const adminPaths = (todosData) => [
@@ -89,4 +90,11 @@ export const adminPaths = (todosData) => [
     path: "users",
     element: <Users />,
   },
+  {
+    logo: <PiUsers className="text-yellow-700" />,
+    name: "Clients",
+    path: "clients",
+    element: <Client />,
+  },
+  
 ];
