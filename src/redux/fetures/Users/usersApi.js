@@ -12,5 +12,15 @@ export const UsersApi = baseApi.injectEndpoints({
             },
             pollingInterval: 10000
         }),
+        deleteUser: builder.mutation({
+            query: (arrayOfIds) => {
+                return {
+                    url: `/auth`,
+                    method: "DELETE",
+                    body : arrayOfIds
+                }
+            },
+            invalidatesTags: ["all-users", "Projects"],
+        }),
     }),
 });

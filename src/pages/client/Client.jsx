@@ -6,8 +6,6 @@ import { FaEdit } from "react-icons/fa";
 import { RiArrowDownSLine, RiDeleteBin5Line } from "react-icons/ri";
 
 const Client = () => {
-
-
     const [isHideTableColom, setIsHideTableColom] = useState(false)
     const { data, isLoading } = UsersApi.useGetAllUsersQuery()
     const [ids, setides] = useState([])
@@ -18,7 +16,6 @@ const Client = () => {
 
     const tableData = data?.data?.client.map(({ _id, Id, name, email, role, number, image, projects }) => ({
         key: _id,
-        _id,
         Id,
         name,
         email,
@@ -33,6 +30,10 @@ const Client = () => {
     const onChange = (checkedValues) => {
         setIsInclude(checkedValues);
     };
+
+    
+   
+
 
     const columns = [
 

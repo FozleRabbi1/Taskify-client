@@ -19,11 +19,7 @@ const ManageProjects = () => {
     const usersOptions = userData?.data?.user.map((item) => ({
         value: item?._id,
         label: `${item?.name?.firstName} ${item?.name?.lastName}`,
-    }));
-
-    console.log(userData);
-    console.log(usersOptions);
-    
+    }));    
 
     const clientOptions = userData?.data?.client.map((item) => ({
         value: item?._id,
