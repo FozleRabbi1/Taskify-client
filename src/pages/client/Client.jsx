@@ -2,12 +2,18 @@ import { Button, Checkbox, Col, Row, Table } from "antd";
 import { UsersApi } from "../../redux/fetures/Users/usersApi";
 import SearchBar from "../../shared/SearchBar";
 import { useState } from "react";
-import { FaEdit } from "react-icons/fa";
-import { RiArrowDownSLine, RiDeleteBin5Line } from "react-icons/ri";
+import { FaEdit, FaFile } from "react-icons/fa";
+import { RiArrowDownSLine, RiDeleteBin5Line, RiDeleteBin6Line } from "react-icons/ri";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../redux/fetures/auth/authSlice";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const Client = () => {
+    const currentUser = useSelector(selectCurrentUser);
     const [isHideTableColom, setIsHideTableColom] = useState(false)
     const { data, isLoading } = UsersApi.useGetAllUsersQuery()
+    const [deleteUser] = UsersApi.useDeleteUserMutation()
     const [ids, setides] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
@@ -16,6 +22,7 @@ const Client = () => {
 
     const tableData = data?.data?.client.map(({ _id, Id, name, email, role, number, image, projects }) => ({
         key: _id,
+        _id,
         Id,
         name,
         email,
@@ -31,9 +38,49 @@ const Client = () => {
         setIsInclude(checkedValues);
     };
 
-    
-   
+    const handleMultipleDataDelete = () => {
+        if (!ids.length) {
+            toast.warning("You Can't Select Any Project")
+            return
+        }
+        if (currentUser?.role !== "Admin") {
+            toast.error("Only Admin Can Delete It")
+            return
+        }
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `You won't remove This User`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteUser({ idArray: ids });
+            }
+        });
+    }
 
+    const singleDataDelete = (id) => {
+        if (currentUser?.role !== "Admin") {
+            toast.error("Only Admin Can Delete It")
+            return
+        }
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `You won't remove This User`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteUser({ idArray: [id] });
+            }
+        });
+    }
 
     const columns = [
 
@@ -79,9 +126,17 @@ const Client = () => {
             title: <span style={titleStyle}>Assigned</span>,
             dataIndex: "projects",
             render: (projects) => (
-                <div className="flex justify-center items-center flex-col  opacity-80">
-                    <h2 className="text-[14px] font-semibold text-white bg-blue-600 px-3 rounded-xl ">{projects}</h2>
-                    <p className="text-[15px]">Projects</p>
+                <div className="flex justify-center items-center flex-col relative ">
+
+                    <h2 className="text-[14px] opacity-60 font-semibold text-white bg-blue-600 px-3 rounded-xl ">{projects}</h2>
+                    <p className="text-[15px] opacity-60">Projects</p>
+
+
+                    <h2 className="text-[13px] text-green-600 w-full text-center font-bold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        Work On-Going
+                    </h2>
+
+
                 </div>
             ),
         },
@@ -93,12 +148,15 @@ const Client = () => {
 
                     <button title="Update"
                         // onClick={() => handleModal(record, record?.key)}
-                        className="text-xl mr-6 text-blue-500">
+                        disabled={true}
+                        className="text-xl mr-6 text-blue-500 cursor-not-allowed">
                         <FaEdit className="text-xl text-blue-500" />
                     </button>
 
                     <button
                         // onClick={() => singleDataDelete(record.key)}
+                        className="cursor-not-allowed"
+                        disabled={true}
                         title="Delete">
                         <RiDeleteBin5Line className="text-xl mr-6 text-red-500" />
                     </button>
@@ -143,7 +201,17 @@ const Client = () => {
 
             <SearchBar />
 
-            <div className="my-10">
+            <div className="my-10  flex justify-between items-center">
+
+                <div className="flex gap-2">
+                    <button onClick={() => handleMultipleDataDelete()} className="my-5 border border-red-600 text-red-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-red-600 duration-300 ">
+                        <RiDeleteBin6Line className="mr-1" /> Delete Selected
+                    </button>
+                    <button className="my-5 border border-blue-600 text-blue-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-blue-600 duration-300 ">
+                        <FaFile className="mr-1" /> Save Coloumn Visibility
+                    </button>
+                </div>
+
                 <div className="relative flex justify-end">
 
                     <div onClick={() => { setIsHideTableColom(!isHideTableColom) }} className="bg-gray-500 p-2 ml-2 rounded cursor-pointer">
@@ -177,9 +245,9 @@ const Client = () => {
 
                                 <Col span={24} className="mb-2" >
                                     <Checkbox value="projects">Assigned</Checkbox>
-                                </Col>                             
-                                
-                                
+                                </Col>
+
+
                                 <Col span={24} className="mb-2" >
                                     <Checkbox value="action">Action</Checkbox>
                                 </Col>

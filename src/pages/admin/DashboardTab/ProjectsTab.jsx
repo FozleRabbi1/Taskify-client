@@ -168,7 +168,7 @@ const ProjectsTab = () => {
 
 
     const singleDataDelete = (id) => {
-        if(currentUser?.role !== "Admin"){
+        if (currentUser?.role !== "Admin") {
             toast.error("Only Admin Can Delete It")
             return
         }
@@ -261,8 +261,7 @@ const ProjectsTab = () => {
                                         <img className={`border-2 border-gray-300 ${index >= 1 ? "-ml-5" : ""} hover:z-10 hover:-mt-2 hover:shadow-md duration-300 cursor-pointer`} key={index} src={url} alt={`User ${index + 1}`} style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                                     ))
                                 }
-                                {record?.usersId?.length}
-                                 </>
+                            </>
                     }
 
                     <Button onClick={() => handleModal(record, record?.key)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
@@ -400,7 +399,7 @@ const ProjectsTab = () => {
                         <RiFoldersLine className="text-xl mr-6 text-yellow-500" />
                     </button>
 
-                    <button title="Quick View">
+                    <button className="cursor-not-allowed" title="Quick View">
                         <CiCircleInfo className="text-xl text-blue-600" />
                     </button>
 
@@ -410,11 +409,11 @@ const ProjectsTab = () => {
     ].filter(Boolean);
 
     const handleMultipleDataDelete = () => {
-        if(!ids.length){
+        if (!ids.length) {
             toast.warning("You Can't Select Any Project")
             return
         }
-        if(currentUser?.role !== "Admin"){
+        if (currentUser?.role !== "Admin") {
             toast.error("Only Admin Can Delete It")
             return
         }

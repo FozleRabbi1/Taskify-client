@@ -77,7 +77,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
                     body : args
                 }
             },
-            invalidatesTags: ["Projects"],
+            invalidatesTags: ["Projects", "all-users"],
         }),
         updateSingleProjects : builder.mutation({
             query: (args) => {                                          
@@ -87,7 +87,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
                     body : args.data
                 }
             },
-            invalidatesTags: ["Projects"],
+            invalidatesTags: ["Projects", "all-users"],
         }),
         deleteProject: builder.mutation({
             query: (arrayOfIds) => {
@@ -97,7 +97,7 @@ export const ProjectsApi = baseApi.injectEndpoints({
                     body : arrayOfIds
                 }
             },
-            invalidatesTags: ["Projects"],
+            invalidatesTags: ["Projects", "all-users"],
         }),
 
     }),
