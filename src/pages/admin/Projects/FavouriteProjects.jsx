@@ -185,7 +185,7 @@ const FavouriteProjects = () => {
                                     ))
                                 } </>
                     }
-                    <Button onClick={() => handleModal(record)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
+                    <Button disabled onClick={() => handleModal(record)} className="border cursor-not-allowed rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
                         <FaRegEdit className="text-xl text-blue-600" />
                     </Button>
                 </div>
@@ -202,14 +202,14 @@ const FavouriteProjects = () => {
                             {clients.map((url, index) => (
                                 <img className={`border-2 border-gray-300 ${index >= 1 ? "-ml-5" : ""} hover:z-10 hover:-mt-2 hover:shadow-md duration-300 cursor-pointer`} key={index} src={url} alt={`User ${index + 1}`} style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
                             ))}
-                            <Button onClick={() => setOpen(true)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
+                            <Button disabled onClick={() => setOpen(true)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
                                 <FaRegEdit className="text-xl text-blue-600" />
                             </Button>
                         </div>
                     ) : (
                         <div className="flex items-center">
                             <h2 className="bg-blue-600 text-white font-medium px-2 rounded-md uppercase opacity-80 flex items-center">Not Assigned</h2>
-                            <Button onClick={() => setOpen(true)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
+                            <Button disabled onClick={() => setOpen(true)} className="border rounded-full flex justify-center items-center w-[30px] h-[30px] border-blue-600 ml-2 p-[6px] ">
                                 <FaRegEdit className="text-xl text-blue-600" />
                             </Button>
                         </div>
@@ -302,10 +302,10 @@ const FavouriteProjects = () => {
             dataIndex: "action",
             render: () => (
                 <div className="">
-                    <button title="Update"><FaEdit className="text-xl mr-6 text-blue-500 " /></button>
-                    <button title="Delete"><RiDeleteBin5Line className="text-xl mr-6 text-red-500 " /></button>
-                    <button title="Duplicate"><RiFoldersLine className="text-xl mr-6 text-yellow-500 " /></button>
-                    <button title="Quick View"><CiCircleInfo className="text-xl text-blue-600 " /></button>
+                    <button disabled title="Update"><FaEdit className="text-xl mr-6 text-blue-500  cursor-not-allowed " /></button>
+                    <button disabled title="Delete"><RiDeleteBin5Line className="text-xl mr-6 text-red-500  cursor-not-allowed " /></button>
+                    <button disabled title="Duplicate"><RiFoldersLine className="text-xl mr-6 text-yellow-500  cursor-not-allowed " /></button>
+                    <button disabled title="Quick View"><CiCircleInfo className="text-xl text-blue-600  cursor-not-allowed " /></button>
 
                 </div>
             ),

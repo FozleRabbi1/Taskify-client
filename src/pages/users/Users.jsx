@@ -138,9 +138,8 @@ const Users = () => {
             render: (text, record) => (
                 <div className="">
 
-                    <button title="Update"
-                        // onClick={() => handleModal(record, record?.key)}
-                        className="text-xl mr-6 text-blue-500">
+                    <button disabled title="Update"
+                        className="text-xl mr-6 text-blue-500 cursor-not-allowed">
                         <FaEdit className="text-xl text-blue-500" />
                     </button>
 
@@ -149,7 +148,6 @@ const Users = () => {
                         title="Delete">
                         <RiDeleteBin5Line className="text-xl mr-6 text-red-500" />
                     </button>
-
 
                 </div>
             )
