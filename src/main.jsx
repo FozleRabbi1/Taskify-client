@@ -10,8 +10,8 @@ import { ToastContainer } from 'react-toastify'
 
 createRoot(document.getElementById('root')).render(
   <>
-   <Provider store={store}>
-      <RouterProvider router={routes}></RouterProvider>     
+    <Provider store={store}>
+      <RouterProvider router={routes}></RouterProvider>
       <ToastContainer />
     </Provider>
   </>,

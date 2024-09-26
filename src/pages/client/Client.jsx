@@ -112,7 +112,7 @@ const Client = () => {
             title: <span style={titleStyle}>Role</span>,
             dataIndex: "role",
             render: (role) => (
-                <h2 className={`font-semibold text-[16px] opacity-80 text-center uppercase w-[50%] rounded ${role === "Admin" ? "text-sky-600 bg-sky-100 " : role === "user" ? "text-black bg-gray-100" : ""} `} >{role}</h2>
+                <h2 className={`font-semibold text-[16px] opacity-80 text-center uppercase rounded ${role === "Admin" ? "text-sky-600 bg-sky-100 " : role === "user" ? "text-black bg-gray-100" : ""} `} >{role}</h2>
             ),
         },
         isInclude.includes("number") && {

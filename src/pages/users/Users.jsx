@@ -12,7 +12,7 @@ import Swal from "sweetalert2";
 const Users = () => {
     const currentUser = useSelector(selectCurrentUser);
     const [isHideTableColom, setIsHideTableColom] = useState(false)
-    const { data, isLoading } = UsersApi.useGetAllUsersQuery()
+    const { data, isLoading } = UsersApi.useGetAllUsersQuery({}, { pollingInterval: 3000 })
     const [deleteUser] = UsersApi.useDeleteUserMutation()
     const [ids, setides] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
@@ -112,7 +112,7 @@ const Users = () => {
             title: <span style={titleStyle}>Role</span>,
             dataIndex: "role",
             render: (role) => (
-                <h2 className={`font-semibold text-[16px] opacity-80 text-center uppercase w-[50%] rounded ${role === "Admin" ? "text-sky-600 bg-sky-100 " : role === "user" ? "text-black bg-gray-100" : ""} `} >{role}</h2>
+                <h2 className={`font-semibold text-[16px] opacity-80 text-center uppercase  rounded ${role === "Admin" ? "text-sky-600 bg-sky-100 " : role === "user" ? "text-black bg-gray-100" : ""} `} >{role}</h2>
             ),
         },
         isInclude.includes("number") && {
@@ -152,7 +152,6 @@ const Users = () => {
                 </div>
             )
         }
-
     ].filter(Boolean);
 
     const onSelectChange = (newSelectedRowKeys) => {
@@ -185,11 +184,9 @@ const Users = () => {
 
     return (
         <div>
-
             <SearchBar />
 
             <div className="my-10  flex justify-between items-center">
-
                 <div className="flex gap-2">
                     <button onClick={() => handleMultipleDataDelete()} className="my-5 border border-red-600 text-red-600 flex justify-between items-center px-6 py-2 text-[15px] rounded font-semibold opacity-80 hover:text-white hover:bg-red-600 duration-300 ">
                         <RiDeleteBin6Line className="mr-1" /> Delete Selected
@@ -200,13 +197,11 @@ const Users = () => {
                 </div>
 
                 <div className="relative flex justify-end">
-
                     <div onClick={() => { setIsHideTableColom(!isHideTableColom) }} className="bg-gray-500 p-2 ml-2 rounded cursor-pointer">
                         <RiArrowDownSLine className="text-white text-xl" />
                     </div>
 
                     <div className={`absolute top-12 right-0 bg-white shadow-lg z-50 w-[150px] px-4 py-2 ${isHideTableColom ? "block" : "hidden"} `}>
-
                         <Checkbox.Group
                             style={{
                                 width: '100%',
@@ -240,14 +235,12 @@ const Users = () => {
                                 </Col>
                             </Row>
                         </Checkbox.Group>
-
                     </div>
                 </div>
             </div>
 
 
             <div>
-
                 <Table
                     bordered
                     loading={isLoading}
@@ -271,13 +264,7 @@ const Users = () => {
                         Add Page Size
                     </Button>
                 </div>
-
             </div>
-
-
-
-
-
         </div>
     );
 };

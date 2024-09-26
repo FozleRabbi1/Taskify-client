@@ -29,7 +29,9 @@ const ProjectsTab = () => {
     const [updateSingleProjects] = ProjectsApi.useUpdateSingleProjectsMutation()
     const { data: userData } = UsersApi.useGetAllUsersQuery({})
     const [params, setParams] = useState(undefined);
-    const { data, isLoading } = ProjectsApi.useGetAllProjectsQuery(params);
+    const { data, isLoading } = ProjectsApi.useGetAllProjectsQuery(params, {
+        pollingInterval: 3000, 
+    });
     // const [open, setOpen] = useState(false);
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -186,7 +188,6 @@ const ProjectsTab = () => {
             }
         });
     }
-
 
     const [isInclude, setIsInclude] = useState(['Id', 'Title', 'User', "Client", "status", "priority", "budget", "tags", "startsAt", "endsAt", "action"])
     const onChange = (checkedValues) => {
@@ -623,8 +624,6 @@ const ProjectsTab = () => {
                 </div>
             </div>
 
-
-
             <Modal
                 centered
                 open={openUpdateModal}
@@ -727,7 +726,6 @@ const ProjectsTab = () => {
                     </div>
                 </div>
             </Modal>
-
 
             <Modal
                 title="Warning"

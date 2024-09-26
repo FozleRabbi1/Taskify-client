@@ -2,8 +2,6 @@ import { baseApi } from './../../api/baseApi';
 
 export const TodosApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
-
-
         getAllTodos: builder.query({
             providesTags: ["Projects", "favourite-Projects", "todos"],
             query: () => {                

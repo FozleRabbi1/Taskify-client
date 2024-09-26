@@ -12,7 +12,6 @@ export const ProjectsApi = baseApi.injectEndpoints({
                     params : query,
                 };
             },
-            pollingInterval: 10000
         }),
 
         addProject: builder.mutation({
@@ -46,7 +45,6 @@ export const ProjectsApi = baseApi.injectEndpoints({
                     params : query,
                 };
             },
-            pollingInterval: 10000
         }),        
               
         isFavouriteProject: builder.mutation({

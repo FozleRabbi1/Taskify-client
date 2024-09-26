@@ -18,7 +18,7 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWithRefreshToken = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
-  
+    
   if (result?.error?.status === 403) {
     toast.error(`${result?.error?.data.message}`);
   }
@@ -28,7 +28,6 @@ const baseQueryWithRefreshToken = async (args, api, extraOptions) => {
 
   if (result?.error?.status === 401) {
     console.log("sending refresh token");
-
     const res = await fetch("https://taskify-server-sable.vercel.app/api/v1/auth/refresh-token", {
       method: "POST",
       credentials: "include",
