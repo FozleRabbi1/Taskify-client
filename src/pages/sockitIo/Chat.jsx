@@ -1,5 +1,6 @@
 import { selectCurrentUser } from '../../redux/fetures/auth/authSlice';
 
+
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import io from 'socket.io-client';
@@ -30,33 +31,45 @@ const Chat = () => {
       .then((data) => setUsers(data))
       .catch((err) => console.error('Error fetching users:', err));
 
+    // Join the user's room
+    socket.emit('joinRoom', currentUser.email);
+
     // Listen for new messages
-    socket.on('chatMessage', (message) => {
+    const handleChatMessage = (message) => {
       // Check if the message is relevant to this chat
       if (
         (message.sender === currentUser?.email && message.receiver === selectedUser) ||
         (message.sender === selectedUser && message.receiver === currentUser?.email)
       ) {
-        setMessages((prevMessages) => [...prevMessages, message]);
+        // Use a unique identifier to prevent duplicates
+        setMessages((prevMessages) => {
+          // Ensure that we are not adding a message that already exists
+          if (!prevMessages.find((msg) => msg.timestamp === message.timestamp)) {
+            return [...prevMessages, message];
+          }
+          return prevMessages;
+        });
       }
-    });
+    };
+
+    socket.on('chatMessage', handleChatMessage);
 
     // Cleanup on unmount
     return () => {
-      socket.off('chatMessage');
+      socket.off('chatMessage', handleChatMessage);
     };
   }, [selectedUser, currentUser?.email]);
 
   const selectUser = (user) => {
     setSelectedUser(user.email);
-    fetchChatHistory(user.email); // Fetch chat history for the selected user
+    fetchChatHistory(user.email);
   };
 
   const fetchChatHistory = async (receiverEmail) => {
     try {
       const response = await fetch(`http://localhost:3000/chat/${currentUser.email}/${receiverEmail}`);
       const chatHistory = await response.json();
-      setMessages(chatHistory);
+      setMessages(chatHistory); // Set previous messages when user is selected
     } catch (err) {
       console.error('Error fetching chat history:', err);
     }
@@ -66,7 +79,21 @@ const Chat = () => {
     e.preventDefault();
     if (!input.trim() || !selectedUser) return;
 
-    const messageData = { sender: currentUser.email, receiver: selectedUser, message: input };
+    const messageData = {
+      sender: currentUser.email,
+      receiver: selectedUser,
+      message: input,
+      timestamp: new Date().toISOString(), // Add a timestamp to each message
+    };
+
+    // Immediately add the sent message to the messages state only if it doesn't already exist
+    setMessages((prevMessages) => {
+      if (!prevMessages.find((msg) => msg.timestamp === messageData.timestamp)) {
+        return [...prevMessages, messageData];
+      }
+      return prevMessages;
+    });
+
     socket.emit('chatMessage', messageData); // Send message to the server
     setInput(''); // Clear input after sending
   };
@@ -112,3 +139,5 @@ const Chat = () => {
 };
 
 export default Chat;
+
+

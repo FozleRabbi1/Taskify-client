@@ -9,6 +9,7 @@ import Register from "../pages/Auth/Registration";
 import Products from "../pages/products/Products";
 import Success from "../pages/success/Success";
 import Failed from "../pages/failed/Failed";
+import Chat from "../pages/sockitIo/Chat";
 // import SockitIo from "../pages/sockitIo/SockitIo";
 
 
@@ -45,7 +46,7 @@ const routes = createBrowserRouter([
     },
     {
         path: "/sockit",
-        element: <SockitIo/>,
+        element: <Chat/>,
     },
     {
         path: "/products",
