@@ -30,27 +30,28 @@
 
 .chat-messages {
     list-style-type: none;
-    padding: 0;
-    margin: 0;
+    background-color: black;
   }
   
   .message-sent {
     text-align: right;
-    background-color: #dcf8c6; /* Light green for sent messages */
+    background-color: #ee0a3b; 
     padding: 8px;
     border-radius: 10px;
     margin: 5px 0;
-    display: inline-block;
-    max-width: 70%;
+    display: block;
+    margin-left: auto;
+    max-width: 80%;
   }
   
   .message-received {
     text-align: left;
-    background-color: #ffffff; /* White for received messages */
+    background-color: gray; 
+    color: aqua;
     padding: 8px;
     border-radius: 10px;
     margin: 5px 0;
     display: inline-block;
-    max-width: 70%;
+    max-width: 80%;
   }
   

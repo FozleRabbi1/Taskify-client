@@ -1,49 +1,39 @@
 import { selectCurrentUser } from '../../redux/fetures/auth/authSlice';
-
-
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import io from 'socket.io-client';
-import './Chat.css'; // Import your CSS file for styling
+import './Chat.css';
 
 const socket = io('http://localhost:3000');
 
 const Chat = () => {
   const [userData, setUserData] = useState({});
   const currentUser = useSelector(selectCurrentUser);
-  
-  // State for messages, input, users, selected user
+
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
-    // Fetch current user data
     fetch(`https://taskify-server-sable.vercel.app/api/v1/auth/${currentUser?.email}`)
       .then(res => res.json())
       .then(data => setUserData(data))
       .catch(err => console.error('Error fetching user data:', err));
 
-    // Fetch all users from the backend
     fetch('http://localhost:3000/users')
       .then((res) => res.json())
       .then((data) => setUsers(data))
       .catch((err) => console.error('Error fetching users:', err));
 
-    // Join the user's room
     socket.emit('joinRoom', currentUser.email);
 
-    // Listen for new messages
     const handleChatMessage = (message) => {
-      // Check if the message is relevant to this chat
       if (
         (message.sender === currentUser?.email && message.receiver === selectedUser) ||
         (message.sender === selectedUser && message.receiver === currentUser?.email)
       ) {
-        // Use a unique identifier to prevent duplicates
         setMessages((prevMessages) => {
-          // Ensure that we are not adding a message that already exists
           if (!prevMessages.find((msg) => msg.timestamp === message.timestamp)) {
             return [...prevMessages, message];
           }
@@ -54,7 +44,6 @@ const Chat = () => {
 
     socket.on('chatMessage', handleChatMessage);
 
-    // Cleanup on unmount
     return () => {
       socket.off('chatMessage', handleChatMessage);
     };
@@ -69,7 +58,7 @@ const Chat = () => {
     try {
       const response = await fetch(`http://localhost:3000/chat/${currentUser.email}/${receiverEmail}`);
       const chatHistory = await response.json();
-      setMessages(chatHistory); // Set previous messages when user is selected
+      setMessages(chatHistory);
     } catch (err) {
       console.error('Error fetching chat history:', err);
     }
@@ -83,61 +72,82 @@ const Chat = () => {
       sender: currentUser.email,
       receiver: selectedUser,
       message: input,
-      timestamp: new Date().toISOString(), // Add a timestamp to each message
+      timestamp: new Date().toISOString(),
     };
 
-    // Immediately add the sent message to the messages state only if it doesn't already exist
-    setMessages((prevMessages) => {
-      if (!prevMessages.find((msg) => msg.timestamp === messageData.timestamp)) {
-        return [...prevMessages, messageData];
-      }
-      return prevMessages;
-    });
-
-    socket.emit('chatMessage', messageData); // Send message to the server
-    setInput(''); // Clear input after sending
+    socket.emit('chatMessage', messageData);
+    setInput('');
   };
 
   return (
-    <div>
-      <h1>Chat App</h1>
-      <h2>{`${userData?.data?.name?.firstName} ${userData?.data?.name?.lastName}`}</h2>
-      <span>{userData?.data?.email}</span>
+    <div className='h-[100vh]'>
+      <div>
+        <div className='grid grid-cols-8'>
 
-      {/* Display list of users */}
-      <h2>Select a User to Chat</h2>
-      <ul>
-        {users.map((user) => (
-          <li key={user._id} onClick={() => selectUser(user)}>
-            {user?.name.firstName} <span className='text-[12px]'>{user?.email}</span>
-          </li>
-        ))}
-      </ul>
+          <div className='bg-black text-white col-span-2 pt-5'>
+            <ul>
+              {users
+              .filter(user => user?.email !== currentUser?.email)
+              .map((user) => (
+                <li key={user._id} onClick={() => selectUser(user)} className='flex  items-center cursor-pointer border-b-[1px] mb-2' >
+                  <img className='size-14 mb-3 rounded-full mr-2' src={user?.image} alt="" />
 
-      {selectedUser && (
-        <div className='mt-4 border'>
-          <h2>Chatting with {selectedUser}</h2>
-          <ul className='chat-messages'>
-            {messages.map((msg, index) => (
-              <li key={index} className={msg.sender === currentUser.email ? 'message-sent' : 'message-received'}>
-                {msg.message}
-              </li>
-            ))}
-          </ul>
-          <form onSubmit={sendMessage}>
-            <input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Type your message..."
-            />
-            <button type="submit">Send</button>
-          </form>
+                  <div>
+                    <h2>{user?.name.firstName}</h2>
+                    <span className='text-[12px]'>{user?.email}</span>
+                  </div>
+
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className='col-span-4'>
+            {selectedUser && (
+              <div className='border bg-red-100'>
+                <h2>Chatting with {selectedUser}</h2>
+                <ul className='chat-messages h-[85vh] overflow-y-auto bg-green-500 px-10 py-5 '>
+                  {messages.map((msg, index) => (
+
+                    <div key={index} className='flex' >
+                      <li className={` ${msg.sender === currentUser.email ? 'message-sent' : 'message-received'}`}>
+                        {msg.message}
+                      </li>
+                    </div>
+                  ))}
+                </ul>
+
+                <form onSubmit={sendMessage} className='bg-green-300 mx-10 my-5   flex justify-between'>
+                  <input
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    placeholder="Type your message..."
+                    className='w-[80%] py-5'
+                  />
+                  <button className='bg-yellow-300 w-[20%] py-5' type="submit">Send</button>
+                </form>
+
+
+              </div>
+            )}
+          </div>
+
+
+          <div className='col-span-2 flex flex-col  items-center mt-10'>
+
+            <img src={userData?.data?.image} className='size-[120px]' alt="" />
+            <h2>{`${userData?.data?.name?.firstName} ${userData?.data?.name?.lastName}`}</h2>
+            <span>{userData?.data?.email}</span>
+
+
+          </div>
+
         </div>
-      )}
+      </div>
+
+
     </div>
   );
 };
 
 export default Chat;
-
-
