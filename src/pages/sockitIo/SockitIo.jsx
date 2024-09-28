@@ -3,7 +3,7 @@ import { selectCurrentUser } from '../../redux/fetures/auth/authSlice';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import io from 'socket.io-client';
-import './Chat.css'; // Import your CSS file for styling
+import './Chat.css'; 
 
 const socket = io('http://localhost:3000');
 
@@ -11,28 +11,23 @@ const Chat = () => {
   const [userData, setUserData] = useState({});
   const currentUser = useSelector(selectCurrentUser);
   
-  // State for messages, input, users, selected user
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
-    // Fetch current user data
     fetch(`https://taskify-server-sable.vercel.app/api/v1/auth/${currentUser?.email}`)
       .then(res => res.json())
       .then(data => setUserData(data))
       .catch(err => console.error('Error fetching user data:', err));
 
-    // Fetch all users from the backend
     fetch('http://localhost:3000/users')
       .then((res) => res.json())
       .then((data) => setUsers(data))
       .catch((err) => console.error('Error fetching users:', err));
 
-    // Listen for new messages
     socket.on('chatMessage', (message) => {
-      // Check if the message is relevant to this chat
       if (
         (message.sender === currentUser?.email && message.receiver === selectedUser) ||
         (message.sender === selectedUser && message.receiver === currentUser?.email)
@@ -41,7 +36,6 @@ const Chat = () => {
       }
     });
 
-    // Cleanup on unmount
     return () => {
       socket.off('chatMessage');
     };
@@ -49,7 +43,7 @@ const Chat = () => {
 
   const selectUser = (user) => {
     setSelectedUser(user.email);
-    fetchChatHistory(user.email); // Fetch chat history for the selected user
+    fetchChatHistory(user.email); 
   };
 
   const fetchChatHistory = async (receiverEmail) => {
@@ -67,8 +61,8 @@ const Chat = () => {
     if (!input.trim() || !selectedUser) return;
 
     const messageData = { sender: currentUser.email, receiver: selectedUser, message: input };
-    socket.emit('chatMessage', messageData); // Send message to the server
-    setInput(''); // Clear input after sending
+    socket.emit('chatMessage', messageData); 
+    setInput(''); 
   };
 
   return (
@@ -77,7 +71,6 @@ const Chat = () => {
       <h2>{`${userData?.data?.name?.firstName} ${userData?.data?.name?.lastName}`}</h2>
       <span>{userData?.data?.email}</span>
 
-      {/* Display list of users */}
       <h2>Select a User to Chat</h2>
       <ul>
         {users.map((user) => (

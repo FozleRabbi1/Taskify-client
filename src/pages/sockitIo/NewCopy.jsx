@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import io from 'socket.io-client';
 import './Chat.css';
 
-const Chat = () => {
+const ChatCopy = () => {
   const [userData, setUserData] = useState({});
   const currentUser = useSelector(selectCurrentUser);
 
@@ -149,7 +149,7 @@ const Chat = () => {
                 ))}
               </ul>
 
-              <form onSubmit={sendMessage} className='p-4 bg-gray-00 flex mt-auto'>
+              <form onSubmit={sendMessage} className='p-4 bg-gray-200 flex mt-auto'>
                 <input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
@@ -175,4 +175,4 @@ const Chat = () => {
   );
 };
 
-export default Chat;
+export default ChatCopy;
