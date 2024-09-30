@@ -16,8 +16,13 @@ const Login = () => {
 
 
     const onSubmit = async (data) => {
+        const newDadta = {
+            password : data.password,
+            email : data.email,
+            isActive : true
+        }
         try {
-            const res = await login(data).unwrap();
+            const res = await login(newDadta).unwrap();
             const token = res.data.accessToken;
             const user = verifyToken(token);
             dispatch(setUser({ user, token }));

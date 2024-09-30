@@ -9,9 +9,9 @@ export const UsersApi = baseApi.injectEndpoints({
                     url: "/auth",
                     method: "GET",
                 };                
-            },
-            pollingInterval: 10000
+            }
         }),
+
         deleteUser: builder.mutation({
             query: (arrayOfIds) => {
                 return {
@@ -22,5 +22,17 @@ export const UsersApi = baseApi.injectEndpoints({
             },
             invalidatesTags: ["all-users", "Projects"],
         }),
+
+        logOutUser: builder.mutation({
+            query: (email) => {                
+                return {
+                    url: `/auth/logOut`,
+                    method: "PUT",
+                    body : email
+                }
+            },
+            invalidatesTags: ["all-users"],
+        }),
+
     }),
 });

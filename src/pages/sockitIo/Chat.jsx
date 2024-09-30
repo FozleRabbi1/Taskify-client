@@ -4,14 +4,18 @@ import { useSelector } from 'react-redux';
 import io from 'socket.io-client';
 import './Chat.css';
 import FakeView from './FakeView';
+import { UsersApi } from '../../redux/fetures/Users/usersApi';
 
 const NewWithNotification = () => {
   const [userData, setUserData] = useState({});
+  const { data, isLoading } = UsersApi.useGetAllUsersQuery({}, { pollingInterval: 3000 })
   const currentUser = useSelector(selectCurrentUser);
+
+  // console.log(data?.data);
+
 
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
-  const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [unreadMessages, setUnreadMessages] = useState({});
 
@@ -34,15 +38,9 @@ const NewWithNotification = () => {
       .then(data => setUserData(data))
       .catch(err => console.error('Error fetching user data:', err));
 
-    fetch('http://localhost:3000/users')
-      .then((res) => res.json())
-      .then((data) => setUsers(data))
-      .catch((err) => console.error('Error fetching users:', err));
-
     if (currentUser?.email) {
       socketRef.current.emit('joinRoom', currentUser.email);
 
-      // Load unread messages from local storage when component mounts
       const storedUnreadMessages = JSON.parse(localStorage.getItem('unreadMessages')) || {};
       setUnreadMessages(storedUnreadMessages);
 
@@ -60,7 +58,6 @@ const NewWithNotification = () => {
         }
       });
 
-      // Listen for new message notifications
       socketRef.current.on('newMessageNotification', (notification) => {
         if (notification.sender !== selectedUser?.email) {
           setUnreadMessages((prev) => {
@@ -68,7 +65,7 @@ const NewWithNotification = () => {
               ...prev,
               [notification.sender]: (prev[notification.sender] || 0) + 1,
             };
-            localStorage.setItem('unreadMessages', JSON.stringify(updatedUnread)); // Save to local storage
+            localStorage.setItem('unreadMessages', JSON.stringify(updatedUnread));
             return updatedUnread;
           });
         }
@@ -115,7 +112,6 @@ const NewWithNotification = () => {
   const sendMessage = (e) => {
     e.preventDefault();
     if (!input.trim() || !selectedUser) return;
-
     const messageData = {
       sender: currentUser.email,
       receiver: selectedUser.email,
@@ -135,13 +131,13 @@ const NewWithNotification = () => {
         {/* Sidebar */}
         <div className={`col-span-2 bg-black text-white p-5 flex flex-col overflow-hidden  `}>
           <ul className='space-y-4 overflow-auto'>
-            {users
+            {data?.data?.allUsers
               .filter((user) => user.email !== currentUser?.email)
               .map((user) => (
                 <li
                   key={user.email}
                   onClick={() => selectUser(user)}
-                  className={`flex items-center cursor-pointer px-2 py-1 ${selectedUser?.email === user?.email ? "border" : " border border-transparent "}`}
+                  className={`flex items-center cursor-pointer px-2 py-1  ${selectedUser?.email === user?.email ? "border" : " border border-transparent "}`}
                 >
                   <img
                     className='w-10 h-10 rounded-full mr-3'
@@ -149,15 +145,25 @@ const NewWithNotification = () => {
                     alt={user.name.firstName}
                   />
 
-                  <div className='relative'>
-                    <h2>{user.name.firstName}</h2>
+                  <div className=''>
+                    
+                    <h2 className='flex items-center'>{user.name.firstName}
+
+
+                      {user?.isActive &&
+                        <span className='text-[12px] bg-green-800 rounded mx-2 px-[3px] py-[1px] text-white flex items-center '>Active Now</span>
+                      }
+
+                      {unreadMessages[user.email] > 0 && (
+                        <span className='text-xs font-bold bg-red-600 text-white rounded-full h-5 w-5 flex items-center justify-center'>
+                          {unreadMessages[user.email]}
+                        </span>
+                      )}
+
+                    </h2>
+
                     <p className='text-sm'>{user.email}</p>
 
-                    {unreadMessages[user.email] > 0 && (
-                      <span className='absolute top-0 right-0 text-xs font-bold bg-red-600 text-white rounded-full h-5 w-5 flex items-center justify-center'>
-                        {unreadMessages[user.email]}
-                      </span>
-                    )}
                   </div>
 
                 </li>
@@ -192,23 +198,23 @@ const NewWithNotification = () => {
 
 
 
-                      <div className=''>
-                        {/* <img src={msg?.image} className='size-14' alt="" /> */}
-                        <span
-                          className={`inline-block px-4 py-2 rounded-lg ${msg.sender === currentUser.email
-                            ? 'bg-blue-500 text-white max-w-[70%]'
-                            : 'bg-gray-300 text-black max-w-[70%]'
-                            }`}
-                        >
-                          {msg.message}
+                    <div className=''>
+                      {/* <img src={msg?.image} className='size-14' alt="" /> */}
+                      <span
+                        className={`inline-block px-4 py-2 rounded-lg ${msg.sender === currentUser.email
+                          ? 'bg-blue-500 text-white max-w-[70%]'
+                          : 'bg-gray-300 text-black max-w-[70%]'
+                          }`}
+                      >
+                        {msg.message}
+                      </span>
+                      <p className='text-[10px]'>
+                        <span className=' text-white px-1 py-[1px] rounded-md inline-block font-bold' >
+                          {new Date(msg.timestamp).toLocaleTimeString()}
                         </span>
-                        <p className='text-[10px]'>
-                          <span className=' text-white px-1 py-[1px] rounded-md inline-block font-bold' >
-                            {new Date(msg.timestamp).toLocaleTimeString()}
-                          </span>
-                        </p>
+                      </p>
 
-                      </div>
+                    </div>
 
                   </li>
                 ))}

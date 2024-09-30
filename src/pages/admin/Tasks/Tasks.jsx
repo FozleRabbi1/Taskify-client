@@ -48,7 +48,7 @@ const Tasks = () => {
 
             </div>
 
-            <h2 className="pb-10 text-[15px] text-gray-500 font-semibold">© 2024 , Made with ❤️ by <span className="text-blue-500 mr-4">Infinitie Technologies</span> v1.0.10</h2>
+            <h2 className="pb-10 text-[15px] text-gray-500 font-semibold">© 2024 , Made with ❤️ by <span className="text-blue-500 mr-4">BDcalling-It</span> v1.0.10</h2>
 
         </div>
     );

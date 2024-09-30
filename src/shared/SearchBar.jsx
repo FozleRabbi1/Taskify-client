@@ -10,8 +10,10 @@ import { logOut, selectCurrentUser } from "../redux/fetures/auth/authSlice";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RiLogoutCircleLine } from "react-icons/ri";
+import { UsersApi } from "../redux/fetures/Users/usersApi";
 
 const SearchBar = () => {
+    const [logOutUser] = UsersApi.useLogOutUserMutation()
     const currentUser = useSelector(selectCurrentUser);
     const [data, setData] = useState({})
     // console.log(data.data.image);
@@ -19,8 +21,8 @@ const SearchBar = () => {
 
 
     useEffect(() => {
-        fetch(`https://taskify-server-sable.vercel.app/api/v1/auth/${currentUser?.email}`)
-        // fetch(`http://localhost:5001/api/v1/auth/${currentUser?.email}`)
+        // fetch(`https://taskify-server-sable.vercel.app/api/v1/auth/${currentUser?.email}`)
+        fetch(`http://localhost:5001/api/v1/auth/${currentUser?.email}`)
             .then(res => res.json())
             .then(data => setData(data))
     }, [currentUser?.email])
@@ -29,9 +31,10 @@ const SearchBar = () => {
 
     const dispatch = useAppDispatch();
     const handleLOgout = () => {
+        logOutUser({email : currentUser?.email});
         dispatch(logOut());
-        localStorage.removeItem("layout")
-        navigate("/login")
+        localStorage.removeItem("layout");
+        navigate("/login");
 
     };
     const [isOpen, setIsOpen] = useState(false)
