@@ -8,10 +8,11 @@ import { UsersApi } from '../../redux/fetures/Users/usersApi';
 
 const NewWithNotification = () => {
   const [userData, setUserData] = useState({});
-  const { data, isLoading } = UsersApi.useGetAllUsersQuery({}, { pollingInterval: 3000 })
+  const { data } = UsersApi.useGetAllUsersQuery({}, { pollingInterval: 10000 })
+  // const { data } = UsersApi.useGetAllUsersQuery({})
   const currentUser = useSelector(selectCurrentUser);
 
-  // console.log(data?.data);
+  console.log(data?.data);
 
 
   const [messages, setMessages] = useState([]);
@@ -146,7 +147,7 @@ const NewWithNotification = () => {
                   />
 
                   <div className=''>
-                    
+
                     <h2 className='flex items-center'>{user.name.firstName}
 
 
@@ -195,8 +196,6 @@ const NewWithNotification = () => {
                     key={index}
                     className={`mb-4 ${msg.sender === currentUser.email ? 'text-right' : 'text-left'}`}
                   >
-
-
 
                     <div className=''>
                       {/* <img src={msg?.image} className='size-14' alt="" /> */}
@@ -254,6 +253,7 @@ const NewWithNotification = () => {
           }} className='mt-4 text-3xl font-bold  '>{`${userData?.data?.name?.firstName} ${userData?.data?.name?.lastName}`}</h2>
           <span className='text-[18px]'>{userData?.data?.email}</span>
         </div>
+        
       </div>
     </div>
   );

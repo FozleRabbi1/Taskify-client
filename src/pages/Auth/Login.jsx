@@ -4,16 +4,14 @@ import TSInput from "../../components/form/TSInput";
 import { useAppDispatch } from './../../redux/hooks';
 import { verifyToken } from './../../utils/verifyToken';
 import { setUser } from "../../redux/fetures/auth/authSlice";
-import { Button, Row } from "antd";
+import { Button, Row, Spin } from "antd";
 import authApi from './../../redux/fetures/auth/authApi';
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const [login] = authApi.useLoginMutation();
-
-
+    const [login, {isLoading}] = authApi.useLoginMutation();
 
     const onSubmit = async (data) => {
         const newDadta = {
@@ -38,8 +36,8 @@ const Login = () => {
                 <TSInput type="text" name="email" label="Email" placeholder="email"></TSInput>
                 <TSInput type="text" name="password" label="Password" placeholder="password"></TSInput>
                 <p className="font-semibold mb-3">If You Are Not Registred? <Link to="/register" className="text-green-600">Registration</Link> </p>
-                <Button htmlType="submit">Login</Button>
 
+                <Button htmlType="submit"> { isLoading ? <Spin size="small" /> : "Login" } </Button>
 
             </TSForm>
         </Row>

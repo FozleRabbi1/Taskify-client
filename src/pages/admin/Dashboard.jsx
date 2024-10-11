@@ -5,7 +5,7 @@ import { IoBagCheck, IoBagOutline } from "react-icons/io5";
 import { BsFileCheckFill } from "react-icons/bs";
 import { BiNotepad, BiSolidUserDetail } from "react-icons/bi";
 import ApexChart from "./ApexChart/ApexChart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Tab from "./DashboardTab/Tab";
 import { ProjectsApi } from "../../redux/fetures/prjects/ProjectsApi";
 import { TodosApi } from "../../redux/fetures/todos/todos";
@@ -96,9 +96,28 @@ const Dashboard = () => {
     const chartJsonDataTitleArray3 = chartJsonData3?.map(item => item.title)
 
 
+    const [visitCounter, setVisitorCounter] = useState(0)
+
+    useEffect(() => {
+        
+        const storedCounter = localStorage.getItem('visitorCounter');
+    
+        const counter = storedCounter ? parseInt(storedCounter) : 0;    
+        const updatedCounter = counter + 1;    
+        localStorage.setItem('visitorCounter', updatedCounter);    
+        setVisitorCounter(updatedCounter);
+
+      }, []);
+
+
+
+
     return (
         <div>
             <SearchBar />
+
+            {visitCounter}
+
             <div>
                 <div className="grid grid-cols-4 my-5 gap-5">
                     {
@@ -118,12 +137,12 @@ const Dashboard = () => {
                 {
                     totalLoading | isLoading ? <div className="h-[40vh] flex justify-center items-center"> <h2 className="text-xl font-semibold">Loading...</h2> </div>
                         :
-                        <div className="grid grid-cols-3 gap-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-                            <div className="bg-white px-10 rounded-lg">
+                            <div className="bg-white h-[72vh] px-10 rounded-lg">
                                 <h2 className="text-lg font-semibold text-gray-500 my-2">Project Statistics</h2>
 
-                                <div className="w-[300px]">
+                                <div className="w-[380px]">
                                     <ApexChart series={projectDataArray} labels={chartJsonDataTitleArray} />
                                 </div>
                                 <div className="flex justify-between mt-4">
@@ -148,9 +167,9 @@ const Dashboard = () => {
                                 </div>
                             </div>
 
-                            <div className="bg-white px-10 rounded-lg">
+                            <div className="bg-white h-[72vh] px-10 rounded-lg">
                                 <h2 className="text-lg font-semibold text-gray-500 my-2">Task Statistics</h2>
-                                <div className="w-[300px]">
+                                <div className="w-[380px]">
                                     <ApexChart series={tasksDataArray} labels={chartJsonDataTitleArray2} />
                                 </div>
                                 <div className="flex justify-between mt-4">
@@ -175,12 +194,15 @@ const Dashboard = () => {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="bg-white pl-10 rounded-lg h-[60vh] overflow-hidden ">
-                                <h2 className="text-lg font-semibold text-gray-500 my-2">Todos Overview</h2>
-                                <div className="w-[300px]">
+
+                            <div className="bg-white h-[72vh] rounded-lg  overflow-hidden ">
+
+                                <h2 className="text-lg font-semibold text-gray-500 my-2 pl-10 ">Todos Overview</h2>
+                                <div className="w-[380px] pl-10 ">
                                     <ApexChart series={todosDataArray} labels={chartJsonDataTitleArray3} />
                                 </div>
-                                <div className="mt-4 h-[60%] overflow-auto">
+
+                                <div className="mt-4 h-[60%] overflow-auto w-full">
                                     <div className="overflow-x-auto py-10">
                                         <Table
                                             loading={isLoading || checkedLoading}
