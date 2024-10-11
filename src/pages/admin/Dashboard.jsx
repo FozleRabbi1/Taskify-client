@@ -96,18 +96,16 @@ const Dashboard = () => {
     const chartJsonDataTitleArray3 = chartJsonData3?.map(item => item.title)
 
 
+    // =============================================================== Visitor counter
     const [visitCounter, setVisitorCounter] = useState(0)
-
     useEffect(() => {
-        
         const storedCounter = localStorage.getItem('visitorCounter');
-    
-        const counter = storedCounter ? parseInt(storedCounter) : 0;    
-        const updatedCounter = counter + 1;    
-        localStorage.setItem('visitorCounter', updatedCounter);    
+        const counter = storedCounter ? parseInt(storedCounter) : 0;
+        const updatedCounter = counter + 1;
+        localStorage.setItem('visitorCounter', updatedCounter);
         setVisitorCounter(updatedCounter);
-
-      }, []);
+    }, []);
+    // =============================================================== Visitor counter
 
 
 
@@ -116,7 +114,7 @@ const Dashboard = () => {
         <div>
             <SearchBar />
 
-            {visitCounter}
+            {/* {visitCounter} */}
 
             <div>
                 <div className="grid grid-cols-4 my-5 gap-5">
@@ -196,9 +194,8 @@ const Dashboard = () => {
                             </div>
 
                             <div className="bg-white h-[72vh] rounded-lg  overflow-hidden ">
-
                                 <h2 className="text-lg font-semibold text-gray-500 my-2 pl-10 ">Todos Overview</h2>
-                                <div className="w-[380px] pl-10 ">
+                                <div className="w-[410px] pl-10 ">
                                     <ApexChart series={todosDataArray} labels={chartJsonDataTitleArray3} />
                                 </div>
 
@@ -214,6 +211,7 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                 }
             </div>
