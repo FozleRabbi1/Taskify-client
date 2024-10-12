@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import './Dashboard.css'
 import { FaArrowRight, FaBars, FaRegFile } from "react-icons/fa";
 import SearchBar from "../../shared/SearchBar";
 import { IoBagCheck, IoBagOutline } from "react-icons/io5";
@@ -12,13 +13,17 @@ import { TodosApi } from "../../redux/fetures/todos/todos";
 import { Checkbox, Table } from "antd";
 import moment from "moment";
 import FooterHeadline from './../../shared/FooterHeadline';
+import { VisitorApi } from "../../redux/fetures/visitor/visitor";
 
 
 
 const Dashboard = () => {
     const { data, isLoading: totalLoading } = ProjectsApi.useTotalDataCountQuery()
     const { data: todoData, isLoading } = TodosApi.useGetAllTodosQuery();
-    const [checkedTodos, { isLoading: checkedLoading }] = TodosApi.useCheckedTodosMutation()
+    const [checkedTodos, { isLoading: checkedLoading }] = TodosApi.useCheckedTodosMutation();
+    const [createVisitor] = VisitorApi.useCreateVisitorMutation();
+    const { data: getVisitorCounter, isLoading : counterLoading } = VisitorApi.useGetVisitorCounterQuery();
+
 
     const projectDataArray = data?.data?.projectData && Object.values(data?.data?.projectData);
     const tasksDataArray = data?.data?.allTasksData && Object.values(data?.data?.allTasksData);
@@ -99,12 +104,27 @@ const Dashboard = () => {
     // =============================================================== Visitor counter
     const [visitCounter, setVisitorCounter] = useState(0)
     useEffect(() => {
-        const storedCounter = localStorage.getItem('visitorCounter');
-        const counter = storedCounter ? parseInt(storedCounter) : 0;
-        const updatedCounter = counter + 1;
-        localStorage.setItem('visitorCounter', updatedCounter);
-        setVisitorCounter(updatedCounter);
-    }, []);
+        const storedLastUpdateTime = localStorage.getItem('lastUpdateTime');
+        const currentTime = new Date().getTime();
+        const oneHour = 3600000;
+
+        if (!storedLastUpdateTime || currentTime - storedLastUpdateTime > oneHour) {
+            if (getVisitorCounter?.data) {
+                const data = {
+                    id: getVisitorCounter?.data[0]?._id,
+                    visitorCounter: getVisitorCounter?.data[0]?.visitorCounter + 1,
+                };
+
+                createVisitor(data).then(() => {
+                    localStorage.setItem('lastUpdateTime', currentTime.toString());
+                });
+            }
+        }
+        if (getVisitorCounter?.data) {
+            setVisitorCounter(getVisitorCounter?.data[0]?.visitorCounter);
+        }
+
+    }, [getVisitorCounter, createVisitor]);
     // =============================================================== Visitor counter
 
 
@@ -114,7 +134,21 @@ const Dashboard = () => {
         <div>
             <SearchBar />
 
-            {/* {visitCounter} */}
+            {/* <h2 className="mt-5 text-xl ">Visitor = </h2> */}
+
+            <div className="outer mt-5">
+                <div className="dot"></div>
+                <div className="card">
+                    <div className="ray"></div>
+                    <div className="text"> {  `${ counterLoading ? "L.." : getVisitorCounter?.data[0]?.visitorCounter }` } </div>
+                    <div className='-mt-2 mb-2 -mr-[2px]'>Visitor</div>
+                    <div className="line topl"></div>
+                    <div className="line leftl"></div>
+                    <div className="line bottoml"></div>
+                    <div className="line rightl"></div>
+                </div>
+            </div>
+
 
             <div>
                 <div className="grid grid-cols-4 my-5 gap-5">
